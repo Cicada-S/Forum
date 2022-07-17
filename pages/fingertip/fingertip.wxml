@@ -1,2 +1,5 @@
-<!--pages/fingertip/fingertip.wxml-->
-<text>pages/fingertip/fingertip.wxml</text>
+<view>
+  <canvas bindtap="GetPoint" canvas-id="mycanvas">
+    
+  </canvas>
+</view>
