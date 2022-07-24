@@ -1,10 +1,12 @@
 /**app.wxss**/
-.container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  padding: 200rpx 0;
+page {
+  background-color: #F3F3F3;
+}
+
+view, text, button, input, image, swiper, swiper-item {
   box-sizing: border-box;
+}
+
+image {
+  vertical-align: bottom;
 } 

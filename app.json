@@ -1,13 +1,33 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/fingertip/fingertip"
+    "pages/me/me"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Friend",
+    "navigationBarTitleText": "校园论坛",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#7D7E80",
+    "selectedColor": "#407EF5",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "static/images/tabs/home.png",
+        "selectedIconPath": "static/images/tabs/home-active.png"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "我的",
+        "iconPath": "static/images/tabs/me.png",
+        "selectedIconPath": "static/images/tabs/me-active.png"
+      }
+    ]
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"
