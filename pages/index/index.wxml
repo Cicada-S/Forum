@@ -1,4 +1,27 @@
 <!--index.wxml-->
 <view class="container">
-  首页
+  <!-- 搜索框 search -->
+  <van-search
+    value="{{ searchValue }}"
+    shape="round"
+    placeholder="Search..."
+  />
+
+  <!-- 轮播图 swiper -->
+  <view class="swiper">轮播图</view>
+
+  <!-- 分区 partition -->
+  <van-grid column-num="5">
+    <van-grid-item icon="photo-o" text="娱乐八卦" />
+    <van-grid-item icon="photo-o" text="二手市场" />
+    <van-grid-item icon="photo-o" text="表白墙" />
+    <van-grid-item icon="photo-o" text="失物招领" />
+    <van-grid-item icon="photo-o" text="学习交流" />
+  </van-grid>
+
+  <!-- 标签栏 tabs -->
+  <van-tabs active="{{ active }}" color="#407FF5" line-width="70" bind:change="onChange">
+    <van-tab title="最新">最新</van-tab>
+    <van-tab title="最热">最热</van-tab>
+  </van-tabs>
 </view>
