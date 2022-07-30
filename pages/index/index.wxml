@@ -30,7 +30,7 @@
           <view class="content">
             <view class="userName">{{item.name}}</view>
             <view class="text">{{item.text}}</view>
-            <view class="media {{item.media.length>1?'imageComplex':''}}">
+            <view class="media {{item.media.length>1?'imageComplex':''}}" style="padding-right:{{item.media.length==4?'200':'0'}}rpx">
               <image 
                 class="{{item.media.length>1?'complex':''}}"
                 mode="{{item.media.length>1?'aspectFill':'heightFix'}}" 
@@ -38,6 +38,9 @@
                 wx:for="{{item.media}}" 
                 wx:key="id" 
                 wx:for-item="imgItem"
+                bindtap="preview"
+                data-current="{{imgItem.path}}"
+                data-urls="{{item.media}}"
               />
             </view>
             <view class="location">{{item.location}}</view>

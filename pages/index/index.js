@@ -18,7 +18,7 @@ Page({
           {
             id: '1',
             name: 'xtt.jpg',
-            path: '/static/images/index/xtt.jpg'
+            path: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2020-07-15%2F5f0ecbb7a61e2.jpg&refer=http%3A%2F%2Fpic1.win4000.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1661779703&t=e304429f36d13f936883e0f6290bed66'
           },
           {
             id: '2',
@@ -60,5 +60,15 @@ Page({
   // 切换标签栏
   onChange(event) {
     console.log(event.detail.name)
+  },
+
+  // 点击图片放大预览的处理函数
+  preview(event) {
+    let { current, urls } = event.currentTarget.dataset
+    urls = urls.map(item => item.path)
+    wx.previewImage({
+      current,
+      urls
+    })
   }
 })
