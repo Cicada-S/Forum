@@ -12,16 +12,47 @@
 
   <!-- 分区 partition -->
   <van-grid column-num="5">
-    <van-grid-item icon="photo-o" text="娱乐八卦" />
-    <van-grid-item icon="photo-o" text="二手市场" />
-    <van-grid-item icon="photo-o" text="表白墙" />
-    <van-grid-item icon="photo-o" text="失物招领" />
-    <van-grid-item icon="photo-o" text="学习交流" />
+    <van-grid-item icon="manager" text="娱乐八卦" />
+    <van-grid-item icon="gold-coin" text="二手市场" />
+    <van-grid-item icon="like" text="表白墙" />
+    <van-grid-item icon="send-gift" text="失物招领" />
+    <van-grid-item icon="friends" text="学习交流" />
   </van-grid>
 
   <!-- 标签栏 tabs -->
   <van-tabs active="{{ active }}" color="#407FF5" line-width="70" bind:change="onChange">
-    <van-tab title="最新">最新</van-tab>
+    <van-tab title="最新">
+      <view class="postList"> 
+        <view class="postItem" wx:for="{{posts}}" wx:key="id">
+          <view class="userPic">
+            <image src="{{item.picUrl}}" />
+          </view>
+          <view class="content">
+            <view class="userName">{{item.name}}</view>
+            <view class="text">{{item.text}}</view>
+            <view class="media {{item.media.length>1?'imageComplex':''}}">
+              <image 
+                class="{{item.media.length>1?'complex':''}}"
+                mode="{{item.media.length>1?'aspectFill':'heightFix'}}" 
+                src="{{imgItem.path}}"
+                wx:for="{{item.media}}" 
+                wx:key="id" 
+                wx:for-item="imgItem"
+              />
+            </view>
+            <view class="location">{{item.location}}</view>
+            <view class="footer">
+              <view class="releaseTime">{{item.releaseTime}}</view>
+              <view class="partition">{{item.partition}}</view>
+              <view class="operation">
+                <view><van-icon name="good-job-o" /><text>{{item.goodJob}}</text></view>
+                <view><van-icon name="chat-o" /><text>{{item.chat}}</text></view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </van-tab>
     <van-tab title="最热">最热</van-tab>
   </van-tabs>
 </view>

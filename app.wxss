@@ -1,5 +1,19 @@
 /**app.wxss**/
 page {
+  --Color-MainA: #407FF5;
+  --Color-MainB: #2D75AB;
+  --Color-MainC: #D0EBFF;
+  --Color-MainD: #A1D7FF;
+  --Color-ViceA: #DB211B;
+  --Color-ViceB: #991713;
+  --Color-ViceC: #FFC9C7;
+  --Color-ViceD: #FF928F;
+  --Color-FontA: #7D7E80;
+  --Color-FontB: #979797;
+  --Color-FontC: #CCCCCC;
+  --Color-FontD: #6B6B6B;
+  --Color-FontE: #EFEFEF;
+  --Color-White: #FFFFFF;
   background-color: #F3F3F3;
 }
 

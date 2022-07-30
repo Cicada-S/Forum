@@ -3,36 +3,62 @@ Page({
   data: {
     searchValue: '',
     active: 0,
-    partition: [
+    posts: [
       {
         id: '1',
-        text: '娱乐八卦',
-        icon: 'photo-o'
+        name: 'Cicada',
+        text: '22-07-30 今天书籍分享:《带上她的眼睛》刘慈欣著',
+        location: '佛山',
+        releaseTime: '12小时前',
+        partition: '娱乐八卦',
+        goodJob: 60,
+        chat: 10,
+        picUrl: '/static/images/index/user.jpg',
+        media: [
+          {
+            id: '1',
+            name: 'xtt.jpg',
+            path: '/static/images/index/xtt.jpg'
+          },
+          {
+            id: '2',
+            name: 'xtt.jpg',
+            path: '/static/images/index/xtt.jpg'
+          },{
+            id: '3',
+            name: 'xtt.jpg',
+            path: '/static/images/index/xtt.jpg'
+          },
+          {
+            id: '4',
+            name: 'xtt.jpg',
+            path: '/static/images/index/xtt.jpg'
+          }
+        ]
       },
       {
         id: '2',
-        text: '二手市场',
-        icon: 'photo-o'
-      },
-      {
-        id: '3',
-        text: '表白墙',
-        icon: 'photo-o'
-      },
-      {
-        id: '4',
-        text: '失物招领',
-        icon: 'photo-o'
-      },
-      {
-        id: '5',
-        text: '学习交流',
-        icon: 'photo-o'
+        name: 'Cicada',
+        text: '22-07-30 今天书籍分享:《带上她的眼睛》刘慈欣著',
+        location: '佛山',
+        releaseTime: '12小时前',
+        partition: '娱乐八卦',
+        goodJob: 60,
+        chat: 10,
+        picUrl: '/static/images/index/user.jpg',
+        media: [
+          {
+            id: '1',
+            name: 'xtt.jpg',
+            path: '/static/images/index/xtt.jpg'
+          }
+        ]
       }
     ]
   },
 
+  // 切换标签栏
   onChange(event) {
     console.log(event.detail.name)
-  },
+  }
 })
