@@ -7,7 +7,7 @@ Page({
       {
         id: '1',
         name: 'Cicada',
-        text: '22-07-30 今天书籍分享:《带上她的眼睛》刘慈欣著',
+        // text: '22-07-30 今天书籍分享:《带上她的眼睛》刘慈欣著',
         // location: '佛山',
         releaseTime: '12小时前',
         partition: '娱乐八卦',
