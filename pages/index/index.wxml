@@ -22,40 +22,10 @@
   <!-- 标签栏 tabs -->
   <van-tabs active="{{ active }}" color="#407FF5" line-width="70" bind:change="onChange">
     <van-tab title="最新">
-      <view class="postList"> 
-        <view class="postItem" wx:for="{{posts}}" wx:key="id">
-          <view class="userPic">
-            <image src="{{item.picUrl}}" />
-          </view>
-          <view class="content">
-            <view class="userName">{{item.name}}</view>
-            <view class="text">{{item.text}}</view>
-            <view class="media {{item.media.length>1?'imageComplex':''}}" style="padding-right:{{item.media.length==4?'200':'0'}}rpx">
-              <image 
-                class="{{item.media.length>1?'complex':''}}"
-                mode="{{item.media.length>1?'aspectFill':'heightFix'}}" 
-                src="{{imgItem.path}}"
-                wx:for="{{item.media}}" 
-                wx:key="id" 
-                wx:for-item="imgItem"
-                bindtap="preview"
-                data-current="{{imgItem.path}}"
-                data-urls="{{item.media}}"
-              />
-            </view>
-            <view class="location">{{item.location}}</view>
-            <view class="footer">
-              <view class="releaseTime">{{item.releaseTime}}</view>
-              <view class="partition">{{item.partition}}</view>
-              <view class="operation">
-                <view><van-icon name="good-job-o" /><text>{{item.goodJob}}</text></view>
-                <view><van-icon name="chat-o" /><text>{{item.chat}}</text></view>
-              </view>
-            </view>
-          </view>
-        </view>
-      </view>
+      <PostList posts="{{posts}}" bind:preview="preview" />
     </van-tab>
-    <van-tab title="最热">最热</van-tab>
+    <van-tab title="最热">
+      <PostList posts="{{posts}}" bind:preview="preview" />
+    </van-tab>
   </van-tabs>
 </view>

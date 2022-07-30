@@ -33,6 +33,31 @@ Page({
             id: '4',
             name: 'xtt.jpg',
             path: '/static/images/index/xtt.jpg'
+          },
+          {
+            id: '4',
+            name: 'xtt.jpg',
+            path: '/static/images/index/xtt.jpg'
+          },
+          {
+            id: '4',
+            name: 'xtt.jpg',
+            path: '/static/images/index/xtt.jpg'
+          },
+          {
+            id: '4',
+            name: 'xtt.jpg',
+            path: '/static/images/index/xtt.jpg'
+          },
+          {
+            id: '4',
+            name: 'xtt.jpg',
+            path: '/static/images/index/xtt.jpg'
+          },
+          {
+            id: '4',
+            name: 'xtt.jpg',
+            path: '/static/images/index/xtt.jpg'
           }
         ]
       },
@@ -64,7 +89,7 @@ Page({
 
   // 点击图片放大预览的处理函数
   preview(event) {
-    let { current, urls } = event.currentTarget.dataset
+    let { current, urls } = event.detail
     urls = urls.map(item => item.path)
     wx.previewImage({
       current,
