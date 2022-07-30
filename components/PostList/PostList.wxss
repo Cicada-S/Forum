@@ -37,8 +37,8 @@
   max-height: 350rpx;
 }
 .postList .postItem .content .media .complex {
-  height: 150rpx;
-  width: 150rpx;
+  height: 160rpx;
+  width: 160rpx;
   margin: 0 10rpx 10rpx 0;
 }
 .postList .postItem .content .imageComplex {
@@ -48,6 +48,7 @@
 .postList .postItem .content .location {
   color: var(--Color-MainB);
   font-size: 26rpx;
+  margin-bottom: 20rpx;
 }
 .postList .postItem .content .footer {
   display: flex;
@@ -56,7 +57,6 @@
   color: var(--Color-FontA);
   font-size: 26rpx;
   font-weight: 300;
-  margin-top: 20rpx;
 }
 .postList .postItem .content .footer .releaseTime {
   max-width: 120rpx;
