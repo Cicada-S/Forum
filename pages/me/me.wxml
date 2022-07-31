@@ -1,6 +1,26 @@
 <!--pages/me/me.wxml-->
 <view class="container">
   <BlockBox padding="20">
-    Cicada
+    <view class="userInfo">
+      <image class="avatar" src="{{userInfo.avatarUrl}}" />
+      <view class="info">
+        <text class="nickName">{{userInfo.nickName}}</text>
+        <text class="autograph">{{userInfo.autograph}}</text>
+      </view>
+    </view>
+    <van-grid border="{{false}}">
+      <van-grid-item icon-color="#407FF5" icon="comment-o" text="我的帖子" />
+      <van-grid-item icon-color="#407FF5" icon="star-o" text="我的收藏" />
+      <van-grid-item icon-color="#407FF5" icon="question-o" text="帮助" />
+      <van-grid-item icon-color="#407FF5" icon="setting-o" text="设置" />
+    </van-grid>
+  </BlockBox>
+
+  <BlockBox>
+    <van-cell-group>
+      <van-cell title="修改资料" is-link border="{{false}}" />
+      <van-cell title="关于我们" is-link border="{{false}}" />
+      <van-cell title="退出登录" is-link border="{{false}}" />
+    </van-cell-group>
   </BlockBox>
 </view>

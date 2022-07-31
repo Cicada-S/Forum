@@ -5,3 +5,24 @@
   padding: 20rpx 30rpx 0;
   background-color: var(--Color-White);
 }
+.container .userInfo {
+  display: flex;
+}
+.container .userInfo .avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+}
+.container .userInfo .info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding-left: 20rpx;
+}
+.container .userInfo .info .nickName {
+  font-size: 36rpx;
+  font-weight: 500;
+}
+.container .userInfo .info .autograph {
+  font-size: 20rpx;
+}

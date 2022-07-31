@@ -1,6 +1,10 @@
 {
   "usingComponents": {
-    "BlockBox": "/components/BlockBox/BlockBox"
+    "BlockBox": "/components/BlockBox/BlockBox",
+    "van-grid": "@vant/weapp/grid/index",
+    "van-grid-item": "@vant/weapp/grid-item/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index"
   },
   "navigationBarTitleText": "个人中心"
 }
