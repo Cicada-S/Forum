@@ -3,6 +3,11 @@ Page({
   data: {
     searchValue: '',
     active: 0,
+    swiperImages: [
+      '/static/images/index/xtt.jpg', 
+      '/static/images/index/xtt.jpg', 
+      '/static/images/index/xtt.jpg'
+    ],
     posts: [
       {
         id: '1',

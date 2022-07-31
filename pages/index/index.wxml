@@ -8,7 +8,7 @@
   />
 
   <!-- 轮播图 swiper -->
-  <view class="swiper">轮播图</view>
+  <Swiper imageList="{{swiperImages}}" />
 
   <!-- 分区 partition -->
   <van-grid column-num="5" border="{{false}}" icon-size="32px">
