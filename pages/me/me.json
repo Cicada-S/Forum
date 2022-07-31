@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "BlockBox": "/components/BlockBox/BlockBox"
+  },
   "navigationBarTitleText": "个人中心"
 }

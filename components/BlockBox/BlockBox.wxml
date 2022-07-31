@@ -1,0 +1,4 @@
+<!--components/BlockBox/BlockBox.wxml-->
+<view class="blockBox" style="padding:{{padding}}rpx">
+  <slot></slot>
+</view>

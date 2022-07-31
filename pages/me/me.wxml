@@ -1,2 +1,6 @@
 <!--pages/me/me.wxml-->
-<text>pages/me/me.wxml</text>
+<view class="container">
+  <BlockBox padding="20">
+    Cicada
+  </BlockBox>
+</view>
