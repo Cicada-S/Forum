@@ -1,7 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/me/me"
+    "pages/me/me",
+    "pages/publish/publish"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -20,6 +21,12 @@
         "text": "首页",
         "iconPath": "static/images/tabs/home.png",
         "selectedIconPath": "static/images/tabs/home-active.png"
+      },
+      {
+        "pagePath": "pages/publish/publish",
+        "text": "发布",
+        "iconPath": "static/images/tabs/publish.png",
+        "selectedIconPath": "static/images/tabs/publish-active.png"
       },
       {
         "pagePath": "pages/me/me",

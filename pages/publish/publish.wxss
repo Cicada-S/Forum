@@ -1,0 +1,20 @@
+/* pages/publish/publish.wxss */
+.container {
+  width: 100vw;
+  height: 100vh;
+  padding: 50rpx;
+  background-color: var(--Color-White);
+}
+.container .textarea {
+  min-height: 120rpx;
+  margin-bottom: 30rpx;
+  font-size: 28rpx;
+}
+.container .van-uploader .van-uploader__upload {
+  width: 180rpx !important;
+  height: 180rpx !important;
+}
+.container .van-uploader image {
+  width: 180rpx !important;
+  height: 180rpx !important;
+}
