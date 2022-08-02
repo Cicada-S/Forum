@@ -31,3 +31,15 @@
   <!-- 发布 -->
   <button class="publishBtn" bindtap="onPublish">发布</button>
 </view>
+
+<picker 
+  mode="multiSelector" 
+  bindchange="bindMultiPickerChange" 
+  bindcolumnchange="bindMultiPickerColumnChange" 
+  value="{{multiIndex}}" 
+  range="{{multiArray}}"
+>
+  <view class="picker">
+    当前选择：{{multiArray[0][multiIndex[0]]}}，{{multiArray[1][multiIndex[1]]}}，{{multiArray[2][multiIndex[2]]}}
+  </view>
+</picker>
