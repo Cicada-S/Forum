@@ -10,6 +10,12 @@
   margin-bottom: 30rpx;
   font-size: 28rpx;
 }
+.container .van-uploader {
+  min-width: 100%;
+  min-height: 350rpx;
+  padding-bottom: 30rpx;
+  border-bottom: 1rpx solid rgba(0, 0, 0, 0.06);
+}
 .container .van-uploader .van-uploader__upload {
   width: 180rpx !important;
   height: 180rpx !important;
@@ -17,4 +23,21 @@
 .container .van-uploader image {
   width: 180rpx !important;
   height: 180rpx !important;
+}
+.container .van-cell {
+  padding-left: 0;
+  padding-right: 0;
+}
+.container .van-cell::after {
+  left: 0;
+  right: 0;
+}
+.container .publishBtn {
+  width: 100%;
+  color: var(--Color-White);
+  letter-spacing: 20rpx;
+  border-radius: 10rpx;
+  border: none;
+  margin-top: 50rpx;
+  background-color: var(--Color-MainA);
 }

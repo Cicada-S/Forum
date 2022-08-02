@@ -21,4 +21,13 @@
     max-count="9"
     max-duration="30"
   />
+
+  <!-- 操作 -->
+  <van-cell-group border="{{false}}">
+    <van-cell size="large" title="选择圈子" value="" is-link />
+    <van-cell size="large" title="所在位置" value="" is-link />
+  </van-cell-group>
+
+  <!-- 发布 -->
+  <button class="publishBtn" bindtap="onPublish">发布</button>
 </view>

@@ -21,5 +21,10 @@ Page({
     this.setData({
       fileList
     })
+  },
+
+  // 发布
+  onPublish() {
+    console.log('发布帖子')
   }
 })
