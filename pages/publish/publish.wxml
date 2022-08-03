@@ -24,22 +24,20 @@
 
   <!-- 操作 -->
   <van-cell-group border="{{false}}">
-    <van-cell size="large" title="选择圈子" value="" is-link />
+    <picker 
+      mode="multiSelector" 
+      bindchange="bindMultiPickerChange" 
+      bindcolumnchange="bindMultiPickerColumnChange" 
+      value="{{multiIndex}}" 
+      range="{{multiArray}}"
+    >
+      <view class="picker">
+        <van-cell size="large" title="选择圈子" value="{{multiArray[0][multiIndex[0]]}} {{multiArray[1][multiIndex[1]]}}" is-link />
+      </view>
+    </picker>
     <van-cell size="large" title="所在位置" value="" is-link />
   </van-cell-group>
 
   <!-- 发布 -->
   <button class="publishBtn" bindtap="onPublish">发布</button>
 </view>
-
-<picker 
-  mode="multiSelector" 
-  bindchange="bindMultiPickerChange" 
-  bindcolumnchange="bindMultiPickerColumnChange" 
-  value="{{multiIndex}}" 
-  range="{{multiArray}}"
->
-  <view class="picker">
-    当前选择：{{multiArray[0][multiIndex[0]]}}，{{multiArray[1][multiIndex[1]]}}，{{multiArray[2][multiIndex[2]]}}
-  </view>
-</picker>
