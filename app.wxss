@@ -15,7 +15,8 @@ page {
   --Color-FontE: #EFEFEF;
   --Color-White: #FFFFFF;
   --Box-Shadow: 2rpx 4rpx 12rpx 2rpx rgba(0, 0, 0, .16);
-  --Background-Image: linear-gradient(to top right, #A1D7FF, #407EF5);
+  --Background-ImageA: linear-gradient(to top right, #A1D7FF, #407EF5);
+  --Background-ImageB: linear-gradient(to top right, #51A1F8, #407EF5);
   background-color: #F3F3F3;
 }
 

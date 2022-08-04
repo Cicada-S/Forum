@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/me/me",
-    "pages/publish/publish"
+    "pages/publish/publish",
+    "pages/login/login"
   ],
   "window": {
     "backgroundTextStyle": "light",
