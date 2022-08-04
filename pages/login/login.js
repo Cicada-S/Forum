@@ -38,10 +38,11 @@ Page({
           autograph: '',
           createDate: new Date()
         }
-        // 跳转到首页
+        // 將用戶添加到数据库
         User.add({
           data: user,
           success: (res) => {
+            // 跳转到首页
             wx.reLaunch({
               url: '/pages/index/index'
             })

@@ -24,7 +24,7 @@
   letter-spacing: 3rpx;
   opacity: 0.75;
 }
-.container .background image {
+.container .background .icon {
   position: absolute;
   width: 96rpx;
   height: 96rpx;
