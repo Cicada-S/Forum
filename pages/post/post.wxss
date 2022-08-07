@@ -1,1 +1,20 @@
 /* pages/post/post.wxss */
+.container {
+  width: 100vw;
+}
+.container .commentArea {
+  margin: 40rpx 30rpx;
+  font-size: 28rpx;
+}
+.container .commentArea .title {
+  color: var(--Color-FontA);
+  letter-spacing: 2rpx;
+}
+.container .commentArea .comment {
+  margin: 30rpx 0;
+}
+.container .commentArea .comment .avatar {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}

@@ -1,4 +1,22 @@
 <!--pages/post/post.wxml-->
 <view class="container">
-  
+  <PostItem postItem="{{postInfo}}" bind:preview="preview" />
+
+  <view class="commentArea">
+    <view class="title">共68条评论</view>
+    <view class="comment">
+      <image class="avatar" src="" />
+      <input class="input" type="text" placeholder="喜欢就给个评论支持一下~" />
+    </view>
+    <view class="commentList">
+      <view class="commentItem">
+        <image class="userPic" src="" />
+        <view class="userName">Ting</view>
+        <view class="content">
+          <text class="commentContent">人生若只如初见</text>
+          <text class="commentTime"></text>
+        </view>
+      </view>
+    </view>
+  </view>
 </view>

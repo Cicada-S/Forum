@@ -1,4 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "PostItem": "/components/PostItem/PostItem"
+  },
   "navigationBarTitleText": "详情"
 }

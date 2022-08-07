@@ -22,6 +22,7 @@ Component({
    */
   methods: {
     preview(event) {
+      console.log('1231')
       let { current, urls } = event.currentTarget.dataset
       this.triggerEvent('preview', {
         current,
