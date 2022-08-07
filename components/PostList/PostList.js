@@ -5,8 +5,7 @@ Component({
    */
   properties: {
     posts: {
-      type: Array,
-      value: []
+
     }
   },
 
@@ -21,12 +20,6 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    preview(event) {
-      let { current, urls } = event.currentTarget.dataset
-      this.triggerEvent('preview', {
-        current,
-        urls
-      })
-    }
+    
   }
 })

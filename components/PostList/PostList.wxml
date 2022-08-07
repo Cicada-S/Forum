@@ -1,34 +1,4 @@
 <!--component/PostList/PostList.wxml-->
 <view class="postList"> 
-  <view class="postItem" wx:for="{{posts}}" wx:key="id">
-    <view class="userPic">
-      <image class="image" src="{{item.picUrl}}" />
-    </view>
-    <view class="content">
-      <view class="userName">{{item.name}}</view>
-      <view class="text" wx:if="{{item.text}}">{{item.text}}</view>
-      <view class="media {{item.media.length>1?'imageComplex':''}}" style="padding-right:{{item.media.length==4?'150':'0'}}rpx">
-        <image 
-          class="image {{item.media.length>1?'complex':''}}"
-          mode="{{item.media.length>1?'aspectFill':'heightFix'}}" 
-          src="{{imgItem.path}}"
-          wx:for="{{item.media}}" 
-          wx:key="id" 
-          wx:for-item="imgItem"
-          bindtap="preview"
-          data-current="{{imgItem.path}}"
-          data-urls="{{item.media}}"
-        />
-      </view>
-      <view class="location" wx:if="{{item.location}}" >{{item.location}}</view>
-      <view class="footer">
-        <view class="releaseTime">{{item.releaseTime}}</view>
-        <view class="partition">{{item.partition}}</view>
-        <view class="operation">
-          <view class="icon"><van-icon name="good-job-o" /><text class="text">{{item.goodJob}}</text></view>
-          <view class="icon"><van-icon name="chat-o" /><text class="text">{{item.chat}}</text></view>
-        </view>
-      </view>
-    </view>
-  </view>
+  <slot></slot>
 </view>

@@ -1,0 +1,95 @@
+/* components/PostItem.wxss */
+.postItem {
+  display: flex;
+  padding: 30rpx;
+  border-bottom: 1rpx solid var(--Color-FontE);
+  
+  .userPic .image {
+    width: 90rpx;
+    height: 90rpx;
+    border-radius: 10rpx;
+  }
+
+  .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 20rpx;
+    font-size: 28rpx;
+
+    .userName {
+      color: var(--Color-MainB);
+      font-size: 30rpx;
+      font-weight: 550;
+      margin-bottom: 20rpx;
+    }
+
+    .text {
+      letter-spacing: 3rpx;
+      margin-bottom: 20rpx;
+    }
+
+    .media {
+      margin-bottom: 20rpx;
+      
+      .image {
+        max-height: 350rpx;
+      }
+      
+      .complex {
+        height: 160rpx;
+        width: 160rpx;
+        margin: 0 10rpx 10rpx 0;
+      }
+    }
+
+    .imageComplex {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .location {
+      color: var(--Color-MainB);
+      font-size: 26rpx;
+      margin-bottom: 20rpx;
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--Color-FontA);
+      font-size: 26rpx;
+      font-weight: 300;
+
+      .releaseTime {
+        max-width: 120rpx;
+        font-size: 26rpx;
+      }
+
+      .partition {
+        max-width: 150rpx;
+        color: var(--Color-FontB);
+        padding: 0 20rpx;
+      }
+
+      .operation {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+        font-size: 32rpx;
+        font-weight: 400;
+
+        .icon {
+          margin-left: 10rpx;
+
+          .text {
+            font-size: 28rpx;
+            margin-left: 5rpx;
+          }
+        }
+      }
+    }
+  }
+}

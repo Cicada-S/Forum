@@ -1,0 +1,32 @@
+<!--components/PostItem.wxml-->
+<view class="postItem">
+    <view class="userPic">
+      <image class="image" src="{{postItem.picUrl}}" />
+    </view>
+    <view class="content">
+      <view class="userName">{{postItem.name}}</view>
+      <view class="text" wx:if="{{postItem.text}}">{{postItem.text}}</view>
+      <view class="media {{postItem.media.length>1?'imageComplex':''}}" style="padding-right:{{postItem.media.length==4?'150':'0'}}rpx">
+        <image 
+          class="image {{postItem.media.length>1?'complex':''}}"
+          mode="{{postItem.media.length>1?'aspectFill':'heightFix'}}" 
+          src="{{imgItem.path}}"
+          wx:for="{{postItem.media}}" 
+          wx:key="_id" 
+          wx:for-item="imgItem"
+          bindtap="preview"
+          data-current="{{imgItem.path}}"
+          data-urls="{{postItem.media}}"
+        />
+      </view>
+      <view class="location" wx:if="{{postItem.location}}" >{{postItem.location}}</view>
+      <view class="footer">
+        <view class="releaseTime">{{postItem.releaseTime}}</view>
+        <view class="partition">{{postItem.partition}}</view>
+        <view class="operation">
+          <view class="icon"><van-icon name="good-job-o" /><text class="text">{{postItem.goodJob}}</text></view>
+          <view class="icon"><van-icon name="chat-o" /><text class="text">{{postItem.chat}}</text></view>
+        </view>
+      </view>
+    </view>
+  </view>

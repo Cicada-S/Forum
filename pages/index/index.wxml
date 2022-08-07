@@ -22,10 +22,14 @@
   <!-- 标签栏 tabs -->
   <van-tabs active="{{ active }}" color="#407FF5" line-width="70" bind:change="onChange">
     <van-tab title="最新">
-      <PostList posts="{{posts}}" bind:preview="preview" />
+      <PostList>
+        <PostItem wx:for="{{posts}}" wx:key="_id" postItem="{{item}}" bind:preview="preview" />
+      </PostList>
     </van-tab>
     <van-tab title="最热">
-      <PostList posts="{{posts}}" bind:preview="preview" />
+      <PostList>
+        <PostItem wx:for="{{posts}}" wx:key="_id" postItem="{{item}}" bind:preview="preview" />
+      </PostList>
     </van-tab>
   </van-tabs>
 </view>
