@@ -30,18 +30,18 @@ Page({
       desc: "用于个人信息展示",
       // 允许授权
       success: res => {
-        console.info('userInfo', res.userInfo)
+        wx.setStorageSync('userInfo', res.userInfo)
         let user = {
-          avatarUrl: res.userInfo.avatarUrl,
-          nickName: res.userInfo.nickName,
+          avatar_url: res.userInfo.avatarUrl,
+          nick_name: res.userInfo.nickName,
           gender: res.userInfo.gender,
           autograph: '',
-          createDate: new Date()
+          create_date: new Date()
         }
         // 將用戶添加到数据库
         User.add({
           data: user,
-          success: (res) => {
+          success: () => {
             // 跳转到首页
             wx.reLaunch({
               url: '/pages/index/index'
