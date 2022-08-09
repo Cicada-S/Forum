@@ -14,7 +14,7 @@
         <view class="userName">Ting</view>
         <view class="content">
           <text class="commentContent">人生若只如初见</text>
-          <text class="commentTime"></text>
+          <text class="commentTime">2小时前</text>
         </view>
       </view>
     </view>

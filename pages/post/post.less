@@ -12,16 +12,39 @@
     }
 
     .comment {
+      display: flex;
+      align-items: center;
       margin: 30rpx 0;
 
       .avatar {
-        width: 100rpx;
-        height: 100rpx;
+        width: 80rpx;
+        height: 80rpx;
+        border: 1rpx solid pink;
         border-radius: 50%;
       }
 
       .input {
-        
+        flex: 1;
+        height: 80rpx;
+        padding: 0 20rpx;
+        margin-left: 20rpx;
+        border: 1rpx solid pink;
+        border-radius: 20rpx;
+      }
+    }
+
+    .commentList {
+      margin: 30rpx 0;
+
+      .commentItem {
+        display: flex;
+
+        .userPic {
+          width: 80rpx;
+          height: 80rpx;
+          border: 1rpx solid pink;
+          border-radius: 50%;
+        }
       }
     }
   }

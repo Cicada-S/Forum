@@ -11,10 +11,33 @@
   letter-spacing: 2rpx;
 }
 .container .commentArea .comment {
+  display: flex;
+  align-items: center;
   margin: 30rpx 0;
 }
 .container .commentArea .comment .avatar {
-  width: 100rpx;
-  height: 100rpx;
+  width: 80rpx;
+  height: 80rpx;
+  border: 1rpx solid pink;
+  border-radius: 50%;
+}
+.container .commentArea .comment .input {
+  flex: 1;
+  height: 80rpx;
+  padding: 0 20rpx;
+  margin-left: 20rpx;
+  border: 1rpx solid pink;
+  border-radius: 20rpx;
+}
+.container .commentArea .commentList {
+  margin: 30rpx 0;
+}
+.container .commentArea .commentList .commentItem {
+  display: flex;
+}
+.container .commentArea .commentList .commentItem .userPic {
+  width: 80rpx;
+  height: 80rpx;
+  border: 1rpx solid pink;
   border-radius: 50%;
 }
