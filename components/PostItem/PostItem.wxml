@@ -14,7 +14,7 @@
           wx:for="{{postItem.media}}" 
           wx:key="_id" 
           wx:for-item="imgItem"
-          bindtap="preview"
+          catchtap="preview"
           data-current="{{imgItem.path}}"
           data-urls="{{postItem.media}}"
         />

@@ -75,5 +75,12 @@ Page({
       current,
       urls
     })
+  },
+
+  // 跳转到帖子详情
+  toPost(event) {
+    wx.navigateTo({
+      url: `/pages/post/post?id=${event.currentTarget.id}`
+    })    
   }
 })
