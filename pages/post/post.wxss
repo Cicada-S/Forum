@@ -10,34 +10,86 @@
   color: var(--Color-FontA);
   letter-spacing: 2rpx;
 }
-.container .commentArea .comment {
+.container .commentArea .publishComment {
   display: flex;
   align-items: center;
   margin: 30rpx 0;
 }
-.container .commentArea .comment .avatar {
+.container .commentArea .publishComment .avatar {
   width: 80rpx;
   height: 80rpx;
-  border: 1rpx solid pink;
   border-radius: 50%;
 }
-.container .commentArea .comment .input {
+.container .commentArea .publishComment .input {
   flex: 1;
   height: 80rpx;
-  padding: 0 20rpx;
+  padding: 0 30rpx;
   margin-left: 20rpx;
-  border: 1rpx solid pink;
-  border-radius: 20rpx;
+  background-color: var(--Color-FontE);
+  border-radius: 30rpx;
 }
 .container .commentArea .commentList {
   margin: 30rpx 0;
 }
 .container .commentArea .commentList .commentItem {
+  margin-bottom: 30rpx;
+  border-bottom: 1rpx solid var(--Color-FontE);
+}
+.container .commentArea .commentList .commentItem .fatherComment,
+.container .commentArea .commentList .commentItem .sonCommentItem {
   display: flex;
 }
-.container .commentArea .commentList .commentItem .userPic {
+.container .commentArea .commentList .commentItem .fatherComment .userPic,
+.container .commentArea .commentList .commentItem .sonCommentItem .userPic {
   width: 80rpx;
   height: 80rpx;
-  border: 1rpx solid pink;
   border-radius: 50%;
+}
+.container .commentArea .commentList .commentItem .fatherComment .sonUserPic,
+.container .commentArea .commentList .commentItem .sonCommentItem .sonUserPic {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+}
+.container .commentArea .commentList .commentItem .fatherComment .content,
+.container .commentArea .commentList .commentItem .sonCommentItem .content {
+  flex: 1;
+  margin: 0 20rpx;
+}
+.container .commentArea .commentList .commentItem .fatherComment .content .userName,
+.container .commentArea .commentList .commentItem .sonCommentItem .content .userName {
+  color: var(--Color-FontA);
+  margin-bottom: 10rpx;
+}
+.container .commentArea .commentList .commentItem .fatherComment .content .userName .author,
+.container .commentArea .commentList .commentItem .sonCommentItem .content .userName .author {
+  color: var(--Color-FontD);
+  font-size: 22rpx;
+  background-color: var(--Color-FontE);
+  border-radius: 20rpx;
+  padding: 5rpx 10rpx;
+  margin-left: 10rpx;
+}
+.container .commentArea .commentList .commentItem .fatherComment .content .commentContent,
+.container .commentArea .commentList .commentItem .sonCommentItem .content .commentContent {
+  margin-bottom: 20rpx;
+}
+.container .commentArea .commentList .commentItem .fatherComment .content .commentContent .comment,
+.container .commentArea .commentList .commentItem .sonCommentItem .content .commentContent .comment {
+  margin-right: 10rpx;
+}
+.container .commentArea .commentList .commentItem .fatherComment .content .commentContent .comment .reply,
+.container .commentArea .commentList .commentItem .sonCommentItem .content .commentContent .comment .reply {
+  margin-right: 8rpx;
+}
+.container .commentArea .commentList .commentItem .fatherComment .content .commentContent .comment .coverReply,
+.container .commentArea .commentList .commentItem .sonCommentItem .content .commentContent .comment .coverReply {
+  margin-left: 8rpx;
+  color: var(--Color-FontA);
+}
+.container .commentArea .commentList .commentItem .fatherComment .content .commentContent .commentTime,
+.container .commentArea .commentList .commentItem .sonCommentItem .content .commentContent .commentTime {
+  color: var(--Color-FontA);
+  font-size: 24rpx;
+  white-space: nowrap;
 }

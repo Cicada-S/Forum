@@ -11,7 +11,7 @@
       letter-spacing: 2rpx;
     }
 
-    .comment {
+    .publishComment {
       display: flex;
       align-items: center;
       margin: 30rpx 0;
@@ -19,17 +19,16 @@
       .avatar {
         width: 80rpx;
         height: 80rpx;
-        border: 1rpx solid pink;
         border-radius: 50%;
       }
 
       .input {
         flex: 1;
         height: 80rpx;
-        padding: 0 20rpx;
+        padding: 0 30rpx;
         margin-left: 20rpx;
-        border: 1rpx solid pink;
-        border-radius: 20rpx;
+        background-color: var(--Color-FontE);
+        border-radius: 30rpx;
       }
     }
 
@@ -37,13 +36,66 @@
       margin: 30rpx 0;
 
       .commentItem {
-        display: flex;
+        margin-bottom: 30rpx;
+        border-bottom: 1rpx solid var(--Color-FontE);
 
-        .userPic {
-          width: 80rpx;
-          height: 80rpx;
-          border: 1rpx solid pink;
-          border-radius: 50%;
+        .fatherComment, 
+        .sonCommentItem {
+          display: flex;
+
+          .userPic {
+            width: 80rpx;
+            height: 80rpx;
+            border-radius: 50%;
+          }
+
+          .sonUserPic {
+            width: 60rpx;
+            height: 60rpx;
+            border-radius: 50%;
+          }
+  
+          .content {
+            flex: 1;
+            margin: 0 20rpx;
+  
+            .userName {
+              color: var(--Color-FontA);
+              margin-bottom: 10rpx;
+
+              .author {
+                color: var(--Color-FontD);
+                font-size: 22rpx;
+                background-color: var(--Color-FontE);
+                border-radius: 20rpx;
+                padding: 5rpx 10rpx;
+                margin-left: 10rpx;
+              }
+            }
+  
+            .commentContent {
+              margin-bottom: 20rpx;
+
+              .comment {
+                margin-right: 10rpx;
+
+                .reply {
+                  margin-right: 8rpx;
+                }
+
+                .coverReply {
+                  margin-left: 8rpx;
+                  color: var(--Color-FontA);
+                }
+              }
+
+              .commentTime {
+                color: var(--Color-FontA);
+                font-size: 24rpx;
+                white-space: nowrap;
+              }
+            }
+          }
         }
       }
     }

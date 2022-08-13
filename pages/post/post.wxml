@@ -3,18 +3,48 @@
   <PostItem postItem="{{postInfo}}" bind:preview="preview" />
 
   <view class="commentArea">
-    <view class="title">共68条评论</view>
-    <view class="comment">
-      <image class="avatar" src="" />
+    <view class="title">共{{commentNum}}条评论</view>
+    <!-- 评论框 -->
+    <view class="publishComment">
+      <image class="avatar" src="{{avatarUrl}}" />
       <input class="input" type="text" placeholder="喜欢就给个评论支持一下~" />
     </view>
+    <!-- 评论列表 -->
     <view class="commentList">
-      <view class="commentItem">
-        <image class="userPic" src="" />
-        <view class="userName">Ting</view>
-        <view class="content">
-          <text class="commentContent">人生若只如初见</text>
-          <text class="commentTime">2小时前</text>
+      <!-- 父评论 -->
+      <view class="commentItem" wx:for="{{commentList}}" wx:key="_id">
+        <view class="fatherComment">
+          <image class="userPic" src="{{item.avatarUrl}}" />
+          <!-- 评论内容 -->
+          <view class="content">
+            <view class="userName">
+              <text>{{item.nickName}}</text>
+              <text wx:if="{{!item.comment_identity}}" class="author">作者</text>
+            </view>
+            <!-- 父评论 内容 -->
+            <view class="commentContent">
+              <text class="comment">{{item.comment}}</text>
+              <text class="commentTime">{{item.time}}</text>
+            </view>
+            <!-- 子评论 回复 -->
+            <view class="sonCommentItem" wx:for="{{item.child_comment}}" wx:key="_id" wx:for-item="child">
+              <image class="sonUserPic" src="{{child.avatarUrl}}" />
+              <view class="content">
+                <view class="userName">
+                  <text>{{child.nickName}}</text>
+                  <text wx:if="{{!child.comment_identity}}" class="author">作者</text>
+                </view>
+                <!-- 子评论 内容 -->
+                <view class="commentContent">
+                  <text class="comment">
+                    <text wx:if="{{child.reply_type}}" class="reply">回复<text class="coverReply">{{child.to_nickName}}</text>:</text>
+                    <text>{{child.comment}}</text>
+                  </text>
+                  <text class="commentTime">{{child.time}}</text>
+                </view>
+              </view>
+            </view>
+          </view>
         </view>
       </view>
     </view>
