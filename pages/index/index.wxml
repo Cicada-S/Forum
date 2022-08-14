@@ -24,7 +24,7 @@
     <van-tab title="最新">
       <PostList>
         <PostItem 
-          wx:for="{{posts}}" 
+          wx:for="{{newPostList}}" 
           wx:key="_id" 
           bindtap="toPost" 
           id="{{item._id}}" 
@@ -36,7 +36,7 @@
     <van-tab title="最热">
       <PostList>
         <PostItem 
-          wx:for="{{posts}}" 
+          wx:for="{{hotPostList}}" 
           wx:key="_id" 
           bindtap="toPost" 
           id="{{item._id}}" 
