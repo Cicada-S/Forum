@@ -34,6 +34,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/circle/circle",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "PostList": "/components/PostList/PostList",
+    "PostItem": "/components/PostItem/PostItem",
+    "van-tab": "@vant/weapp/tab/index",
+    "van-tabs": "@vant/weapp/tabs/index"
+  },
+  "navigationBarTitleText": "圈子内容"
+}
