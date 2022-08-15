@@ -3,7 +3,6 @@
   width: 100vw;
   height: 100vh;
   padding: 50rpx;
-  background-color: var(--Color-White);
 }
 .container .textarea {
   min-height: 120rpx;
