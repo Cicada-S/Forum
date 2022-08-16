@@ -19,8 +19,8 @@ Page({
         }
       ]
     },
-    commentNum: 3, // 评论数量
-    avatarUrl: '', // 当前用户头像
+    commentSum: 3, // 评论数量
+    avatar_url: '', // 当前用户头像
     commentList: [ // 评论列表
       {
         _id: 'fp1', // 主键
@@ -71,8 +71,8 @@ Page({
    */
   onLoad(options) {
     // 当前用户头像
-    let { avatarUrl } = wx.getStorageSync('userInfo');
-    this.setData({ avatarUrl })
+    let { avatar_url } = wx.getStorageSync('currentUser')
+    this.setData({ avatar_url })
   },
 
   // 点击图片放大预览的处理函数

@@ -1,8 +1,8 @@
 // pages/login/login.js
 const app = getApp()
 
-const db = wx.cloud.database();
-const User = db.collection('User');
+const db = wx.cloud.database()
+const User = db.collection('User')
 
 Page({
   data: {
@@ -30,7 +30,7 @@ Page({
       desc: "用于个人信息展示",
       // 允许授权
       success: res => {
-        wx.setStorageSync('userInfo', res.userInfo)
+        wx.setStorageSync('currentUser', res.userInfo)
         let user = {
           avatar_url: res.userInfo.avatarUrl,
           nick_name: res.userInfo.nickName,
@@ -48,14 +48,7 @@ Page({
             })
           }
         })
-      },
-      /* // 拒绝授权
-      fail: err => {
-        console.log('拒接授权', err)
-        wx.navigateTo({
-          url: '/pages/login/login'
-        })
-      } */
+      }
     }) 
   }
 })

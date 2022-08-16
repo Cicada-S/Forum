@@ -38,7 +38,7 @@ Page({
 
   // picker的值发生改变时触发
   bindMultiPickerColumnChange(event) {
-    console.log('修改的列为', event.detail.column,'，值为', event.detail.value);
+    console.log('修改的列为', event.detail.column,'，值为', event.detail.value)
     var data = {
       multiArray: this.data.multiArray,
       multiIndex: this.data.multiIndex

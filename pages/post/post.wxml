@@ -3,10 +3,10 @@
   <PostItem postItem="{{postInfo}}" bind:preview="preview" />
 
   <view class="commentArea">
-    <view class="title">共{{commentNum}}条评论</view>
+    <view class="title">共{{commentSum}}条评论</view>
     <!-- 评论框 -->
     <view class="publishComment">
-      <image class="avatar" src="{{avatarUrl}}" />
+      <image class="avatar" src="{{avatar_url}}" />
       <input class="input" type="text" placeholder="喜欢就给个评论支持一下~" />
     </view>
     <!-- 评论列表 -->

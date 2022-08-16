@@ -116,22 +116,21 @@ Page({
    * 页面加载
    */
   onLoad() {
-    // this.getUserInfo()
+    this.getUserInfo()
   },
 
   // 判断用户是否登录过
   getUserInfo() {
     user.get().then(res => {
-      console.log(res)
-      if(res.data.length !== 1) {
-        wx.setStorageSync('userInfo', res.data[0])
+      if(res.data.length === 1) {
+        wx.setStorageSync('currentUser', res.data[0])
       } else {
         wx.navigateTo({
           url: '/pages/login/login'
         })
       }
     })
-  }, 
+  },
 
   // 切换标签栏
   onChange(event) {
