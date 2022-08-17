@@ -3,6 +3,7 @@ Page({
   data: {
     content: '', // 文案内容
     fileList: [], // 文件列表
+    community: [], // 圈子
     multiArray: [
       ['娱乐八卦', '二手市场', '表白墙', '失物招领', '学习交流'], 
       []
@@ -34,6 +35,7 @@ Page({
     this.setData({
       multiIndex: event.detail.value
     })
+    this.getPickerColumnChange()
   },
 
   // picker的值发生改变时触发
@@ -53,10 +55,10 @@ Page({
           data.multiArray[1] = ['出售', '求购']
           break
         case 2:
-          data.multiArray[1] = ['表白', '捞人', '出舍友']
+          data.multiArray[1] = ['表白', '捞人', '出室友']
           break
         case 3:
-          data.multiArray[1] = []
+          data.multiArray[1] = ['寻物', '招领']
           break
         case 4:
           data.multiArray[1] = ['求解', '提问']
@@ -66,10 +68,24 @@ Page({
     }
     console.log(data.multiIndex)
     this.setData(data)
+    this.getPickerColumnChange()
+  },
+
+  // 获取选择器的值
+  getPickerColumnChange() {
+    let { multiArray, multiIndex } = this.data
+    let community = []
+
+    community.push(multiArray[0][multiIndex[0]])
+    if(multiArray[1][multiIndex[1]]) community.push(multiArray[1][multiIndex[1]])
+
+    this.setData({ community })
   },
 
   // 发布
   onPublish() {
     console.log('发布帖子')
+    let { content, fileList, community } = this.data
+    let data = { content, community, location: '' }
   }
 })
