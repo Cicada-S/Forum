@@ -1,4 +1,7 @@
 // pages/publish/publish.js
+// 引入uuid
+const { uuid } = require('../../utils/uuid.js')
+
 Page({
   data: {
     content: '', // 文案内容
@@ -101,12 +104,13 @@ Page({
     let upCloudImages = []
     imageList.forEach(async (item, index) => {
       // 文件名
-      let cloudPath = 'forum/post/' + Math.random() + new Date().getTime() + index + item.url.match(/.[^.]+$/)[0]
+      let cloudPath = 'forum/post/' + uuid() + item.url.match(/.[^.]+$/)[0]
       // uploadFile 上传图片
       await wx.cloud.uploadFile({
         cloudPath,
         filePath: item.url,
       }).then(res => {
+        console.log(res.fileID)
         // 将返回的图片云存储路径保存起来
         upCloudImages.push({
           path: res.fileID,
