@@ -4,6 +4,7 @@ Page({
     content: '', // 文案内容
     fileList: [], // 文件列表
     community: [], // 圈子
+    upCloudImages: [], // 云存储的图片 
     multiArray: [
       ['娱乐八卦', '二手市场', '表白墙', '失物招领', '学习交流'], 
       []
@@ -31,21 +32,19 @@ Page({
 
   // 点击确认时触发
   bindMultiPickerChange(event) {
-    console.log('picker发送选择改变,携带值为', event.detail.value)
     this.setData({
       multiIndex: event.detail.value
     })
-    this.getPickerColumnChange()
+    this.getPickerValue()
   },
 
   // picker的值发生改变时触发
   bindMultiPickerColumnChange(event) {
-    console.log('修改的列为', event.detail.column,'，值为', event.detail.value)
     var data = {
       multiArray: this.data.multiArray,
       multiIndex: this.data.multiIndex
-    };
-    data.multiIndex[event.detail.column] = event.detail.value;
+    }
+    data.multiIndex[event.detail.column] = event.detail.value
     if(event.detail.column === 0) {
       switch (data.multiIndex[0]) {
         case 0:
@@ -66,13 +65,12 @@ Page({
       }
       data.multiIndex[1] = 0
     }
-    console.log(data.multiIndex)
     this.setData(data)
-    this.getPickerColumnChange()
+    this.getPickerValue()
   },
 
   // 获取选择器的值
-  getPickerColumnChange() {
+  getPickerValue() {
     let { multiArray, multiIndex } = this.data
     let community = []
 
@@ -83,9 +81,39 @@ Page({
   },
 
   // 发布
-  onPublish() {
+  async onPublish() {
     console.log('发布帖子')
-    let { content, fileList, community } = this.data
-    let data = { content, community, location: '' }
+    let { content, community, fileList, upCloudImages } = this.data
+    let data = { content, upCloudImages, community, location: '' }
+
+    // 将图片上传到云存储
+    this.upCloud(fileList)
+
+    // 发布帖子
+    /* let result = await wx.cloud.callFunction({
+      name: 'addPost',
+      data
+    }) */
+  },
+
+  // 将图片上传到云存储
+  upCloud(imageList) {
+    let upCloudImages = []
+    imageList.forEach(async (item, index) => {
+      // 文件名
+      let cloudPath = 'forum/post/' + Math.random() + new Date().getTime() + index + item.url.match(/.[^.]+$/)[0]
+      // uploadFile 上传图片
+      await wx.cloud.uploadFile({
+        cloudPath,
+        filePath: item.url,
+      }).then(res => {
+        // 将返回的图片云存储路径保存起来
+        upCloudImages.push({
+          path: res.fileID,
+          order: index
+        })
+        this.setData({ upCloudImages })
+      })
+    })
   }
 })
