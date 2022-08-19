@@ -6,6 +6,7 @@
       value="{{content}}"
       auto-focus
       auto-height 
+      bindinput="onChange"
       placeholder="这一刻的想法..."
       placeholder-style="font-size: 28rpx;" 
     />

@@ -15,6 +15,11 @@ Page({
     multiIndex: [],
   },
 
+  // 监听文案内容发生改变
+  onChange(event) {
+    this.setData({ content: event.detail.value })
+  },
+
   // 文件读取完成
   afterRead(event) {
     let { fileList } = this.data
@@ -86,27 +91,35 @@ Page({
   // 发布
   async onPublish() {
     console.log('发布帖子')
-    let { content, community, fileList, upCloudImages } = this.data
-    let data = { content, upCloudImages, community, location: '' }
-
+    
     // 将图片上传到云存储
-    this.upCloud(fileList)
+    await this.upCloud(this.data.fileList)
 
+    let { content, community, upCloudImages } = this.data
+    let data = { 
+      content,
+      upCloudImages,
+      community: community.join(' '),
+      location: ''
+    }
+    
     // 发布帖子
-    /* let result = await wx.cloud.callFunction({
+    let result = await wx.cloud.callFunction({
       name: 'addPost',
       data
-    }) */
+    })
+    console.log(result)
   },
 
   // 将图片上传到云存储
   upCloud(imageList) {
+    let worker = []
     let upCloudImages = []
-    imageList.forEach(async (item, index) => {
+    imageList.forEach((item, index) => {
       // 文件名
       let cloudPath = 'forum/post/' + uuid() + item.url.match(/.[^.]+$/)[0]
       // uploadFile 上传图片
-      await wx.cloud.uploadFile({
+      let process = wx.cloud.uploadFile({
         cloudPath,
         filePath: item.url,
       }).then(res => {
@@ -118,6 +131,8 @@ Page({
         })
         this.setData({ upCloudImages })
       })
+      worker.push(process)
     })
+    return Promise.all(worker)
   }
 })
