@@ -132,8 +132,7 @@ Page({
     console.log(dataType, orderType)
     Post.orderBy('publish_date', 'desc').get()
     .then(res => {
-      // res.data.map(item => item.publish_date = JSON.parse(JSON.stringify(item.publish_date)))
-
+      console.log(res.data)
       this.setData({
         [dataType]: res.data
       })

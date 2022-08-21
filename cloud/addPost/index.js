@@ -18,7 +18,7 @@ exports.main = async (event, context) => {
       content,
       community,
       location,
-      publish_date: new Date(),
+      publish_date: Date.now(),
       status: 0,
       agree: 0,
       comment: 0
