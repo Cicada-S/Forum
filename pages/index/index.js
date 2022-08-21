@@ -35,7 +35,7 @@ Page({
     let dataType = type === 0 ? 'newPostList' : 'hotPostList'
     let orderType = type === 0 ? "'publish_date', 'asc'" : "'agree', 'desc'"
     console.log(dataType, orderType)
-    Post.orderBy('publish_date', 'asc').get()
+    Post.orderBy('publish_date', 'desc').get()
     .then(res => {
       res.data.map(item => item.publish_date = getdate(item.publish_date))
       this.setData({
