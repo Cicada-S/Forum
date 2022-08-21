@@ -1,116 +1,22 @@
 // index.js
+// 引入date
+const { getdate } = require('../../utils/date.js')
+
 const db = wx.cloud.database()
 const user = db.collection('User')
 const Post = db.collection('Post')
 
 Page({
   data: {
-    searchValue: '',
-    active: 0,
-    swiperImages: [
+    searchValue: '', // 搜索框
+    active: 0, // tab的状态
+    swiperImages: [ // 轮播图
       '/static/images/index/xtt.jpg', 
       '/static/images/index/xtt.jpg', 
       '/static/images/index/xtt.jpg'
     ],
-    newPostList: [
-      {
-        _id: '1',
-        name: 'Cicada',
-        text: '22-07-30 今天书籍分享:《带上她的眼睛》刘慈欣著',
-        location: '佛山',
-        releaseTime: '12小时前',
-        partition: '娱乐八卦',
-        goodJob: 60,
-        chat: 10,
-        picUrl: '/static/images/index/user.jpg',
-        media: [
-          {
-            _id: '1',
-            name: 'xtt.jpg',
-            path: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2020-07-15%2F5f0ecbb7a61e2.jpg&refer=http%3A%2F%2Fpic1.win4000.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1661779703&t=e304429f36d13f936883e0f6290bed66'
-          },
-          {
-            _id: '2',
-            name: 'xtt.jpg',
-            path: '/static/images/index/xtt.jpg'
-          },{
-            _id: '3',
-            name: 'xtt.jpg',
-            path: '/static/images/index/xtt.jpg'
-          },
-          {
-            _id: '4',
-            name: 'xtt.jpg',
-            path: '/static/images/index/xtt.jpg'
-          }
-        ]
-      },
-      {
-        _id: '2',
-        name: 'Cicada',
-        text: '22-07-30 今天书籍分享:《带上她的眼睛》刘慈欣著',
-        location: '佛山',
-        releaseTime: '12小时前',
-        partition: '娱乐八卦',
-        goodJob: 60,
-        chat: 10,
-        picUrl: '/static/images/index/user.jpg',
-        media: [
-          {
-            _id: '1',
-            name: 'xtt.jpg',
-            path: '/static/images/index/xtt.jpg'
-          }
-        ]
-      }
-    ],
-    hotPostList: [
-      {
-        _id: '1',
-        name: 'Cicada',
-        text: '22-07-30 今天书籍分享:《带上她的眼睛》刘慈欣著',
-        location: '佛山',
-        releaseTime: '12小时前',
-        partition: '娱乐八卦',
-        goodJob: 60,
-        chat: 10,
-        picUrl: '/static/images/index/user.jpg',
-        media: [
-          {
-            _id: '1',
-            name: 'xtt.jpg',
-            path: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F2020-07-15%2F5f0ecbb7a61e2.jpg&refer=http%3A%2F%2Fpic1.win4000.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1661779703&t=e304429f36d13f936883e0f6290bed66'
-          },
-          {
-            _id: '2',
-            name: 'xtt.jpg',
-            path: '/static/images/index/xtt.jpg'
-          },{
-            _id: '3',
-            name: 'xtt.jpg',
-            path: '/static/images/index/xtt.jpg'
-          }
-        ]
-      },
-      {
-        _id: '2',
-        name: 'Cicada',
-        text: '22-07-30 今天书籍分享:《带上她的眼睛》刘慈欣著',
-        location: '佛山',
-        releaseTime: '12小时前',
-        partition: '娱乐八卦',
-        goodJob: 60,
-        chat: 10,
-        picUrl: '/static/images/index/user.jpg',
-        media: [
-          {
-            _id: '1',
-            name: 'xtt.jpg',
-            path: '/static/images/index/xtt.jpg'
-          }
-        ]
-      }
-    ]
+    newPostList: [], // 最新
+    hotPostList: [] // 最热
   },
 
   /**
@@ -125,14 +31,13 @@ Page({
 
   // 获取帖子列表
   getPostList(type) {
-    console.log(type)
     // 排序类型
     let dataType = type === 0 ? 'newPostList' : 'hotPostList'
-    let orderType = type === 0 ? "'publish_date', 'desc'" : "'agree', 'desc'"
+    let orderType = type === 0 ? "'publish_date', 'asc'" : "'agree', 'desc'"
     console.log(dataType, orderType)
-    Post.orderBy('publish_date', 'desc').get()
+    Post.orderBy('publish_date', 'asc').get()
     .then(res => {
-      console.log(res.data)
+      res.data.map(item => item.publish_date = getdate(item.publish_date))
       this.setData({
         [dataType]: res.data
       })
