@@ -95,12 +95,15 @@ Page({
     // 将图片上传到云存储
     await this.upCloud(this.data.fileList)
 
+    let { nick_name, avatar_url } = wx.getStorageSync('currentUser')
     let { content, community, upCloudImages } = this.data
     let data = { 
       content,
       upCloudImages,
       community: community.join(' '),
-      location: ''
+      location: '',
+      author_name: nick_name,
+      author_avatar: avatar_url
     }
     
     // 发布帖子
@@ -117,7 +120,7 @@ Page({
     let upCloudImages = []
     imageList.forEach((item, index) => {
       // 文件名
-      let cloudPath = 'forum/post/' + uuid() + item.url.match(/.[^.]+$/)[0]
+      let cloudPath = 'post/' + uuid() + item.url.match(/.[^.]+$/)[0]
       // uploadFile 上传图片
       let process = wx.cloud.uploadFile({
         cloudPath,

@@ -9,17 +9,18 @@ const db = cloud.database()
 exports.main = async (event, context) => {
   try {
     console.log(event)
-    let { content, community, location, upCloudImages } = event
+    let { content, community, location, author_name, author_avatar, upCloudImages } = event
 
     let post = {
       _openid: cloud.getWXContext().OPENID,
+      author_name,
+      author_avatar,
       content,
       community,
       location,
       publish_date: new Date(),
       status: 0,
       agree: 0,
-      collection: 0,
       comment: 0
     }
 
