@@ -3,6 +3,8 @@
 const { getdate } = require('../../utils/date.js')
 
 const db = wx.cloud.database()
+const _ = db.command
+const $ = db.command.aggregate
 const user = db.collection('User')
 const Post = db.collection('Post')
 
@@ -30,18 +32,41 @@ Page({
   },
 
   // 获取帖子列表
-  getPostList(type) {
-    // 排序类型
-    let dataType = type === 0 ? 'newPostList' : 'hotPostList'
-    let orderType = type === 0 ? "'publish_date', 'asc'" : "'agree', 'desc'"
-    console.log(dataType, orderType)
+  async getPostList(type) {
+    // 排序类型 
+    // let dataType = type === 0 ? 'newPostList' : 'hotPostList'
+    // let orderType = type === 0 ? "'publish_date', 'asc'" : "'agree', 'desc'"
+
+    // 获取post
     Post.orderBy('publish_date', 'desc').get()
     .then(res => {
       res.data.map(item => item.publish_date = getdate(item.publish_date))
       this.setData({
-        [dataType]: res.data
+        newPostList: res.data
       })
     })
+
+    // 联表查询
+    /* Post.aggregate().sort({ publish_date: -1 }).match({ status: 1 })
+    .lookup({
+      from: 'PostMedia',
+      let: { post_id: '$_id' },
+        pipeline: $.pipeline()
+        .match(_.expr($.and([
+          $.eq(['$post_id', '$$post_id'])
+        ])))
+        .sort({
+          order: 1,
+        })
+        .done(),
+      as: 'postMedia'
+    }).end()
+    .then(res => {
+      console.log(res)
+    })
+    .catch(err => {
+      console.log(err)
+    }) */
   },
 
   // 判断用户是否登录过
