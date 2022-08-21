@@ -1,6 +1,7 @@
 // index.js
 const db = wx.cloud.database()
 const user = db.collection('User')
+const Post = db.collection('Post')
 
 Page({
   data: {
@@ -116,7 +117,27 @@ Page({
    * 页面加载
    */
   onLoad() {
+    // 判断用户是否登录过
     this.getUserInfo()
+    // 获取帖子列表
+    this.getPostList(0)
+  },
+
+  // 获取帖子列表
+  getPostList(type) {
+    console.log(type)
+    // 排序类型
+    let dataType = type === 0 ? 'newPostList' : 'hotPostList'
+    let orderType = type === 0 ? "'publish_date', 'desc'" : "'agree', 'desc'"
+    console.log(dataType, orderType)
+    Post.orderBy('publish_date', 'desc').get()
+    .then(res => {
+      // res.data.map(item => item.publish_date = JSON.parse(JSON.stringify(item.publish_date)))
+
+      this.setData({
+        [dataType]: res.data
+      })
+    })
   },
 
   // 判断用户是否登录过
@@ -134,7 +155,7 @@ Page({
 
   // 切换标签栏
   onChange(event) {
-    console.log(event.detail.name)
+    this.getPostList(event.detail.name)
   },
 
   // 点击图片放大预览的处理函数
