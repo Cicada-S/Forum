@@ -6,17 +6,17 @@
     <view class="content">
       <view class="userName">{{postItem.author_name}}</view>
       <view class="text" wx:if="{{postItem.content}}">{{postItem.content}}</view>
-      <view class="media {{postItem.media.length>1?'imageComplex':''}}" style="padding-right:{{postItem.media.length==4?'150':'0'}}rpx">
+      <view class="media {{postItem.postMedia.length>1?'imageComplex':''}}" style="padding-right:{{postItem.postMedia.length==4?'150':'0'}}rpx">
         <image 
-          class="image {{postItem.media.length>1?'complex':''}}"
-          mode="{{postItem.media.length>1?'aspectFill':'heightFix'}}" 
+          class="image {{postItem.postMedia.length>1?'complex':''}}"
+          mode="{{postItem.postMedia.length>1?'aspectFill':'heightFix'}}" 
           src="{{imgItem.path}}"
-          wx:for="{{postItem.media}}" 
+          wx:for="{{postItem.postMedia}}" 
           wx:key="_id" 
           wx:for-item="imgItem"
           catchtap="preview"
           data-current="{{imgItem.path}}"
-          data-urls="{{postItem.media}}"
+          data-urls="{{postItem.postMedia}}"
         />
       </view>
       <view class="location" wx:if="{{postItem.location}}" >{{postItem.location}}</view>
