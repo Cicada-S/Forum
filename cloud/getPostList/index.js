@@ -9,20 +9,20 @@ const $ = db.command.aggregate
 
 // 云函数入口函数
 exports.main = async (event, context) => {
+  // 排序规格
+  let sort = { publish_date: -1 }
   // 筛选规格
-  let screen = { publish_date: -1 }
+  let screen = { status: 0 }
 
-  // 判断是否为 最热 圈子 搜索
-  if(event.type === 1) screen = Object.assign({agree: -1}, screen)
+  // 排序 最热 
+  if(event.type === 1) sort = Object.assign({agree: -1}, sort)
+  // 筛选 圈子 搜索
   if(event.community) screen.community = event.community
   if(event.search) screen.content = event.search
 
   try {
     // 联表查询
-    let postList = await db.collection('Post').aggregate().sort(screen)
-    .match({
-      status: 0
-    })
+    let postList = await db.collection('Post').aggregate().sort(sort).match(screen)
     .lookup({
       from: 'PostMedia',
       let: { post_id: '$_id' },

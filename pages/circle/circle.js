@@ -14,9 +14,10 @@ Page({
    * 页面加载
   */
   onLoad(options) {
-    this.getPostList(0)
     this.setData({ community: options.id })
-  },
+    // 获取帖子列表
+    this.getPostList(0)
+  },  
 
   // 获取帖子列表
   async getPostList(type) {
