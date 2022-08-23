@@ -27,7 +27,7 @@ function getdate(data) {
   } else if (miao > todaysec && miao < todaysec + 86400) {
     return '昨天'
   } else {
-    return [year, month, day].map(formatNumber).join('-')
+    return [year - 2000, month, day].map(formatNumber).join('-')
   }
 }
 
