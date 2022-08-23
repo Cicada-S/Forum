@@ -12,11 +12,11 @@
 
   <!-- 分区 partition -->
   <van-grid column-num="5" border="{{false}}" icon-size="32px">
-    <van-grid-item icon-color="#2D75AB" icon="manager" text="娱乐八卦" />
-    <van-grid-item icon-color="#FFC9C7" icon="gold-coin" text="二手市场" />
-    <van-grid-item icon-color="#DB211B" icon="like" text="表白墙" />
-    <van-grid-item icon-color="#A1D7FF" icon="send-gift" text="失物招领" />
-    <van-grid-item icon-color="#407FF5" icon="friends" text="学习交流" />
+    <van-grid-item icon-color="#2D75AB" bindtap="toCircle" id="娱乐八卦" icon="manager" text="娱乐八卦" />
+    <van-grid-item icon-color="#FFC9C7" bindtap="toCircle" id="二手市场" icon="gold-coin" text="二手市场" />
+    <van-grid-item icon-color="#DB211B" bindtap="toCircle" id="表白墙" icon="like" text="表白墙" />
+    <van-grid-item icon-color="#A1D7FF" bindtap="toCircle" id="失物招领" icon="send-gift" text="失物招领" />
+    <van-grid-item icon-color="#407FF5" bindtap="toCircle" id="学习交流" icon="friends" text="学习交流" />
   </van-grid>
 
   <!-- 标签栏 tabs -->

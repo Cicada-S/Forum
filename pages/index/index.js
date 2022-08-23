@@ -59,6 +59,13 @@ Page({
     })
   },
 
+  // 调整到圈子
+  toCircle(event) {
+    wx.navigateTo({
+      url: `/pages/circle/circle?id=${event.currentTarget.id}`
+    })
+  },
+
   // 切换标签栏
   onChange(event) {
     this.getPostList(event.detail.name)
