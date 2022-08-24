@@ -32,6 +32,7 @@
 }
 .postItem .content .media .image {
   max-height: 350rpx;
+  max-width: 580rpx;
 }
 .postItem .content .media .complex {
   height: 160rpx;

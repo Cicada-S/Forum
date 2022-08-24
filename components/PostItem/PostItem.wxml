@@ -1,32 +1,31 @@
 <!--components/PostItem.wxml-->
 <view class="postItem">
-    <view class="userPic">
-      <image class="image" src="{{postItem.author_avatar}}" />
-    </view>
-    <view class="content">
-      <view class="userName">{{postItem.author_name}}</view>
-      <view class="text" wx:if="{{postItem.content}}">{{postItem.content}}</view>
-      <view class="media {{postItem.postMedia.length>1?'imageComplex':''}}" style="padding-right:{{postItem.postMedia.length==4?'150':'0'}}rpx">
+  <view class="userPic">
+    <image class="image" src="{{postItem.author_avatar}}" />
+  </view>
+  <view class="content">
+    <view class="userName">{{postItem.author_name}}</view>
+    <view class="text" wx:if="{{postItem.content}}">{{postItem.content}}</view>
+    <view class="media {{postItem.postMedia.length>1?'imageComplex':''}}" style="padding-right:{{postItem.postMedia.length==4?'150':'0'}}rpx">
+      <block wx:for="{{postItem.postMedia}}" wx:key="_id" wx:for-item="imgItem">
         <image 
           class="image {{postItem.postMedia.length>1?'complex':''}}"
           mode="{{postItem.postMedia.length>1?'aspectFill':'heightFix'}}" 
           src="{{imgItem.path}}"
-          wx:for="{{postItem.postMedia}}" 
-          wx:key="_id" 
-          wx:for-item="imgItem"
           catchtap="preview"
           data-current="{{imgItem.path}}"
           data-urls="{{postItem.postMedia}}"
         />
-      </view>
-      <view class="location" wx:if="{{postItem.location}}" >{{postItem.location}}</view>
-      <view class="footer">
-        <view class="releaseTime">{{postItem.publish_date}}</view>
-        <view class="partition">{{postItem.community}}</view>
-        <view class="operation">
-          <view class="icon"><van-icon name="good-job-o" /><text class="text">{{postItem.agree}}</text></view>
-          <view class="icon"><van-icon name="chat-o" /><text class="text">{{postItem.comment}}</text></view>
-        </view>
+      </block>
+    </view>
+    <view class="location" wx:if="{{postItem.location}}" >{{postItem.location}}</view>
+    <view class="footer">
+      <view class="releaseTime">{{postItem.publish_date}}</view>
+      <view class="partition">{{postItem.community}}</view>
+      <view class="operation">
+        <view class="icon"><van-icon name="good-job-o" /><text class="text">{{postItem.agree}}</text></view>
+        <view class="icon"><van-icon name="chat-o" /><text class="text">{{postItem.comment}}</text></view>
       </view>
     </view>
   </view>
+</view>
