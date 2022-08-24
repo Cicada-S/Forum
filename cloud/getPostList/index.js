@@ -15,7 +15,14 @@ exports.main = async (event, context) => {
   let screen = { status: 0 }
 
   // 排序 最热 
-  if(event.type === 1) sort = Object.assign({agree: -1}, sort)
+  if(event.type === 1) {
+    sort = Object.assign({agree: -1}, sort)
+    // 获取最近七天的数据 且点赞数量必须大于等于1
+    let lastWeek = new Date()
+    lastWeek.setDate(lastWeek.getDate() -7)
+    screen.publish_date = _.gte(lastWeek)
+    screen.agree = _.gte(1)
+  }
   // 筛选 圈子 搜索
   if(event.community) screen.community = event.community
   if(event.search) screen.content = event.search
