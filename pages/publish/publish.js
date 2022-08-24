@@ -100,7 +100,8 @@ Page({
     let data = { 
       content,
       upCloudImages,
-      community: community.join(' '),
+      community: community[0],
+      circle: community[1]?community[1]:'',
       location: '',
       author_name: nick_name,
       author_avatar: avatar_url

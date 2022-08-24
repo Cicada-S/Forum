@@ -8,8 +8,7 @@ const db = cloud.database()
 // 云函数入口函数
 exports.main = async (event, context) => {
   try {
-    console.log(event)
-    let { content, community, location, author_name, author_avatar, upCloudImages } = event
+    let { content, community, circle, location, author_name, author_avatar, upCloudImages } = event
 
     let post = {
       _openid: cloud.getWXContext().OPENID,
@@ -17,6 +16,7 @@ exports.main = async (event, context) => {
       author_avatar,
       content,
       community,
+      circle,
       location,
       publish_date: new Date(),
       status: 0,
@@ -27,8 +27,6 @@ exports.main = async (event, context) => {
     // 添加帖子
     db.collection('Post').add({ data: post })
     .then(res => {
-      console.log(res)
-
       // 遍历图片添加到数据表中
       upCloudImages.forEach(item => {
         item.post_id = res._id

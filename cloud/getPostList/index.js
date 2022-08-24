@@ -51,7 +51,6 @@ exports.main = async (event, context) => {
     }
   }
   catch(err) {
-    console.log(err)
     console.error('transaction error')
     return {
       code: 1,
