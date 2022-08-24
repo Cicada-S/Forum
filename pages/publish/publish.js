@@ -90,8 +90,9 @@ Page({
 
   // 发布
   async onPublish() {
-    console.log('发布帖子')
-    
+    wx.showLoading({
+      title: '发布中...',
+    })
     // 将图片上传到云存储
     await this.upCloud(this.data.fileList)
 
@@ -106,13 +107,17 @@ Page({
       author_name: nick_name,
       author_avatar: avatar_url
     }
-    
+
     // 发布帖子
-    let result = await wx.cloud.callFunction({
+    await wx.cloud.callFunction({
       name: 'addPost',
       data
+    }).then(() => {
+      wx.hideLoading()
+      wx.switchTab({
+        url: '/pages/index/index'
+      })
     })
-    console.log(result)
   },
 
   // 将图片上传到云存储
