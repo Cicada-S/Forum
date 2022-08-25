@@ -24,7 +24,7 @@
       <view class="partition" wx:if="{{postItem.circle}}">{{postItem.circle}}</view>
       <view class="partition" wx:else>{{postItem.community}}</view>
       <view class="operation">
-        <view class="icon"><van-icon name="good-job-o" /><text class="text">{{postItem.agree}}</text></view>
+        <view class="icon" catchtap="fabulous" id="{{postItem._id}}"><van-icon name="good-job-o" /><text class="text">{{postItem.agree}}</text></view>
         <view class="icon"><van-icon name="chat-o" /><text class="text">{{postItem.comment}}</text></view>
       </view>
     </view>

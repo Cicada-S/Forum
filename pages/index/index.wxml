@@ -30,6 +30,7 @@
           id="{{item._id}}" 
           postItem="{{item}}" 
           bind:preview="preview" 
+          bind:fabulous="fabulous" 
         />
       </PostList>
     </van-tab>
@@ -42,6 +43,7 @@
           id="{{item._id}}" 
           postItem="{{item}}" 
           bind:preview="preview" 
+          bind:fabulous="fabulous" 
         />
       </PostList>
     </van-tab>

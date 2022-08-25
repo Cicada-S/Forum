@@ -4,6 +4,7 @@ const { getdate } = require('../../utils/date.js')
 
 const db = wx.cloud.database()
 const user = db.collection('User')
+const Post = db.collection('Post')
 
 Page({
   data: {
@@ -68,6 +69,7 @@ Page({
 
   // 切换标签栏
   onChange(event) {
+    this.setData({ active: event.detail.name })
     this.getPostList(event.detail.name)
   },
 
@@ -79,6 +81,22 @@ Page({
       current,
       urls
     })
+  },
+
+  // 点赞的处理函数
+  fabulous(event) {
+    // 更新数据表
+    Post.doc(event.detail.id).update({data:{ agree: item.agree }})
+    
+    let type = this.data.active === 0 ? 'newPostList' : 'hotPostList'
+    // 查找出点赞的这条数据
+    let postList = this.data[type].map(item => {
+      // 点赞数量加一
+      if(item._id === event.detail.id) item.agree += 1
+      return item
+    })
+    // 更新data
+    this.setData({ [type]: postList })
   },
 
   // 跳转到帖子详情

@@ -21,12 +21,19 @@ Component({
    * 组件的方法列表
    */
   methods: {
+    // 预览图片
     preview(event) {
-      console.log('1231')
       let { current, urls } = event.currentTarget.dataset
       this.triggerEvent('preview', {
         current,
         urls
+      })
+    },
+
+    // 点赞
+    fabulous(event) {
+      this.triggerEvent('fabulous', {
+        id: event.currentTarget.id
       })
     }
   }
