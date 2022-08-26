@@ -75,6 +75,9 @@
 .postItem .content .footer .operation .icon {
   margin-left: 10rpx;
 }
+.postItem .content .footer .operation .icon .active {
+  color: var(--Color-MainA);
+}
 .postItem .content .footer .operation .icon .text {
   font-size: 28rpx;
   margin-left: 5rpx;

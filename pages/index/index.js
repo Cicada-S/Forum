@@ -92,6 +92,7 @@ Page({
       post_id: event.detail.id
     }).get()
 
+    let type = this.data.active === 0 ? 'newPostList' : 'hotPostList'
     // 判断之前是否创建过该帖子的数据表
     if(!result.data.length) {
       // 如果没有该数据表 则创建数据表
@@ -102,8 +103,21 @@ Page({
           is_collect: false
         }
       })
+
+      // 查找出点赞的这条数据
+      let postList = this.data[type].map(item => {
+        if(item._id === event.detail.id) {
+          // 点赞数量加一
+          item.agree += 1
+          item.is_agree = true
+          // 更新数据表
+          Post.doc(event.detail.id).update({data:{ agree: item.agree }})
+        }
+        return item
+      })
+      // 更新data
+      this.setData({ [type]: postList })
     } else {
-      let type = this.data.active === 0 ? 'newPostList' : 'hotPostList'
       // 如果有该数据表 则判断是否已经点赞过
       if(result.data[0].is_agree) {
         // 如果点赞过 则取消点赞
@@ -111,9 +125,10 @@ Page({
 
         // 查找出点赞的这条数据
         let postList = this.data[type].map(item => {
-          // 点赞数量减一
           if(item._id === event.detail.id) {
+            // 点赞数量减一
             item.agree -= 1
+            item.is_agree = false
             // 更新数据表
             Post.doc(event.detail.id).update({data:{ agree: item.agree }})
           }
@@ -127,9 +142,10 @@ Page({
 
         // 查找出点赞的这条数据
         let postList = this.data[type].map(item => {
-          // 点赞数量加一
           if(item._id === event.detail.id) {
+            // 点赞数量加一
             item.agree += 1
+            item.is_agree = true
             // 更新数据表
             Post.doc(event.detail.id).update({data:{ agree: item.agree }})
           }
