@@ -126,6 +126,12 @@ Page({
         // 查找出点赞的这条数据
         let postList = this.data[type].map(item => {
           if(item._id === event.detail.id) {
+            // 当点赞图标非活跃状态的时候 弹出取消点赞
+            if(!item.is_agree) wx.showToast({
+              title: '取消点赞',
+              icon: 'none',
+              duration: 1000
+            })
             // 点赞数量减一
             item.agree -= 1
             item.is_agree = false
