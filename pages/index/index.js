@@ -5,6 +5,7 @@ const { getdate } = require('../../utils/date.js')
 const db = wx.cloud.database()
 const user = db.collection('User')
 const Post = db.collection('Post')
+const agreeCollect = db.collection('agreeCollect')
 
 Page({
   data: {
@@ -84,19 +85,60 @@ Page({
   },
 
   // 点赞的处理函数
-  fabulous(event) {
-    // 更新数据表
-    Post.doc(event.detail.id).update({data:{ agree: item.agree }})
-    
-    let type = this.data.active === 0 ? 'newPostList' : 'hotPostList'
-    // 查找出点赞的这条数据
-    let postList = this.data[type].map(item => {
-      // 点赞数量加一
-      if(item._id === event.detail.id) item.agree += 1
-      return item
-    })
-    // 更新data
-    this.setData({ [type]: postList })
+  async fabulous(event) {
+    // 查看点赞收藏表
+    let result = await agreeCollect.where({
+      _openid: wx.getStorageSync('currentUser')._openid,
+      post_id: event.detail.id
+    }).get()
+
+    // 判断之前是否创建过该帖子的数据表
+    if(!result.data.length) {
+      // 如果没有该数据表 则创建数据表
+      agreeCollect.add({
+        data: {
+          post_id: event.detail.id,
+          is_agree: true,
+          is_collect: false
+        }
+      })
+    } else {
+      let type = this.data.active === 0 ? 'newPostList' : 'hotPostList'
+      // 如果有该数据表 则判断是否已经点赞过
+      if(result.data[0].is_agree) {
+        // 如果点赞过 则取消点赞
+        agreeCollect.doc(result.data[0]._id).update({data: { is_agree: false }})
+
+        // 查找出点赞的这条数据
+        let postList = this.data[type].map(item => {
+          // 点赞数量减一
+          if(item._id === event.detail.id) {
+            item.agree -= 1
+            // 更新数据表
+            Post.doc(event.detail.id).update({data:{ agree: item.agree }})
+          }
+          return item
+        })
+        // 更新data
+        this.setData({ [type]: postList })
+      } else {
+        // 如果没点赞过 则点赞
+        agreeCollect.doc(result.data[0]._id).update({data: { is_agree: true }})
+
+        // 查找出点赞的这条数据
+        let postList = this.data[type].map(item => {
+          // 点赞数量加一
+          if(item._id === event.detail.id) {
+            item.agree += 1
+            // 更新数据表
+            Post.doc(event.detail.id).update({data:{ agree: item.agree }})
+          }
+          return item
+        })
+        // 更新data
+        this.setData({ [type]: postList })
+      }
+    }
   },
 
   // 跳转到帖子详情
