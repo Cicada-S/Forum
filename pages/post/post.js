@@ -1,24 +1,13 @@
 // pages/post/post.js
+// 引入date
+const { getdate } = require('../../utils/date.js')
+
+const db = wx.cloud.database()
+let post = db.collection('Post')
+
 Page({
   data: {
-    postInfo: {
-      _id: '2',
-      name: 'Cicada',
-      text: '22-07-30 今天书籍分享:《带上她的眼睛》刘慈欣著',
-      location: '佛山',
-      releaseTime: '12小时前',
-      partition: '娱乐八卦',
-      goodJob: 60,
-      chat: 10,
-      picUrl: '/static/images/index/user.jpg',
-      media: [
-        {
-          _id: '1',
-          name: 'xtt.jpg',
-          path: '/static/images/index/xtt.jpg'
-        }
-      ]
-    },
+    postInfo: {},
     commentSum: 3, // 评论数量
     avatar_url: '', // 当前用户头像
     commentList: [ // 评论列表
@@ -70,9 +59,22 @@ Page({
    * 页面加载
    */
   onLoad(options) {
+    this.getPostInfo(options.id)
     // 当前用户头像
     let { avatar_url } = wx.getStorageSync('currentUser')
     this.setData({ avatar_url })
+  },
+
+  // 获取帖子详情信息
+  async getPostInfo(id) {
+    // 获取帖子
+    let { result } = await wx.cloud.callFunction({
+      name: 'getPostInfo',
+      data: { id }
+    })
+    // 将发布时间改成文字
+    result.data.publish_date = getdate(result.data.publish_date)
+    this.setData({ postInfo: result.data })
   },
 
   // 点击图片放大预览的处理函数
