@@ -92,75 +92,55 @@ Page({
       post_id: event.detail.id
     }).get()
 
-    let type = this.data.active === 0 ? 'newPostList' : 'hotPostList'
     // 判断之前是否创建过该帖子的数据表
     if(!result.data.length) {
       // 如果没有该数据表 则创建数据表
-      agreeCollect.add({
-        data: {
-          post_id: event.detail.id,
-          is_agree: true,
-          is_collect: false
-        }
-      })
-
-      // 查找出点赞的这条数据
-      let postList = this.data[type].map(item => {
-        if(item._id === event.detail.id) {
-          // 点赞数量加一
-          item.agree += 1
-          item.is_agree = true
-          // 更新数据表
-          Post.doc(event.detail.id).update({data:{ agree: item.agree }})
-        }
-        return item
-      })
-      // 更新data
-      this.setData({ [type]: postList })
+      agreeCollect.add({data: { post_id: event.detail.id, is_agree: true, is_collect: false }})
+      // 更新点赞数据
+      this.agreeUpdata(event.detail.id, '+')
     } else {
       // 如果有该数据表 则判断是否已经点赞过
       if(result.data[0].is_agree) {
         // 如果点赞过 则取消点赞
         agreeCollect.doc(result.data[0]._id).update({data: { is_agree: false }})
-
-        // 查找出点赞的这条数据
-        let postList = this.data[type].map(item => {
-          if(item._id === event.detail.id) {
-            // 当点赞图标非活跃状态的时候 弹出取消点赞
-            if(!item.is_agree) wx.showToast({
-              title: '取消点赞',
-              icon: 'none',
-              duration: 1000
-            })
-            // 点赞数量减一
-            item.agree -= 1
-            item.is_agree = false
-            // 更新数据表
-            Post.doc(event.detail.id).update({data:{ agree: item.agree }})
-          }
-          return item
-        })
-        // 更新data
-        this.setData({ [type]: postList })
+        // 更新点赞数据
+        this.agreeUpdata(event.detail.id, '-')
       } else {
         // 如果没点赞过 则点赞
         agreeCollect.doc(result.data[0]._id).update({data: { is_agree: true }})
-
-        // 查找出点赞的这条数据
-        let postList = this.data[type].map(item => {
-          if(item._id === event.detail.id) {
-            // 点赞数量加一
-            item.agree += 1
-            item.is_agree = true
-            // 更新数据表
-            Post.doc(event.detail.id).update({data:{ agree: item.agree }})
-          }
-          return item
-        })
-        // 更新data
-        this.setData({ [type]: postList })
+        // 更新点赞数据
+        this.agreeUpdata(event.detail.id, '+')
       }
     }
+  },
+
+  // 更新点赞数据
+  agreeUpdata(id, operator) {
+    let type = this.data.active === 0 ? 'newPostList' : 'hotPostList'
+     // 查找出点赞的这条数据
+    let postList = this.data[type].map(item => {
+      if(item._id === id) {
+        // 当点赞图标为 非活跃状态 并且为取消点赞时 弹出取消点赞
+        if(!item.is_agree && operator === '-') wx.showToast({
+          title: '取消点赞',
+          icon: 'none',
+          duration: 1000
+        })
+        // 更新点赞数量 和点赞icon状态
+        if(operator === '+') {
+          item.agree += 1
+          item.is_agree = true
+        } else {
+          item.agree -= 1
+          item.is_agree = false
+        }
+        // 更新数据表
+        Post.doc(id).update({data:{ agree: item.agree }})
+      }
+      return item
+    })
+    // 更新data
+    this.setData({ [type]: postList })
   },
 
   // 跳转到帖子详情
