@@ -39,6 +39,13 @@ Component({
       this.triggerEvent('fabulous', {
         id: event.currentTarget.id
       })
+    },
+
+    // 收藏
+    collect() {
+      this.triggerEvent('collect', {
+        id: this.properties.postItem._id
+      })
     }
   }
 })

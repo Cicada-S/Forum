@@ -4,6 +4,10 @@ let app = getApp()
 // 引入date
 const { getdate } = require('../../utils/date.js')
 
+const db = wx.cloud.database()
+const Post = db.collection('Post')
+const agreeCollect = db.collection('agreeCollect')
+
 Page({
   data: {
     bottomLift: app.globalData.bottomLift,
@@ -85,5 +89,46 @@ Page({
       current,
       urls
     })
+  },
+
+  // 收藏帖子的回调函数
+   async collect(event) {
+    // 查看点赞收藏表
+    let result = await agreeCollect.where({
+      _openid: wx.getStorageSync('currentUser')._openid,
+      post_id: event.detail.id
+    }).get()
+
+    console.log(result.data)
+    
+    // 判断之前是否创建过该帖子的数据表
+    if(!result.data.length) {
+      // 如果没有该数据表 则创建数据表
+      agreeCollect.add({data: { post_id: event.detail.id, is_agree: false, is_collect: true }})
+      // 更新data
+      this.setData({['postInfo.is_collect']: true})
+    } else {
+      console.log('有数据表')
+      // 如果有该数据表 则判断是否已经收藏过
+      if(result.data[0].is_collect) {
+        // 如果收藏过 则取消收藏
+        agreeCollect.doc(result.data[0]._id).update({data: { is_collect: false }})
+        // 当收藏图标为 非活跃状态 弹出取消收藏
+        if(!this.data.postInfo.is_collect) wx.showToast({
+          title: '取消收藏',
+          icon: 'none',
+          duration: 1000
+        })
+        // 更新data
+        this.setData({['postInfo.is_collect']: false})
+      } else {
+        // 如果没收藏过 则收藏
+        agreeCollect.doc(result.data[0]._id).update({data: { is_collect: true }})
+        // 更新data
+        this.setData({['postInfo.is_collect']: true})
+      }
+    }
+
+    console.log(this.data.postInfo)
   }
 })

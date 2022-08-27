@@ -1,6 +1,11 @@
 <!--pages/post/post.wxml-->
 <view class="container">
-  <PostItem postItem="{{postInfo}}" isCollect="{{true}}" bind:preview="preview" />
+  <PostItem 
+    postItem="{{postInfo}}" 
+    isCollect="{{true}}" 
+    bind:preview="preview" 
+    bind:collect="collect" 
+  />
 
   <view class="commentArea">
     <view class="title">共{{commentSum}}条评论</view>
