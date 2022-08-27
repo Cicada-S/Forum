@@ -4,11 +4,6 @@
 
   <view class="commentArea">
     <view class="title">共{{commentSum}}条评论</view>
-    <!-- 评论框 -->
-    <view class="publishComment">
-      <image class="avatar" src="{{avatar_url}}" />
-      <input class="input" type="text" placeholder="喜欢就给个评论支持一下~" />
-    </view>
     <!-- 评论列表 -->
     <view class="commentList">
       <!-- 父评论 -->
@@ -49,4 +44,15 @@
       </view>
     </view>
   </view>
+    <!-- 评论框 -->
+    <view class="publishComment" style="padding-bottom: {{bottomLift}}px">
+      <input 
+        class="input"
+        type="text" 
+        confirm-type="send" 
+        confirm-hold="{{true}}" 
+        placeholder="喜欢就给个评论支持一下~" 
+      />
+      <button class="hair">发送</button>
+    </view>
 </view>

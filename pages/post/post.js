@@ -1,12 +1,12 @@
 // pages/post/post.js
+let app = getApp()
+
 // 引入date
 const { getdate } = require('../../utils/date.js')
 
-const db = wx.cloud.database()
-let post = db.collection('Post')
-
 Page({
   data: {
+    bottomLift: app.globalData.bottomLift,
     postInfo: {},
     commentSum: 3, // 评论数量
     avatar_url: '', // 当前用户头像

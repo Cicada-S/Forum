@@ -11,27 +11,6 @@
       letter-spacing: 2rpx;
     }
 
-    .publishComment {
-      display: flex;
-      align-items: center;
-      margin: 30rpx 0;
-
-      .avatar {
-        width: 80rpx;
-        height: 80rpx;
-        border-radius: 50%;
-      }
-
-      .input {
-        flex: 1;
-        height: 80rpx;
-        padding: 0 30rpx;
-        margin-left: 20rpx;
-        background-color: var(--Color-FontE);
-        border-radius: 30rpx;
-      }
-    }
-
     .commentList {
       margin: 30rpx 0;
 
@@ -98,6 +77,46 @@
           }
         }
       }
+    }
+  }
+
+  .publishComment {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30rpx;
+    background-color: var(--Color-White);
+
+    .input {
+      flex: 1;
+      height: 80rpx;
+      padding: 0 30rpx;
+      line-height: 80rpx;
+      margin-bottom: 10rpx;
+      color: var(--Color-FontD);
+      border-radius: 30rpx;
+      background: var(--Color-White);
+      box-shadow: inset 7px 7px 17px #d9d9d9, inset -7px -7px 17px #ffffff;
+    }
+
+    .hair {
+      height: 80rpx;
+      text-align: center;
+      line-height: 80rpx;
+      color: var(--Color-White);
+      margin-bottom: 10rpx;
+      margin-left: 20rpx;
+      border-radius: 20rpx;
+      background-color: var(--Color-MainA);
+      background: var(--Color-MainA);
+      box-shadow:  3px 3px 2px #3d7aeb;
+    }
+
+    .hair::after {
+      border: none;
     }
   }
 }
