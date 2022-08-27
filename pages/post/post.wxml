@@ -4,6 +4,7 @@
     postItem="{{postInfo}}" 
     isCollect="{{true}}" 
     bind:preview="preview" 
+    bind:fabulous="fabulous" 
     bind:collect="collect" 
   />
 

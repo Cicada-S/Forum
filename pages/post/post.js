@@ -91,6 +91,59 @@ Page({
     })
   },
 
+  // 点赞帖子的回调函数
+  async fabulous(event) {
+    // 查看点赞收藏表
+    let result = await agreeCollect.where({
+      _openid: wx.getStorageSync('currentUser')._openid,
+      post_id: event.detail.id
+    }).get()
+
+    // 判断之前是否创建过该帖子的数据表
+    if(!result.data.length) {
+      // 如果没有该数据表 则创建数据表
+      agreeCollect.add({data: { post_id: event.detail.id, is_agree: true, is_collect: false }})
+      // 更新点赞数据
+      this.agreeUpdata(event.detail.id, '+')
+    } else {
+      // 如果有该数据表 则判断是否已经点赞过
+      if(result.data[0].is_agree) {
+        // 如果点赞过 则取消点赞
+        agreeCollect.doc(result.data[0]._id).update({data: { is_agree: false }})
+        // 更新点赞数据
+        this.agreeUpdata(event.detail.id, '-')
+      } else {
+        // 如果没点赞过 则点赞
+        agreeCollect.doc(result.data[0]._id).update({data: { is_agree: true }})
+        // 更新点赞数据
+        this.agreeUpdata(event.detail.id, '+')
+      }
+    }
+  },
+
+  // 更新点赞数据
+  agreeUpdata(id, operator) {
+    let postInfo = this.data.postInfo
+    // 当点赞图标为 非活跃状态 并且为取消点赞时 弹出取消点赞
+    if(!postInfo.is_agree && operator === '-') wx.showToast({
+      title: '取消点赞',
+      icon: 'none',
+      duration: 1000
+    })
+    // 更新点赞数量 和点赞icon状态
+    if(operator === '+') {
+      postInfo.agree += 1
+      postInfo.is_agree = true
+    } else {
+      postInfo.agree -= 1
+      postInfo.is_agree = false
+    }
+    // 更新数据表
+    Post.doc(id).update({data:{ agree: postInfo.agree }})
+    // 更新data
+    this.setData({ postInfo })
+  },
+
   // 收藏帖子的回调函数
   async collect(event) {
     // 查看点赞收藏表
