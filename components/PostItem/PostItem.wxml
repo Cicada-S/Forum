@@ -29,7 +29,11 @@
           <van-icon wx:else name="good-job-o" />
           <text class="text">{{postItem.agree}}</text>
         </view>
-        <view class="icon"><van-icon name="chat-o" /><text class="text">{{postItem.comment}}</text></view>
+        <view class="icon" wx:if="{{isCollect}}">
+          <van-icon wx:if="{{postItem.is_agree}}" class="active" name="star" />
+          <van-icon name="star-o" />
+        </view>
+        <view class="icon" wx:else><van-icon name="chat-o" /><text class="text">{{postItem.comment}}</text></view>
       </view>
     </view>
   </view>

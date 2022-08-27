@@ -7,6 +7,10 @@ Component({
     postItem: {
       type: Object,
       value: {}
+    },
+    isCollect: {
+      type: Boolean,
+      value: false
     }
   },
 

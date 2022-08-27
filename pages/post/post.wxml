@@ -1,6 +1,6 @@
 <!--pages/post/post.wxml-->
 <view class="container">
-  <PostItem postItem="{{postInfo}}" bind:preview="preview" />
+  <PostItem postItem="{{postInfo}}" isCollect="{{true}}" bind:preview="preview" />
 
   <view class="commentArea">
     <view class="title">共{{commentSum}}条评论</view>
