@@ -2,9 +2,9 @@
 <view class="container">
   <BlockBox padding="20">
     <view class="userInfo">
-      <image class="avatar" src="{{userInfo.avatarUrl}}" />
+      <image class="avatar" src="{{userInfo.avatar_url}}" />
       <view class="info">
-        <text class="nickName">{{userInfo.nickName}}</text>
+        <text class="nickName">{{userInfo.nick_name}}</text>
         <text class="autograph">{{userInfo.autograph}}</text>
       </view>
     </view>

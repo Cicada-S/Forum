@@ -1,10 +1,15 @@
 // pages/me/me.js
 Page({
   data: {
-    userInfo: {
-      nickName: 'Cicada',
-      avatarUrl: '/static/images/me/user.jpg',
-      autograph: '青春里的温柔一定与你相关'
-    }
+    userInfo: {} // 用户信息
+  },
+
+  /**
+   * 页面加载
+   */
+  onLoad() {
+    // 获取用户信息
+    let userInfo = wx.getStorageSync('currentUser')
+    this.setData({ userInfo })
   }
 })
