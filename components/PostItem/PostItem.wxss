@@ -57,7 +57,7 @@
   font-weight: 300;
 }
 .postItem .content .footer .releaseTime {
-  max-width: 120rpx;
+  max-width: 130rpx;
   font-size: 26rpx;
 }
 .postItem .content .footer .partition {

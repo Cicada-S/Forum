@@ -1,11 +1,16 @@
 <!--components/PostItem.wxml-->
 <view class="postItem">
+  <!-- 头像 -->
   <view class="userPic">
     <image class="image" src="{{postItem.author_avatar}}" />
   </view>
+  <!-- 内容区 -->
   <view class="content">
+    <!-- 昵称 -->
     <view class="userName">{{postItem.author_name}}</view>
+    <!-- 文案内容 -->
     <view class="text" wx:if="{{postItem.content}}">{{postItem.content}}</view>
+    <!-- 视频图片 -->
     <view class="media {{postItem.postMedia.length>1?'imageComplex':''}}" style="padding-right:{{postItem.postMedia.length==4?'150':'0'}}rpx">
       <block wx:for="{{postItem.postMedia}}" wx:key="_id" wx:for-item="imgItem">
         <image 
@@ -18,21 +23,29 @@
         />
       </block>
     </view>
+    <!-- 定位 -->
     <view class="location" wx:if="{{postItem.location}}" >{{postItem.location}}</view>
+    <!-- 底部信息 -->
     <view class="footer">
+      <!-- 发布时间 -->
       <view class="releaseTime">{{postItem.publish_date}}</view>
+      <!-- 圈子 -->
       <view class="partition" wx:if="{{postItem.circle}}">{{postItem.circle}}</view>
       <view class="partition" wx:else>{{postItem.community}}</view>
+      <!-- 点赞收藏评论 -->
       <view class="operation">
+        <!-- 点赞 -->
         <view class="icon" catchtap="fabulous" id="{{postItem._id}}">
           <van-icon wx:if="{{postItem.is_agree}}" class="active" name="good-job" />
           <van-icon wx:else name="good-job-o" />
           <text class="text">{{postItem.agree}}</text>
         </view>
+        <!-- 收藏 -->
         <view class="icon" bindtap="collect" wx:if="{{isCollect}}">
           <van-icon wx:if="{{postItem.is_collect}}" class="active" name="star" />
           <van-icon wx:else name="star-o" />
         </view>
+        <!-- 评论 -->
         <view class="icon" wx:else><van-icon name="chat-o" /><text class="text">{{postItem.comment}}</text></view>
       </view>
     </view>
