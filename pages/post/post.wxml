@@ -15,17 +15,17 @@
       <!-- 父评论 -->
       <view class="commentItem" wx:for="{{commentList}}" wx:key="_id">
         <view class="fatherComment">
-          <image class="userPic" src="{{item.avatarUrl}}" />
+          <image class="userPic" src="{{item.avatar_url}}" />
           <!-- 评论内容 -->
           <view class="content">
             <view class="userName">
-              <text>{{item.nickName}}</text>
+              <text>{{item.nick_name}}</text>
               <text wx:if="{{!item.comment_identity}}" class="author">作者</text>
             </view>
             <!-- 父评论 内容 -->
             <view class="commentContent">
-              <text class="comment">{{item.comment}}</text>
-              <text class="commentTime">{{item.time}}</text>
+              <text class="comment">{{item.comment_details}}</text>
+              <text class="commentTime">{{item.comment_date}}</text>
             </view>
             <!-- 子评论 回复 -->
             <view class="sonCommentItem" wx:for="{{item.child_comment}}" wx:key="_id" wx:for-item="child">
@@ -57,8 +57,9 @@
         type="text" 
         confirm-type="send" 
         confirm-hold="{{true}}" 
+        model:value="{{value}}"
         placeholder="喜欢就给个评论支持一下~" 
       />
-      <button class="hair">发送</button>
+      <button class="hair" bindtap="hairComment">发送</button>
     </view>
 </view>
