@@ -5,7 +5,7 @@ const Administrator = db.collection('Administrator')
 Page({
   data: {
     userInfo: {}, // 用户信息
-    isAdmin: false // 是否为管理员
+    isAdmin: false // 是否为超级管理员
   },
 
   /**
@@ -21,10 +21,8 @@ Page({
   },
 
   // 获取管理员信息
-  isAdministrator() {
-    Administrator.doc(this.data.userInfo._openid).get()
-    .then(res => {
-      console.log(res)
-    })
+  async isAdministrator() {
+    let { data } = await Administrator.where({_openid: this.data.userInfo._openid}).get()
+    if(data[0].super_admin === 0) this.setData({ isAdmin: true })
   }
 })

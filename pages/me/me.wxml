@@ -23,4 +23,12 @@
       <van-cell title="退出登录" is-link border="{{false}}" />
     </van-cell-group>
   </BlockBox>
+
+  <!-- 管理 -->
+  <BlockBox wx:if="{{isAdmin}}">
+    <van-cell-group>
+      <van-cell title="管理员" is-link border="{{false}}" />
+      <van-cell title="轮播图" is-link border="{{false}}" />
+    </van-cell-group>
+  </BlockBox>
 </view>
