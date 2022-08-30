@@ -63,7 +63,10 @@ Page({
    * 页面加载
    */
   onLoad(options) {
+    // 获取帖子详情信息
     this.getPostInfo(options.id)
+    // 获取评论
+    this.getComment(options.id)
   },
 
   // 获取帖子详情信息
@@ -76,6 +79,20 @@ Page({
     // 将发布时间改成文字
     result.data.publish_date = getdate(result.data.publish_date)
     this.setData({ postInfo: result.data })
+  },
+
+  // 获取评论
+  async getComment(id) {
+    let { result } = await wx.cloud.callFunction({
+      name: 'getComment',
+      data: { id }
+    })
+
+    // 将发布时间改成文字
+    result.data.forEach(item => {
+      item.comment_date = getdate(item.comment_date)
+    })
+    this.setData({ commentList: result.data })
   },
 
   // 点击图片放大预览的处理函数
@@ -201,11 +218,8 @@ Page({
       data._id = res.result.data
       data.comment_date = getdate(data.comment_date)
       commentList.unshift(data)
-      this.setData({
-        value: '',
-        commentList
-      })
+      // 更新data
+      this.setData({ commentList, value: '' })
     })
-
   }
 })
