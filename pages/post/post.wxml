@@ -17,7 +17,7 @@
         <view class="fatherComment">
           <image class="userPic" src="{{item.avatar_url}}" />
           <!-- 评论内容 -->
-          <view class="content">
+          <view class="content" bindtap="replyComment" id="{{item._id}}" data-name="{{item.nick_name}}">
             <view class="userName">
               <text>{{item.nick_name}}</text>
               <text wx:if="{{!item.comment_identity}}" class="author">作者</text>
@@ -58,7 +58,8 @@
         confirm-type="send" 
         confirm-hold="{{true}}" 
         model:value="{{value}}"
-        placeholder="喜欢就给个评论支持一下~" 
+        focus="{{focus}}"
+        placeholder="{{placeholder}}" 
       />
       <button class="hair" bindtap="hairComment">发送</button>
     </view>

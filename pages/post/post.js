@@ -13,6 +13,8 @@ Page({
     bottomLift: app.globalData.bottomLift,
     postInfo: {},
     value: '', // 评论
+    focus: false, // 评论框焦点
+    placeholder: '喜欢就给个评论支持一下~', // 评论框占位符
     commentSum: 3, // 评论数量
     commentList: [ // 评论列表
       {
@@ -220,6 +222,16 @@ Page({
       commentList.unshift(data)
       // 更新data
       this.setData({ commentList, value: '' })
+    })
+  },
+
+  // 回复
+  replyComment(event) {
+    let { id, dataset } = event.currentTarget
+
+    this.setData({ 
+      focus: true,
+      placeholder: `回复 @${dataset.name}`
     })
   }
 })
