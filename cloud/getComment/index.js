@@ -22,7 +22,7 @@ exports.main = async (event, context) => {
         $.eq(['$parent_id', '$$parent_id'])
       ])))
       .sort({
-        comment_date: -1
+        comment_date: 1
       })
       .done(),
     as: 'child_comment'

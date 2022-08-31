@@ -14,6 +14,7 @@ Page({
     postInfo: {},
     value: '', // 评论
     focus: false, // 评论框焦点
+    commentType: false, // false 为父评
     placeholder: '喜欢就给个评论支持一下~', // 评论框占位符
     commentSum: 3, // 评论数量
     commentList: [ // 评论列表
@@ -45,7 +46,7 @@ Page({
           {
             _id: 'zp2', // 主键
             _openid: '159', // 评论者ID
-            parent_id: 'zp1', // 回复的父评ID
+            parent_id: 'fp1', // 回复的父评ID
             reply_type: 1, // 评论的类型
             to_uid: '150', // 被回复者ID
             to_nickName: 'Cicada', // 被回复者昵称
@@ -68,7 +69,7 @@ Page({
     // 获取帖子详情信息
     this.getPostInfo(options.id)
     // 获取评论
-    this.getComment(options.id)
+    // this.getComment(options.id)
   },
 
   // 获取帖子详情信息
@@ -199,6 +200,20 @@ Page({
   // 评论
   hairComment() {
     console.log(this.data.value)
+    let { commentType } = this.data
+
+    if(commentType) {
+      // 子级评论
+      this.sonComment()
+    }else {
+      // 父级评论
+      this.fatherComment()
+    }
+  },
+
+  // 父级评论
+  fatherComment() {
+    console.log('父级评论')
     let { value, commentList, postInfo } = this.data
     let userInfo = wx.getStorageSync('currentUser')
 
@@ -212,7 +227,7 @@ Page({
       comment_identity: postInfo._openid === userInfo._openid ? 0 : 1,
       agree: 0
     }
-    
+
     wx.cloud.callFunction({
       name: 'addComment',
       data
@@ -225,13 +240,55 @@ Page({
     })
   },
 
-  // 回复
+  // 子级评论
+  sonComment() {
+    console.log('子级评论')
+    let { value, commentList, postInfo, to_uid, to_nick_name, reply_type, parent_id } = this.data
+    let userInfo = wx.getStorageSync('currentUser')
+
+    let data = {
+      post_id: postInfo._id,
+      _openid: userInfo._openid,
+      nick_name: userInfo.nick_name,
+      avatar_url: userInfo.avatar_url,
+      comment_date: new Date(),
+      comment_details: value,
+      comment_identity: postInfo._openid === userInfo._openid ? 0 : 1,
+      agree: 0,
+      to_uid,
+      to_nick_name,
+      reply_type,
+      parent_id
+    }
+
+    wx.cloud.callFunction({
+      name: 'addComment',
+      data
+    }).then(res => {
+      data._id = res.result.data
+      data.comment_date = getdate(data.comment_date)
+      commentList.forEach(item => {
+        if(item._id === parent_id) {
+          item.child_comment.push(data)
+        }
+      })
+      // 更新data
+      this.setData({ commentList, value: '' })
+    })
+  },
+
+  // 点击父级评论 的回调函数
   replyComment(event) {
     let { id, dataset } = event.currentTarget
 
     this.setData({ 
       focus: true,
-      placeholder: `回复 @${dataset.name}`
+      placeholder: `回复 @${dataset.name}`,
+      commentType: true,
+      to_uid: dataset._openid,
+      to_nick_name: dataset.name,
+      reply_type: 0,
+      parent_id: id
     })
   }
 })
