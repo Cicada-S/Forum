@@ -29,19 +29,19 @@
             </view>
             <!-- 子评论 回复 -->
             <view class="sonCommentItem" wx:for="{{item.child_comment}}" wx:key="_id" wx:for-item="child">
-              <image class="sonUserPic" src="{{child.avatarUrl}}" />
-              <view class="content">
+              <image class="sonUserPic" src="{{child.avatar_url}}" />
+              <view class="content" catchtap="answerComment" id="{{item._id}}" data-fid="{{child._openid}}" data-name="{{child.nick_name}}">
                 <view class="userName">
-                  <text>{{child.nickName}}</text>
+                  <text>{{child.nick_name}}</text>
                   <text wx:if="{{!child.comment_identity}}" class="author">作者</text>
                 </view>
                 <!-- 子评论 内容 -->
                 <view class="commentContent">
                   <text class="comment">
-                    <text wx:if="{{child.reply_type}}" class="reply">回复<text class="coverReply">{{child.to_nickName}}</text>:</text>
-                    <text>{{child.comment}}</text>
+                    <text wx:if="{{child.reply_type}}" class="reply">回复<text class="coverReply">{{child.to_nick_name}}</text>:</text>
+                    <text>{{child.comment_details}}</text>
                   </text>
-                  <text class="commentTime">{{child.time}}</text>
+                  <text class="commentTime">{{child.comment_date}}</text>
                 </view>
               </view>
             </view>

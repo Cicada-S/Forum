@@ -16,6 +16,10 @@ Page({
     focus: false, // 评论框焦点
     commentType: false, // false 为父评
     placeholder: '喜欢就给个评论支持一下~', // 评论框占位符
+    to_uid: '', // 被评论者id
+    to_nick_name: '', // 被评论者昵称
+    reply_type: 0, // 0: 子评 1: 回复
+    parent_id: '', // 父评id
     commentSum: 3, // 评论数量
     commentList: [ // 评论列表
       {
@@ -69,7 +73,7 @@ Page({
     // 获取帖子详情信息
     this.getPostInfo(options.id)
     // 获取评论
-    // this.getComment(options.id)
+    this.getComment(options.id)
   },
 
   // 获取帖子详情信息
@@ -267,6 +271,7 @@ Page({
     }).then(res => {
       data._id = res.result.data
       data.comment_date = getdate(data.comment_date)
+      // 将子评添加到指定的父评下
       commentList.forEach(item => {
         if(item._id === parent_id) {
           item.child_comment.push(data)
@@ -288,6 +293,21 @@ Page({
       to_uid: dataset._openid,
       to_nick_name: dataset.name,
       reply_type: 0,
+      parent_id: id
+    })
+  },
+
+  // 点击子级评论 的回调函数
+  answerComment(event) {
+    let { id, dataset } = event.currentTarget
+
+    this.setData({
+      focus: true,
+      placeholder: `回复 @${dataset.name}`,
+      commentType: true,
+      to_uid: dataset._openid,
+      to_nick_name: dataset.name,
+      reply_type: 1,
       parent_id: id
     })
   }
