@@ -21,49 +21,7 @@ Page({
     reply_type: 0, // 0: 子评 1: 回复
     parent_id: '', // 父评id
     commentSum: 3, // 评论数量
-    commentList: [ // 评论列表
-      {
-        _id: 'fp1', // 主键
-        post_id: '2', // 帖子Id
-        _openid: '159', // 评论者ID
-        nick_name: 'Ting', // 评论者昵称
-        avatar_url: '/static/images/index/xtt.jpg', // 评论者头像
-        comment_details: '少年不惧岁月长', // 评论内容
-        comment_date: '3小时前', // 评论时间
-        comment_identity: 1, // 是否为作者
-        agree: 0, // 点赞数量
-        child_comment: [ // 子评
-          {
-            _id: 'zp1', // 主键
-            _openid: '150', // 评论者ID
-            parent_id: 'fp1', // 回复的父评ID
-            reply_type: 0, // 评论的类型
-            to_uid: '159', // 被回复者ID
-            to_nickName: 'Ting', // 被回复者昵称
-            nickName: 'Cicada', //  评论者昵称
-            avatarUrl: '/static/images/index/user.jpg', // 评论者头像
-            comment: '彼方尚有荣光在', // 评论内容
-            time: '2小时前', // 评论时间
-            comment_identity: 0, // 是否为作者
-            agree: 0, // 点赞数量
-          },
-          {
-            _id: 'zp2', // 主键
-            _openid: '159', // 评论者ID
-            parent_id: 'fp1', // 回复的父评ID
-            reply_type: 1, // 评论的类型
-            to_uid: '150', // 被回复者ID
-            to_nickName: 'Cicada', // 被回复者昵称
-            nickName: 'Ting', //  评论者昵称
-            avatarUrl: '/static/images/index/xtt.jpg', // 评论者头像
-            comment: '劝君须取少年时', // 评论内容
-            time: '1小时前', // 评论时间
-            comment_identity: 1, // 是否为作者
-            agree: 0, // 点赞数量
-          }
-        ]
-      }
-    ]
+    commentList: [] // 评论列表
   },
 
   /**
@@ -98,6 +56,9 @@ Page({
     // 将发布时间改成文字
     result.data.forEach(item => {
       item.comment_date = getdate(item.comment_date)
+      item.child_comment.forEach(child => {
+        child.comment_date = getdate(child.comment_date)
+      })
     })
     this.setData({ commentList: result.data })
   },

@@ -11,12 +11,20 @@ exports.main = async (event, context) => {
   console.log(event)
   let data = {...event}
   try {
-    let result = await db.collection('FatherComment').add({data})
-    
-    return {
-      code: 0,
-      data: result._id,
-      success: true      
+    if(data.parent_id) {
+      let result = await db.collection('SonComment').add({data})
+      return {
+        code: 0,
+        data: result._id,
+        success: true      
+      }
+    } else {
+      result = await db.collection('FatherComment').add({data})
+      return {
+        code: 0,
+        data: result._id,
+        success: true      
+      }
     }
   }
   catch(err) {
