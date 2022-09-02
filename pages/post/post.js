@@ -204,6 +204,7 @@ Page({
     }).then(res => {
       data._id = res.result.data
       data.comment_date = getdate(data.comment_date)
+      data.child_comment = [] // 添加上child_comment属性 否则子评会报错
       commentList.unshift(data)
       // 更新data
       this.setData({ commentList, value: '' })
