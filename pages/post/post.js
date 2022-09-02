@@ -20,7 +20,6 @@ Page({
     to_nick_name: '', // 被评论者昵称
     reply_type: 0, // 0: 子评 1: 回复
     parent_id: '', // 父评id
-    commentSum: 3, // 评论数量
     commentList: [] // 评论列表
   },
 
@@ -174,6 +173,12 @@ Page({
       // 父级评论
       this.fatherComment()
     }
+
+    // 更新帖子的评论数量
+    let postInfo = this.data.postInfo
+    postInfo.comment = ++postInfo.comment
+    Post.doc(postInfo._id).update({data:{ comment: postInfo.comment }})
+    this.setData({ postInfo })
   },
 
   // 父级评论

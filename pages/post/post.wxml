@@ -9,7 +9,7 @@
   />
 
   <view class="commentArea">
-    <view class="title">共{{commentSum}}条评论</view>
+    <view class="title">共{{postInfo.comment}}条评论</view>
     <!-- 评论列表 -->
     <view class="commentList">
       <!-- 父评论 -->
