@@ -1,6 +1,6 @@
 // pages/circle/circle.js
 // 引入date
-const { getdate } = require('../../utils/date.js')
+import { getdate } from '../../utils/date'
 
 Page({
   data: {

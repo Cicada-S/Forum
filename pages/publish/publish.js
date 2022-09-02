@@ -1,6 +1,6 @@
 // pages/publish/publish.js
 // 引入uuid
-const { uuid } = require('../../utils/uuid.js')
+import { uuid } from '../../utils/uuid'
 
 Page({
   data: {

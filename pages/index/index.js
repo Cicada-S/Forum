@@ -1,6 +1,6 @@
 // index.js
 // 引入date
-const { getdate } = require('../../utils/date.js')
+import { getdate } from '../../utils/date'
 
 const db = wx.cloud.database()
 const user = db.collection('User')
