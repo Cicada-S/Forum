@@ -11,7 +11,7 @@
   <view class="commentArea">
     <view class="title">共{{postInfo.comment}}条评论</view>
     <!-- 评论列表 -->
-    <view class="commentList">
+    <view class="commentList" style="padding-bottom: {{bottomLift+45}}px">
       <!-- 父评论 -->
       <view class="commentItem" wx:for="{{commentList}}" wx:key="_id">
         <view class="fatherComment">
