@@ -59,7 +59,9 @@
         confirm-hold="{{true}}" 
         model:value="{{value}}"
         focus="{{focus}}"
+        bindblur="onBlur"
         placeholder="{{placeholder}}" 
+        bindconfirm="hairComment"
       />
       <button class="hair" bindtap="hairComment">发送</button>
     </view>

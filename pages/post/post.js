@@ -161,6 +161,16 @@ Page({
     }
   },
 
+  // 评论框失去焦点时触发
+  onBlur() {
+    if(!this.data.value) {
+      this.setData({
+        commentType: false,
+        placeholder: '喜欢就给个评论支持一下~'
+      })
+    }
+  },
+
   // 评论
   hairComment() {
     console.log(this.data.value)
@@ -178,7 +188,12 @@ Page({
     let postInfo = this.data.postInfo
     postInfo.comment = ++postInfo.comment
     Post.doc(postInfo._id).update({data:{ comment: postInfo.comment }})
-    this.setData({ postInfo })
+    this.setData({
+      postInfo,
+      focus: false,
+      commentType: false,
+      placeholder: '喜欢就给个评论支持一下~'
+    })
   },
 
   // 父级评论
