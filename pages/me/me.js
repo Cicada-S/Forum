@@ -24,5 +24,12 @@ Page({
   async isAdministrator() {
     let { data } = await Administrator.where({_openid: this.data.userInfo._openid}).get()
     if(data[0].super_admin === 0) this.setData({ isAdmin: true })
+  },
+
+  // 跳转到我的帖子
+  toMyPost() {
+    wx.navigateTo({
+      url: '/pages/myPost/myPost'
+    })
   }
 })
