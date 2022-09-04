@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "PostList": "/components/PostList/PostList",
+    "PostItem": "/components/PostItem/PostItem"
+  },
+  "navigationBarTitleText": "我的帖子"
 }
