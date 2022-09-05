@@ -2,7 +2,10 @@
 <view class="container">
   <PostList>
     <block wx:for="{{postList}}" wx:key="_id">
-      <PostItem postItem="{{item}}" />
+      <van-swipe-cell right-width="{{ 65 }}">
+        <PostItem postItem="{{item}}" />
+        <view slot="right" class="delete" bindtap="onDelete">删除</view>
+      </van-swipe-cell>
     </block>
   </PostList>
 </view>
