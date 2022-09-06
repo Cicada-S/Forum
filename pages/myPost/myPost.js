@@ -21,7 +21,6 @@ Page({
       name: 'getPostList',
       data: { id: wx.getStorageSync('currentUser')._openid }
     })
-    console.log(result.data)
     // 将发布时间改成文字
     result.data.forEach(item => item.publish_date = getdate(item.publish_date))
     this.setData({ postList: result.data })
