@@ -2,6 +2,9 @@
 // 引入date
 import { getdate } from '../../utils/date'
 
+const db = wx.cloud.database()
+const Post = db.collection('Post')
+
 Page({
   data: {
     postList: [], // 帖子列表
@@ -27,7 +30,14 @@ Page({
   },
 
   // 删除帖子
-  onDelete() {
-    console.log('onDelete')
+  onDelete(event) {
+    // 将被删除帖子的 status 改为 -1
+    Post.doc(event.target.id).update({data: {status: -1}})
+
+    // 过滤被删除的帖子 更新data
+    let newPostList = this.data.postList.filter(item => {
+      if(item._id !== event.target.id) return item 
+    })
+    this.setData({ postList: newPostList })
   }
 })
