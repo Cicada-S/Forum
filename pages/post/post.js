@@ -6,7 +6,7 @@ import { getdate } from '../../utils/date'
 
 const db = wx.cloud.database()
 const Post = db.collection('Post')
-const agreeCollect = db.collection('agreeCollect')
+const AgreeCollect = db.collection('AgreeCollect')
 
 Page({
   data: {
@@ -75,7 +75,7 @@ Page({
   // 点赞帖子的回调函数
   async fabulous(event) {
     // 查看点赞收藏表
-    let result = await agreeCollect.where({
+    let result = await AgreeCollect.where({
       _openid: wx.getStorageSync('currentUser')._openid,
       post_id: event.detail.id
     }).get()
@@ -83,19 +83,19 @@ Page({
     // 判断之前是否创建过该帖子的数据表
     if(!result.data.length) {
       // 如果没有该数据表 则创建数据表
-      agreeCollect.add({data: { post_id: event.detail.id, is_agree: true, is_collect: false }})
+      AgreeCollect.add({data: { post_id: event.detail.id, is_agree: true, is_collect: false }})
       // 更新点赞数据
       this.agreeUpdata(event.detail.id, '+')
     } else {
       // 如果有该数据表 则判断是否已经点赞过
       if(result.data[0].is_agree) {
         // 如果点赞过 则取消点赞
-        agreeCollect.doc(result.data[0]._id).update({data: { is_agree: false }})
+        AgreeCollect.doc(result.data[0]._id).update({data: { is_agree: false }})
         // 更新点赞数据
         this.agreeUpdata(event.detail.id, '-')
       } else {
         // 如果没点赞过 则点赞
-        agreeCollect.doc(result.data[0]._id).update({data: { is_agree: true }})
+        AgreeCollect.doc(result.data[0]._id).update({data: { is_agree: true }})
         // 更新点赞数据
         this.agreeUpdata(event.detail.id, '+')
       }
@@ -128,7 +128,7 @@ Page({
   // 收藏帖子的回调函数
   async collect(event) {
     // 查看点赞收藏表
-    let result = await agreeCollect.where({
+    let result = await AgreeCollect.where({
       _openid: wx.getStorageSync('currentUser')._openid,
       post_id: event.detail.id
     }).get()
@@ -136,14 +136,14 @@ Page({
     // 判断之前是否创建过该帖子的数据表
     if(!result.data.length) {
       // 如果没有该数据表 则创建数据表
-      agreeCollect.add({data: { post_id: event.detail.id, is_agree: false, is_collect: true }})
+      AgreeCollect.add({data: { post_id: event.detail.id, is_agree: false, is_collect: true }})
       // 更新data
       this.setData({['postInfo.is_collect']: true})
     } else {
       // 如果有该数据表 则判断是否已经收藏过
       if(result.data[0].is_collect) {
         // 如果收藏过 则取消收藏
-        agreeCollect.doc(result.data[0]._id).update({data: { is_collect: false }})
+        AgreeCollect.doc(result.data[0]._id).update({data: { is_collect: false }})
         // 当收藏图标为 非活跃状态 弹出取消收藏
         if(!this.data.postInfo.is_collect) wx.showToast({
           title: '取消收藏',
@@ -154,7 +154,7 @@ Page({
         this.setData({['postInfo.is_collect']: false})
       } else {
         // 如果没收藏过 则收藏
-        agreeCollect.doc(result.data[0]._id).update({data: { is_collect: true }})
+        AgreeCollect.doc(result.data[0]._id).update({data: { is_collect: true }})
         // 更新data
         this.setData({['postInfo.is_collect']: true})
       }

@@ -5,7 +5,7 @@ import { getdate } from '../../utils/date'
 const db = wx.cloud.database()
 const user = db.collection('User')
 const Post = db.collection('Post')
-const agreeCollect = db.collection('agreeCollect')
+const AgreeCollect = db.collection('AgreeCollect')
 
 Page({
   data: {
@@ -87,7 +87,7 @@ Page({
   // 点赞的处理函数
   async fabulous(event) {
     // 查看点赞收藏表
-    let result = await agreeCollect.where({
+    let result = await AgreeCollect.where({
       _openid: wx.getStorageSync('currentUser')._openid,
       post_id: event.detail.id
     }).get()
@@ -95,19 +95,19 @@ Page({
     // 判断之前是否创建过该帖子的数据表
     if(!result.data.length) {
       // 如果没有该数据表 则创建数据表
-      agreeCollect.add({data: { post_id: event.detail.id, is_agree: true, is_collect: false }})
+      AgreeCollect.add({data: { post_id: event.detail.id, is_agree: true, is_collect: false }})
       // 更新点赞数据
       this.agreeUpdata(event.detail.id, '+')
     } else {
       // 如果有该数据表 则判断是否已经点赞过
       if(result.data[0].is_agree) {
         // 如果点赞过 则取消点赞
-        agreeCollect.doc(result.data[0]._id).update({data: { is_agree: false }})
+        AgreeCollect.doc(result.data[0]._id).update({data: { is_agree: false }})
         // 更新点赞数据
         this.agreeUpdata(event.detail.id, '-')
       } else {
         // 如果没点赞过 则点赞
-        agreeCollect.doc(result.data[0]._id).update({data: { is_agree: true }})
+        AgreeCollect.doc(result.data[0]._id).update({data: { is_agree: true }})
         // 更新点赞数据
         this.agreeUpdata(event.detail.id, '+')
       }
