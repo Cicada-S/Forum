@@ -1,0 +1,21 @@
+/* pages/swiperAdmin/swiperAdmin.wxss */
+.container {
+  width: 100vw;
+  padding: 20rpx 30rpx;
+}
+.container .information {
+  display: flex;
+  flex-direction: column;
+}
+.container .information .image {
+  width: 100%;
+}
+.container .information .content {
+  padding: 0 10rpx 10rpx;
+}
+.container .information .content .date {
+  color: var(--Color-FontA);
+  font-size: 26rpx;
+  margin-left: 6rpx;
+  white-space: nowrap;
+}

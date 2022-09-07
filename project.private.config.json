@@ -48,6 +48,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/swiperAdmin/swiperAdmin",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
