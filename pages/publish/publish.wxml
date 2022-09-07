@@ -36,7 +36,7 @@
         <van-cell size="large" title="选择圈子" value="{{multiArray[0][multiIndex[0]]}} {{multiArray[1][multiIndex[1]]}}" is-link />
       </view>
     </picker>
-    <van-cell size="large" title="所在位置" value="{{circle}}" is-link />
+    <van-cell size="large" title="所在位置" value="{{location}}" is-link bindtap="getLocation" />
   </van-cell-group>
 
   <!-- 发布 -->

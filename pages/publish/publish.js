@@ -7,6 +7,7 @@ Page({
     content: '', // 文案内容
     fileList: [], // 文件列表
     community: [], // 圈子
+    location: '', // 定位
     upCloudImages: [], // 云存储的图片 
     multiArray: [
       ['娱乐八卦', '二手市场', '表白墙', '失物招领', '学习交流'], 
@@ -86,6 +87,15 @@ Page({
     if(multiArray[1][multiIndex[1]]) community.push(multiArray[1][multiIndex[1]])
 
     this.setData({ community })
+  },
+
+  // 获取定位
+  getLocation() {
+    wx.showToast({
+      title: '作者在疯狂编写中...',
+      icon: 'none',
+      duration: 1000
+    })
   },
 
   // 发布
