@@ -292,5 +292,14 @@ Page({
       reply_type: 1,
       parent_id: id
     })
+  },
+
+  /**
+   * 用户点击右上角转发
+   */
+  onShareAppMessage() {
+    let { author_name, content } = this.data.postInfo
+    let title = `@${author_name}: ${content}`
+    return { title }
   }
 })
