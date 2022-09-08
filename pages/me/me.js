@@ -31,5 +31,12 @@ Page({
     wx.navigateTo({
       url: '/pages/myPost/myPost'
     })
+  },
+
+  // 跳转到资讯管理
+  toSwiperAdmin() {
+    wx.navigateTo({
+      url: '/pages/swiperAdmin/swiperAdmin'
+    })
   }
 })

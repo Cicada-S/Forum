@@ -11,7 +11,7 @@
   width: 100%;
 }
 .container .information .content {
-  padding: 0 10rpx 10rpx;
+  padding: 10rpx 10rpx 20rpx;
 }
 .container .information .content .date {
   color: var(--Color-FontA);
