@@ -1,6 +1,9 @@
 // pages/swiperAdmin/swiperAdmin.js
+const app = getApp()
+
 Page({
   data: {
+    bottomLift: app.globalData.bottomLift,
     informationList: [
       {
         _id: '123124fsa',
@@ -15,5 +18,12 @@ Page({
         remarks: '劝君莫惜金缕衣，劝君须取少年时'
       }
     ]
+  },
+
+  // 跳转到添加资讯
+  toAddSwiper() {
+    wx.navigateTo({
+      url: '/pages/addSwiper/addSwiper'
+    })
   }
 })

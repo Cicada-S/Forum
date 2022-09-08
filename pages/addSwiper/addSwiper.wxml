@@ -1,0 +1,4 @@
+<!--pages/addSwiper/addSwiper.wxml-->
+<view class="container">
+  添加资讯
+</view>

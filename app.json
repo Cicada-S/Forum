@@ -7,7 +7,8 @@
     "pages/post/post",
     "pages/circle/circle",
     "pages/myPost/myPost",
-    "pages/swiperAdmin/swiperAdmin"
+    "pages/swiperAdmin/swiperAdmin",
+    "pages/addSwiper/addSwiper"
   ],
   "window": {
     "backgroundTextStyle": "light",
