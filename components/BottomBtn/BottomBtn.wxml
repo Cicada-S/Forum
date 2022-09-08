@@ -1,0 +1,4 @@
+<!--components/BottomBtn/BottomBtn.wxml-->
+<view class="bottomBtn" style="margin-bottom:{{bottomLift}}px">
+  <text>{{ text }}</text>
+</view>

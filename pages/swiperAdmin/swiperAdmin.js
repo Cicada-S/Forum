@@ -1,9 +1,6 @@
 // pages/swiperAdmin/swiperAdmin.js
-const app = getApp()
-
 Page({
   data: {
-    bottomLift: app.globalData.bottomLift,
     informationList: [
       {
         _id: '123124fsa',

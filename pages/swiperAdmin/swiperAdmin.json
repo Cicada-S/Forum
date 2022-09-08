@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "BlockBox": "/components/BlockBox/BlockBox"
+    "BlockBox": "/components/BlockBox/BlockBox",
+    "BottomBtn": "/components/BottomBtn/BottomBtn"
   },
   "navigationBarTitleText": "资讯管理"
 }

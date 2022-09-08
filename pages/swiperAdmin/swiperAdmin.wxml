@@ -11,7 +11,5 @@
   </BlockBox>
 
   <!-- 底部按钮 -->
-  <view class="bottomBtn" style="margin-bottom:{{bottomLift}}px" bindtap="toAddSwiper">
-    <text>添加资讯</text>
-  </view>
+  <BottomBtn text="添加资讯" bindtap="toAddSwiper" />
 </view>

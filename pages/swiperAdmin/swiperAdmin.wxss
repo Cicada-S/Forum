@@ -19,18 +19,3 @@
   margin-left: 6rpx;
   white-space: nowrap;
 }
-.container .bottomBtn {
-  width: 690rpx;
-  height: 80rpx;
-  position: fixed;
-  bottom: 10rpx;
-  margin-top: 10rpx;
-  color: #FFFFFF;
-  font-size: 30rpx;
-  text-align: center;
-  line-height: 80rpx;
-  letter-spacing: 10rpx;
-  border-radius: 10rpx;
-  background-color: var(--Color-MainA);
-  box-shadow: 2rpx 4rpx 18rpx 2rpx rgba(64, 126, 245, 0.8);
-}
