@@ -1,15 +1,17 @@
 <!--pages/swiperAdmin/swiperAdmin.wxml-->
 <view class="container">
-  <BlockBox wx:for="{{informationList}}" wx:key="_id">
-    <view class="information">
-      <image mode="widthFix" class="image" src="{{item.path}}" />
-      <view class="content">
-        <text class="remarks">{{item.remarks}}</text>
-        <text class="date">{{item.upload_date}}</text>
+  <view class="informationList">
+    <BlockBox wx:for="{{informationList}}" wx:key="_id">
+      <view class="information">
+        <image mode="widthFix" class="image" src="{{item.path}}" />
+        <view class="content">
+          <text class="remarks">{{item.remarks}}</text>
+          <text class="date">{{item.upload_date}}</text>
+        </view>
       </view>
-    </view>
-  </BlockBox>
+    </BlockBox>
+  </view>
 
   <!-- 底部按钮 -->
-  <BottomBtn text="添加资讯" bindtap="toAddSwiper" />
+  <BottomBtn text="添加资讯" bind:onClick="onClick" />
 </view>

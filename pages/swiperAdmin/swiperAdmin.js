@@ -18,7 +18,7 @@ Page({
   },
 
   // 跳转到添加资讯
-  toAddSwiper() {
+  onClick() {
     wx.navigateTo({
       url: '/pages/addSwiper/addSwiper'
     })

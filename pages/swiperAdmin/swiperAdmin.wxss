@@ -1,19 +1,21 @@
 /* pages/swiperAdmin/swiperAdmin.wxss */
 .container {
   width: 100vw;
+}
+.container .informationList {
   padding: 20rpx 30rpx;
 }
-.container .information {
+.container .informationList .information {
   display: flex;
   flex-direction: column;
 }
-.container .information .image {
+.container .informationList .information .image {
   width: 100%;
 }
-.container .information .content {
+.container .informationList .information .content {
   padding: 10rpx 10rpx 20rpx;
 }
-.container .information .content .date {
+.container .informationList .information .content .date {
   color: var(--Color-FontA);
   font-size: 26rpx;
   margin-left: 6rpx;
