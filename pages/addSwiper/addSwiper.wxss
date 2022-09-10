@@ -1,1 +1,25 @@
 /* pages/addSwiper/addSwiper.wxss */
+.container {
+  width: 100vw;
+}
+.container .content {
+  padding: 20rpx 30rpx;
+}
+.container .content .box {
+  display: flex;
+  align-items: center;
+}
+.container .content .box .title {
+  width: 100rpx;
+  margin-left: 30rpx;
+  font-size: 28rpx;
+}
+.container .content .box .inputClass {
+  width: 500rpx;
+}
+.container .van-uploader .van-uploader__upload {
+  margin: 0 !important;
+}
+.container .van-uploader .van-uploader__preview {
+  margin: 0 16rpx 0 0 !important;
+}

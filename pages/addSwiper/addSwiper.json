@@ -1,4 +1,9 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "BlockBox": "/components/BlockBox/BlockBox",
+    "BottomBtn": "/components/BottomBtn/BottomBtn",
+    "van-field": "@vant/weapp/field/index",
+    "van-uploader": "@vant/weapp/uploader/index"
+  },
   "navigationBarTitleText": "添加资讯"
 }

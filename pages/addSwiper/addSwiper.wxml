@@ -1,4 +1,30 @@
 <!--pages/addSwiper/addSwiper.wxml-->
 <view class="container">
-  添加资讯
+  <view class="content">
+    <BlockBox>
+      <view class="box">
+        <view class="title">描述</view>
+        <van-field
+          input-class="inputClass"
+          model:value="{{ remarks }}"
+          placeholder="彼方尚有荣光在..."
+          border="{{ false }}"
+          input-align="right"
+        />
+      </view>
+    </BlockBox>
+
+    <!-- 图片 -->
+    <BlockBox padding="20">
+      <van-uploader
+        accept="image"
+        file-list="{{ fileList }}"
+        deletable="{{ false }}"
+        bind:after-read="afterRead"
+      />
+    </BlockBox>
+  </view>
+
+  <!-- 底部按钮 -->
+  <BottomBtn text="添加咨询"  bind:onClick="onClick"/>
 </view>

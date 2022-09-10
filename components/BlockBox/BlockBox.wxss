@@ -1,7 +1,7 @@
 /* components/BlockBox/BlockBox.wxss */
 .blockBox {
   width: 100%;
-  min-height: 100rpx;
+  min-height: 80rpx;
   border-radius: 16rpx;
   overflow: hidden;
   margin-bottom: 20rpx;
