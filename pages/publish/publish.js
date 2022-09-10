@@ -100,6 +100,9 @@ Page({
 
   // 发布
   async onPublish() {
+    // 判断文案和圈子是否为空
+    if(!this.isEmpty()) return
+
     wx.showLoading({
       title: '发布中...',
     })
@@ -130,6 +133,27 @@ Page({
         url: '/pages/index/index'
       })
     })
+  },
+
+  // 判断文案和圈子是否为空
+  isEmpty() {
+    const { content, community } = this.data
+    if(!content.trim()) {
+      wx.showToast({
+        title: '文案不能为空!',
+        icon: 'none',
+        duration: 1000
+      })
+      return false
+    } else if(!community.length) {
+      wx.showToast({
+        title: '圈子不能为空!',
+        icon: 'none',
+        duration: 1000
+      })
+      return false
+    }
+    return true
   },
 
   // 将图片上传到云存储
