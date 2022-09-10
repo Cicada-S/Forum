@@ -3,7 +3,7 @@
   <view class="content">
     <BlockBox>
       <view class="box">
-        <view class="title">描述</view>
+        <view class="title">备注</view>
         <van-field
           input-class="inputClass"
           model:value="{{ remarks }}"
