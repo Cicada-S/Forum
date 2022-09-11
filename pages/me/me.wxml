@@ -10,7 +10,7 @@
     </view>
     <van-grid border="{{false}}">
       <van-grid-item icon-color="#407FF5" icon="comment-o" text="帖子" bindtap="toMyPost" />
-      <van-grid-item icon-color="#407FF5" icon="star-o" text="收藏" />
+      <van-grid-item icon-color="#407FF5" icon="star-o" text="收藏" bindtap="toCollection" />
       <van-grid-item icon-color="#407FF5" icon="question-o" text="帮助" />
       <van-grid-item icon-color="#407FF5" icon="setting-o" text="设置" />
     </van-grid>

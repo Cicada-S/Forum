@@ -1,0 +1,8 @@
+<!--pages/collection/collection.wxml-->
+<view class="container">
+  <PostList>
+    <block wx:for="{{postList}}" wx:key="_id">
+      <PostItem postItem="{{item}}" />
+    </block>
+  </PostList>
+</view>

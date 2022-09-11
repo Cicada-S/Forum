@@ -33,6 +33,13 @@ Page({
     })
   },
 
+  // 跳转到收藏
+  toCollection() {
+    wx.navigateTo({
+      url: '/pages/collection/collection'
+    })
+  },
+
   // 跳转到资讯管理
   toSwiperAdmin() {
     wx.navigateTo({
