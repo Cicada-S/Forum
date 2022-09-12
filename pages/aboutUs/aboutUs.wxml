@@ -1,0 +1,17 @@
+<!--pages/aboutUs/aboutUs.wxml-->
+<view class="container">
+  <BlockBox>
+    <iamge class="avatar" src="" />
+    <view class="name">Cicada</view>
+  </BlockBox>
+  <!-- 作者 -->
+  <BlockBox>
+    <view class="title">作者</view>
+    <view class="content">小苏同学，18届计算机专业学生</view>
+  </BlockBox>
+  <!-- 项目介绍 -->
+  <BlockBox>
+    <view class="title">小程序介绍</view>
+    <view class="content">校园论坛，项目创建时间2022年7月21日晚。那天晚上蹲厕所时突然想出来的，之后就有了这个项目</view>
+  </BlockBox>
+</view>

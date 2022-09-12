@@ -40,6 +40,13 @@ Page({
     })
   },
 
+  // 跳转到关于我们
+  toAboutUs() {
+    wx.navigateTo({
+      url: '/pages/aboutUs/aboutUs'
+    })
+  },
+
   // 跳转到资讯管理
   toSwiperAdmin() {
     wx.navigateTo({

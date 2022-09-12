@@ -9,7 +9,8 @@
     "pages/myPost/myPost",
     "pages/swiperAdmin/swiperAdmin",
     "pages/addSwiper/addSwiper",
-    "pages/collection/collection"
+    "pages/collection/collection",
+    "pages/aboutUs/aboutUs"
   ],
   "window": {
     "backgroundTextStyle": "light",
