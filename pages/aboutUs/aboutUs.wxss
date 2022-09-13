@@ -1,1 +1,25 @@
 /* pages/aboutUs/aboutUs.wxss */
+.container {
+  padding: 20rpx 30rpx;
+}
+.container .box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.container .box .avatar {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  background-color: var(--Color-MainA);
+}
+.container .box .name {
+  font-size: 36rpx;
+  font-weight: 550;
+  margin-top: 20rpx;
+}
+.container .title {
+  font-weight: 550;
+  margin-bottom: 20rpx;
+}

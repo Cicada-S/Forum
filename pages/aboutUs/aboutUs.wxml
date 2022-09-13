@@ -1,17 +1,24 @@
 <!--pages/aboutUs/aboutUs.wxml-->
 <view class="container">
-  <BlockBox>
-    <iamge class="avatar" src="" />
-    <view class="name">Cicada</view>
+  <BlockBox padding="20">
+    <view class="box">
+      <iamge class="avatar" src="https://avatars.githubusercontent.com/u/82489315?s=96&v=4" />
+      <view class="name">Cicada</view>
+    </view>
   </BlockBox>
   <!-- 作者 -->
-  <BlockBox>
+  <BlockBox padding="20">
     <view class="title">作者</view>
     <view class="content">小苏同学，18届计算机专业学生</view>
   </BlockBox>
   <!-- 项目介绍 -->
-  <BlockBox>
+  <BlockBox padding="20">
     <view class="title">小程序介绍</view>
     <view class="content">校园论坛，项目创建时间2022年7月21日晚。那天晚上蹲厕所时突然想出来的，之后就有了这个项目</view>
+  </BlockBox>
+  <!-- 联系我们 -->
+  <BlockBox padding="20">
+    <view class="title">联系我们</view>
+    <view class="content">202586563@qq.com</view>
   </BlockBox>
 </view>
