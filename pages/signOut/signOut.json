@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "BlockBox": "/components/BlockBox/BlockBox"
+  },
+  "navigationBarTitleText": "退出登录"
+}

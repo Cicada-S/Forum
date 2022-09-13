@@ -10,7 +10,8 @@
     "pages/swiperAdmin/swiperAdmin",
     "pages/addSwiper/addSwiper",
     "pages/collection/collection",
-    "pages/aboutUs/aboutUs"
+    "pages/aboutUs/aboutUs",
+    "pages/signOut/signOut"
   ],
   "window": {
     "backgroundTextStyle": "light",

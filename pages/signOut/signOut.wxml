@@ -1,0 +1,12 @@
+<!--pages/signOut/signOut.wxml-->
+<view class="container">
+  <!-- 用户信息 -->
+  <BlockBox padding="20">
+    <view class="box">
+      <image class="avatar" src="{{userInfo.avatar_url}}" />
+      <view class="name">{{userInfo.nick_name}}</view>
+      <view class="btn Clear" bindtap="onClear">清除缓存</view>
+      <view class="btn signOut" bindtap="onSignOut">退出登录</view>
+    </view>
+  </BlockBox>
+</view>

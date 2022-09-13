@@ -47,6 +47,13 @@ Page({
     })
   },
 
+  // 跳转到退出登录
+  toSignOut() {
+    wx.navigateTo({
+      url: '/pages/signOut/signOut'
+    })
+  },
+
   // 跳转到资讯管理
   toSwiperAdmin() {
     wx.navigateTo({
