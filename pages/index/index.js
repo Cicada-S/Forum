@@ -5,17 +5,14 @@ import { getdate } from '../../utils/date'
 const db = wx.cloud.database()
 const user = db.collection('User')
 const Post = db.collection('Post')
+const Information = db.collection('Information')
 const AgreeCollect = db.collection('AgreeCollect')
 
 Page({
   data: {
     searchValue: '', // 搜索框
     active: 0, // tab的状态
-    swiperImages: [ // 轮播图
-      '/static/images/index/xtt.jpg', 
-      '/static/images/index/xtt.jpg', 
-      '/static/images/index/xtt.jpg'
-    ],
+    swiperImages: [], // 轮播图
     newPostList: [], // 最新
     hotPostList: [] // 最热
   },
@@ -26,8 +23,17 @@ Page({
   onLoad() {
     // 判断用户是否登录过
     this.getUserInfo()
+    // 获取资讯轮播图
+    this.getInformation()
     // 获取帖子列表
     this.getPostList(0)
+  },
+
+  // 获取资讯轮播图
+  async getInformation() {
+    let { data } = await Information.where({status: 0}).orderBy('upload_date', 'desc').get()
+    let swiperImages = data.map(item => item.path)
+    this.setData({ swiperImages })
   },
 
   // 获取帖子列表
