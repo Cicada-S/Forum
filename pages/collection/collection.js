@@ -19,14 +19,23 @@ Page({
   // 获取帖子
   async getPostList() {
     const _openid = wx.getStorageSync('currentUser')._openid
-    const result = await AgreeCollect.where({_openid, is_collect: true}).get()
 
-    const postList = []
+    // 1. 获取收藏表
+
+    // 2. 用收藏的post_id去查找帖子
+
+    // 3. 同时查找post_id为该帖子的图片/视频
+
+    AgreeCollect.aggregate().match({_openid, is_collect: true})
+    .lookup()
+    .sort()
+
+    /* const postList = []
     result.data.forEach(async item => {
       const { data } = await Post.doc(item.post_id).get()
       postList.push(data)
-    })
-    console.log('postList',postList)
+    }) */
+
     this.setData({ postList })
   }
 })
