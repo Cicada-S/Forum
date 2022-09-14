@@ -11,7 +11,7 @@
     <!-- 文案内容 -->
     <view class="text" wx:if="{{postItem.content}}">{{postItem.content}}</view>
     <!-- 视频图片 -->
-    <view wx:if="{{postMedia}}" class="media {{postItem.postMedia.length>1?'imageComplex':''}}" style="padding-right:{{postItem.postMedia.length==4?'150':'0'}}rpx">
+    <view wx:if="{{postItem.postMedia}}" class="media {{postItem.postMedia.length>1?'imageComplex':''}}" style="padding-right:{{postItem.postMedia.length==4?'150':'0'}}rpx">
       <block wx:for="{{postItem.postMedia}}" wx:key="_id" wx:for-item="imgItem">
         <image 
           class="image {{postItem.postMedia.length>1?'complex':''}}"
