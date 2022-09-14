@@ -21,6 +21,9 @@ Page({
     // 判断备注和图片是否为空
     if(!this.isEmpty()) return
 
+    // 显示添加中
+    wx.showLoading({ title: '添加中...' })
+
     const { remarks, fileList } =  this.data
     // 文件名
     const cloudPath = 'swiper/' + uuid() + fileList[0].url.match(/.[^.]+$/)[0]
@@ -30,14 +33,18 @@ Page({
       filePath: fileList[0].url
     })
 
-    console.log('result', result)
-    Information.add({data: {
+    // 添加资讯数据表
+    await Information.add({data: {
       path: result,
       upload_date: new Date(),
-      remarks
-    }}).then(res => {
-      console.log('res', res)
-    })
+      remarks,
+      status: 0
+    }})
+
+    // 关闭 showLoading
+    wx.hideLoading()
+    // 返回资讯管理
+    wx.navigateBack()
   },
 
   // 判断备注和图片是否为空
