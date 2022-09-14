@@ -1,20 +1,29 @@
 // pages/swiperAdmin/swiperAdmin.js
+// 引入date
+import { getdate } from '../../utils/date'
+
+const db = wx.cloud.database()
+const Information = db.collection('Information')
+
 Page({
   data: {
-    informationList: [
-      {
-        _id: '123124fsa',
-        path: '/static/images/swiperAdmin/xtt.jpg',
-        upload_date: '22-08-21',
-        remarks: '少年不惧岁月长，彼方尚有荣光在'
-      },
-      {
-        _id: 'adadsadw',
-        path: '/static/images/swiperAdmin/xtt.jpg',
-        upload_date: '21-03-20',
-        remarks: '劝君莫惜金缕衣，劝君须取少年时'
-      }
-    ]
+    informationList: []
+  },
+
+  /**
+   * 页面显示
+   */
+  onShow() {
+    // 获取资讯
+    this.getInformation()
+  },
+
+  // 获取资讯
+  async getInformation() {
+    let { data } = await Information.orderBy('upload_date', 'desc').orderBy('status', 'asc').get()
+    // 将时间改成文字
+    data.forEach(item => item.upload_date = getdate(item.upload_date))
+    this.setData({ informationList: data })
   },
 
   // 跳转到添加资讯

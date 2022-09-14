@@ -35,7 +35,7 @@ Page({
 
     // 添加资讯数据表
     await Information.add({data: {
-      path: result,
+      path: result.fileID,
       upload_date: new Date(),
       remarks,
       status: 0
