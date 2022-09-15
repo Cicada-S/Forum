@@ -26,11 +26,10 @@ Page({
     let { data } = await   AgreeCollect.where({_openid, is_collect: true}).get()
     console.log('data', data)
 
-    // 2. 用收藏的post_id去查找帖子
     data.forEach(async item => {
-      console.log('item.post_id', item.post_id)
-      // 联表查询
+      // 2. 用收藏的post_id去查找帖子
       let result = await Post.aggregate().match({_id: item.post_id, status: 0})
+      // 3. 同时查找post_id为该帖子的图片/视频
       .lookup({
         from: 'PostMedia',
         let: { post_id: '$_id' },
@@ -47,18 +46,6 @@ Page({
 
       console.log('result', result)
     })
-
-    // 3. 同时查找post_id为该帖子的图片/视频
-
-    /* AgreeCollect.aggregate().match({_openid, is_collect: true})
-    .lookup()
-    .sort() */
-
-    /* const postList = []
-    result.data.forEach(async item => {
-      const { data } = await Post.doc(item.post_id).get()
-      postList.push(data)
-    }) */
 
     // this.setData({ postList })
   }
