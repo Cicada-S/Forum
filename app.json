@@ -11,7 +11,8 @@
     "pages/addSwiper/addSwiper",
     "pages/collection/collection",
     "pages/aboutUs/aboutUs",
-    "pages/signOut/signOut"
+    "pages/signOut/signOut",
+    "pages/editProfile/editProfile"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,0 +1,5 @@
+/* pages/editProfile/editProfile.wxss */
+.container {
+  width: 100vw;
+  padding: 20rpx 30rpx;
+}

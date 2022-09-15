@@ -45,6 +45,13 @@ Page({
     }) */
   },
 
+  // 跳转到修改资料
+  toEditProfile() {
+    wx.navigateTo({
+      url: '/pages/editProfile/editProfile'
+    })
+  },
+
   // 跳转到关于我们
   toAboutUs() {
     wx.navigateTo({

@@ -1,0 +1,16 @@
+<!--pages/editProfile/editProfile.wxml-->
+<view class="container">
+  <BlockBox padding="20">
+    <image class="avatar" src="{{userInfo.avatar_url}}" />
+    <view class="name">{{userInfo.nick_name}}</view>
+  </BlockBox>
+
+  <BlockBox>
+    <van-field
+      model:value="{{ userInfo.autograph }}"
+      placeholder="个性化签名..."
+      border="{{ false }}"
+      bind:change="onChange"
+    />
+  </BlockBox>
+</view>
