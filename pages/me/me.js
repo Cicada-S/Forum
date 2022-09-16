@@ -71,5 +71,14 @@ Page({
     wx.navigateTo({
       url: '/pages/swiperAdmin/swiperAdmin'
     })
+  },
+
+  // 功能未开放
+  undefined() {
+    wx.showToast({
+      title: '作者在疯狂打码中...',
+      icon: 'none',
+      duration: 1000
+    })
   }
 })

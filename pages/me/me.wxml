@@ -11,8 +11,8 @@
     <van-grid border="{{false}}">
       <van-grid-item icon-color="#407FF5" icon="comment-o" text="帖子" bindtap="toMyPost" />
       <van-grid-item icon-color="#407FF5" icon="star-o" text="收藏" bindtap="toCollection" />
-      <van-grid-item icon-color="#407FF5" icon="question-o" text="帮助" />
-      <van-grid-item icon-color="#407FF5" icon="setting-o" text="设置" />
+      <van-grid-item icon-color="#407FF5" icon="question-o" text="帮助" bindtap="undefined" />
+      <van-grid-item icon-color="#407FF5" icon="setting-o" text="设置" bindtap="undefined" />
     </van-grid>
   </BlockBox>
 
@@ -20,7 +20,7 @@
     <van-cell-group>
       <van-cell title="修改资料" is-link border="{{false}}" bindtap="toEditProfile"/>
       <van-cell title="关于我们" is-link border="{{false}}" bindtap="toAboutUs" />
-      <van-cell title="Bug反馈" is-link border="{{false}}" />
+      <van-cell title="Bug反馈" is-link border="{{false}}" bindtap="undefined" />
       <van-cell title="退出登录" is-link border="{{false}}" bindtap="toSignOut" />
     </van-cell-group>
   </BlockBox>
@@ -28,7 +28,7 @@
   <!-- 管理 -->
   <BlockBox wx:if="{{isAdmin}}">
     <van-cell-group>
-      <van-cell title="管理员" is-link border="{{false}}" />
+      <van-cell title="管理员" is-link border="{{false}}" bindtap="undefined" />
       <van-cell title="轮播图" is-link border="{{false}}" bindtap="toSwiperAdmin" />
     </van-cell-group>
   </BlockBox>
