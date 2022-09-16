@@ -1,6 +1,7 @@
 {
   "usingComponents": {
     "BlockBox": "/components/BlockBox/BlockBox",
+    "BottomBtn": "/components/BottomBtn/BottomBtn",
     "van-field": "@vant/weapp/field/index"
   },
   "navigationBarTitleText": "修改资料"

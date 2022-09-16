@@ -1,5 +1,34 @@
 /* pages/editProfile/editProfile.wxss */
 .container {
   width: 100vw;
+}
+.container .content {
   padding: 20rpx 30rpx;
+}
+.container .content .userInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.container .content .userInfo .avatar {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+}
+.container .content .userInfo .name {
+  font-size: 36rpx;
+  font-weight: 550;
+  margin-top: 10rpx;
+}
+.container .title {
+  display: flex;
+  height: 60rpx;
+  line-height: 80rpx;
+  padding-left: 20rpx;
+}
+.container .title .num {
+  font-size: 24rpx;
+  color: var(--Color-FontA);
+  padding-left: 5rpx;
 }

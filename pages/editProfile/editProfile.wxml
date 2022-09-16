@@ -1,16 +1,29 @@
 <!--pages/editProfile/editProfile.wxml-->
 <view class="container">
-  <BlockBox padding="20">
-    <image class="avatar" src="{{userInfo.avatar_url}}" />
-    <view class="name">{{userInfo.nick_name}}</view>
-  </BlockBox>
+  <view class="content">
+    <BlockBox padding="20">
+      <view class="userInfo">
+        <image class="avatar" src="{{userInfo.avatar_url}}" />
+        <view class="name">{{userInfo.nick_name}}</view>
+      </view>
+    </BlockBox>
 
-  <BlockBox>
-    <van-field
-      model:value="{{ userInfo.autograph }}"
-      placeholder="个性化签名..."
-      border="{{ false }}"
-      bind:change="onChange"
-    />
-  </BlockBox>
+    <BlockBox>
+      <view class="title">
+        <text>个性签名</text>
+        <view class="num">({{userInfo.autograph.length}}/18)</view>
+      </view>
+      <van-field
+        value="{{ userInfo.autograph }}"
+        placeholder="青春里的温柔一定与你相关"
+        type="textarea"
+        autosize
+        maxlength="18"
+        border="{{ false }}"
+        bind:change="onChange"
+      />
+    </BlockBox>
+  </view>
+
+  <BottomBtn text="保存" bind:onClick="onClick" />
 </view>
