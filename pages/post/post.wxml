@@ -15,7 +15,7 @@
       <!-- 父评论 -->
       <view class="commentItem" wx:for="{{commentList}}" wx:key="_id">
         <view class="fatherComment">
-          <image class="userPic" src="{{item.avatar_url}}" />
+          <image class="userPic" src="{{item.avatar_url}}" lazy-load />
           <!-- 评论内容 -->
           <view class="content" bindtap="replyComment" id="{{item._id}}" data-fid="{{item._openid}}" data-name="{{item.nick_name}}">
             <view class="userName">
@@ -29,7 +29,7 @@
             </view>
             <!-- 子评论 回复 -->
             <view class="sonCommentItem" wx:for="{{item.child_comment}}" wx:key="_id" wx:for-item="child">
-              <image class="sonUserPic" src="{{child.avatar_url}}" />
+              <image class="sonUserPic" src="{{child.avatar_url}}" lazy-load />
               <view class="content" catchtap="answerComment" id="{{item._id}}" data-fid="{{child._openid}}" data-name="{{child.nick_name}}">
                 <view class="userName">
                   <text>{{child.nick_name}}</text>

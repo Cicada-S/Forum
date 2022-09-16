@@ -2,7 +2,7 @@
 <view class="postItem">
   <!-- 头像 -->
   <view class="userPic">
-    <image class="image" src="{{postItem.author_avatar}}" />
+    <image class="image" src="{{postItem.author_avatar}}" lazy-load />
   </view>
   <!-- 内容区 -->
   <view class="content">
@@ -13,9 +13,10 @@
     <!-- 视频图片 -->
     <view wx:if="{{postItem.postMedia.length}}" class="media {{postItem.postMedia.length>1?'imageComplex':''}}" style="padding-right:{{postItem.postMedia.length==4?'150':'0'}}rpx">
       <block wx:for="{{postItem.postMedia}}" wx:key="_id" wx:for-item="imgItem">
-        <image 
+        <image
           class="image {{postItem.postMedia.length>1?'complex':''}}"
-          mode="{{postItem.postMedia.length>1?'aspectFill':'heightFix'}}" 
+          mode="{{postItem.postMedia.length>1?'aspectFill':'heightFix'}}"
+          lazy-load
           src="{{imgItem.path}}"
           catchtap="preview"
           data-current="{{imgItem.path}}"
