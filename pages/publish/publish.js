@@ -127,7 +127,7 @@ Page({
       data
     }).then(() => {
       // 清空内容
-      this.setData({ content: '', fileList: [], community: [], multiIndex: [] })
+      this.setData({content: '', fileList: [], community: [], multiIndex: [], upCloudImages: []})
       wx.hideLoading()
       wx.switchTab({
         url: '/pages/index/index'
