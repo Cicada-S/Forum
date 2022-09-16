@@ -82,7 +82,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 30rpx;
+  padding: 20rpx 30rpx 0;
   background-color: var(--Color-White);
 }
 .container .publishComment .input {
@@ -93,8 +93,7 @@
   margin-bottom: 10rpx;
   color: var(--Color-FontD);
   border-radius: 30rpx;
-  background: var(--Color-White);
-  box-shadow: inset 7px 7px 17px #d9d9d9, inset -7px -7px 17px #ffffff;
+  background-color: var(--Color-FontE);
 }
 .container .publishComment .hair {
   height: 80rpx;
@@ -105,8 +104,6 @@
   margin-left: 20rpx;
   border-radius: 20rpx;
   background-color: var(--Color-MainA);
-  background: var(--Color-MainA);
-  box-shadow: 3px 3px 2px #3d7aeb;
 }
 .container .publishComment .hair::after {
   border: none;
