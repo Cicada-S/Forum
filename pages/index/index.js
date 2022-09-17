@@ -70,7 +70,6 @@ Page({
 
   // 确认搜索时触发
   onSearch(event) {
-    console.log('搜素')
     this.getPostList(this.data.active, event.detail)
   },
 

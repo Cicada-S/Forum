@@ -27,13 +27,11 @@ exports.main = async (event, context) => {
   if(event.community) screen.community = event.community
   if(event.search) screen.content = db.RegExp({ regexp: event.search, options: 'i' }) // 模糊查询
 
-  console.log(screen.content)
-
   try {
     // 联表查询
     let postList = await db.collection('Post').aggregate().match(screen)
-    .skip(5) // 跳过第n条开始查询
-    .limit() // 每次查询的数量
+    // .skip(5) // 跳过第n条开始查询
+    // .limit() // 每次查询的数量
     .sort(sort) // 排序
     .lookup({
       from: 'PostMedia',
