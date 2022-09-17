@@ -9,10 +9,15 @@ const $ = db.command.aggregate
 
 // 云函数入口函数
 exports.main = async (event, context) => {
+  console.log('event', event)
+
   // 排序规格
   let sort = { publish_date: -1 }
   // 筛选规格
   let screen = { status: 0 }
+  // 从第几条数据开始查找 
+  const skip = event.pageSize * (event.pageIndex - 1)
+  console.log('skip', skip)
 
   // 排序 最热 
   if(event.type === 1) {
@@ -30,8 +35,8 @@ exports.main = async (event, context) => {
   try {
     // 联表查询
     let postList = await db.collection('Post').aggregate().match(screen)
-    // .skip(5) // 跳过第n条开始查询
-    // .limit() // 每次查询的数量
+    .skip(skip) // 跳过第n条开始查询
+    .limit(event.pageSize) // 每次查询的数量
     .sort(sort) // 排序
     .lookup({
       from: 'PostMedia',

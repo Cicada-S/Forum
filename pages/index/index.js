@@ -14,7 +14,12 @@ Page({
     active: 0, // tab的状态
     swiperImages: [], // 轮播图
     newPostList: [], // 最新
-    hotPostList: [] // 最热
+    hotPostList: [], // 最热
+    newPageIndex: 1, // 最新 当前分页
+    hotPageIndex: 1, // 最热 当前分页
+    pageSize: 10, // 每次获取数据数量
+    newReachBottom: false, // 是否到底部
+    hotReachBottom: false // 是否到底部
   },
 
   /**
@@ -39,8 +44,11 @@ Page({
 
   // 获取帖子列表
   async getPostList(type, search) {
-    let data = { type, search }
-    let dataType = type === 0 ? 'newPostList' : 'hotPostList'
+    let { pageSize, newPageIndex, hotPageIndex } = this.data
+    let data = { type, search, pageSize }
+    let dataType = !type ? 'newPostList' : 'hotPostList'
+
+    data.pageIndex = !type ? newPageIndex : hotPageIndex
 
     // 发起请求获取帖子
     let { result } = await wx.cloud.callFunction({
@@ -160,5 +168,29 @@ Page({
     wx.navigateTo({
       url: `/pages/post/post?id=${event.currentTarget.id}`
     })    
+  },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+  onReachBottom() {
+    console.log('onReachBottom')
+    let { newReachBottom, hotReachBottom, newPageIndex, hotPageIndex, active } = this.data
+
+    // 判断当前为最新/最热
+    if(!active) {
+      // 如果到底部则返回
+      if(newReachBottom) return
+      // 分页+1
+      this.setData({ pageIndex: ++newPageIndex })
+    } else {
+      // 如果到底部则返回
+      if(hotReachBottom) return
+      // 分页+1
+      this.setData({ pageIndex: ++hotPageIndex })
+    }
+
+    // 获取数据
+    this.getPostList(active)
   }
 })
