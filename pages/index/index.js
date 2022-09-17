@@ -27,6 +27,7 @@ Page({
     this.getInformation()
     // 获取帖子列表
     this.getPostList(0)
+    this.getPostList(1)
   },
 
   // 获取资讯轮播图
@@ -37,8 +38,8 @@ Page({
   },
 
   // 获取帖子列表
-  async getPostList(type) {
-    let data = { type }
+  async getPostList(type, search) {
+    let data = { type, search }
     let dataType = type === 0 ? 'newPostList' : 'hotPostList'
 
     // 发起请求获取帖子
@@ -47,7 +48,7 @@ Page({
       data
     })
     // 将发布时间改成文字
-    result.data.forEach(item => item.publish_date = getdate(item.publish_date))
+    result.data?.forEach(item => item.publish_date = getdate(item.publish_date))
 
     this.setData({
       [dataType]: result.data
@@ -67,6 +68,12 @@ Page({
     })
   },
 
+  // 确认搜索时触发
+  onSearch(event) {
+    console.log('搜素')
+    this.getPostList(this.data.active, event.detail)
+  },
+
   // 跳转到圈子
   toCircle(event) {
     wx.navigateTo({
@@ -77,7 +84,7 @@ Page({
   // 切换标签栏
   onChange(event) {
     this.setData({ active: event.detail.name })
-    this.getPostList(event.detail.name)
+    // this.getPostList(event.detail.name)
   },
 
   // 点击图片放大预览的处理函数

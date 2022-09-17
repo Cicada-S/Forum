@@ -5,6 +5,7 @@
     value="{{ searchValue }}"
     shape="round"
     placeholder="Search..."
+    bind:search="onSearch"
   />
 
   <!-- 轮播图 swiper -->

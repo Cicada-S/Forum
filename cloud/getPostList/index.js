@@ -25,11 +25,16 @@ exports.main = async (event, context) => {
   }
   // 筛选 圈子 搜索
   if(event.community) screen.community = event.community
-  if(event.search) screen.content = event.search
+  if(event.search) screen.content = db.RegExp({ regexp: event.search, options: 'i' }) // 模糊查询
+
+  console.log(screen.content)
 
   try {
     // 联表查询
-    let postList = await db.collection('Post').aggregate().sort(sort).match(screen)
+    let postList = await db.collection('Post').aggregate().match(screen)
+    .skip(5) // 跳过第n条开始查询
+    .limit() // 每次查询的数量
+    .sort(sort) // 排序
     .lookup({
       from: 'PostMedia',
       let: { post_id: '$_id' },
@@ -52,6 +57,7 @@ exports.main = async (event, context) => {
   }
   catch(err) {
     console.error('transaction error')
+    console.error(err)
     return {
       code: 1,
       success: false
