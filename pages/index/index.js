@@ -17,7 +17,7 @@ Page({
     hotPostList: [], // 最热
     newPageIndex: 1, // 最新 当前分页
     hotPageIndex: 1, // 最热 当前分页
-    pageSize: 10, // 每次获取数据数量
+    pageSize: 5, // 每次获取数据数量
     newReachBottom: false, // 是否到底部
     hotReachBottom: false // 是否到底部
   },
@@ -44,7 +44,7 @@ Page({
 
   // 获取帖子列表
   async getPostList(type, search) {
-    let { pageSize, newPageIndex, hotPageIndex } = this.data
+    let { pageSize, newPageIndex, hotPageIndex, newPostList, hotPostList } = this.data
     let data = { type, search, pageSize }
     let dataType = !type ? 'newPostList' : 'hotPostList'
 
@@ -55,11 +55,33 @@ Page({
       name: 'getPostList',
       data
     })
+
+    console.log('result.data', result.data)
+
+    console.log('newPostList', newPostList)
+
+    // 如果没有数据了则将 reachBottom 设为 true
+    if(!type && !result.data.length) {
+      this.setData({ newReachBottom: true })
+    } else if(type && !result.data.length) {
+      this.setData({ hotReachBottom: true })
+    }
+    
     // 将发布时间改成文字
     result.data?.forEach(item => item.publish_date = getdate(item.publish_date))
 
+    let postList = result.data.length ? result.data : []
+    // 如果pageIndex大于1则 unshift 到该类型的数据中
+    if(!type && newPageIndex > 1) {
+      postList = newPostList.concat(result.data)
+    } else if(type && hotPageIndex > 1) {
+      postList = hotPostList.unshift(result.data)
+    }
+
+    console.log('postList', postList)
+
     this.setData({
-      [dataType]: result.data
+      [dataType]: postList
     })
   },
 
@@ -180,17 +202,21 @@ Page({
     // 判断当前为最新/最热
     if(!active) {
       // 如果到底部则返回
+      console.log('newReachBottom', newReachBottom)
       if(newReachBottom) return
       // 分页+1
-      this.setData({ pageIndex: ++newPageIndex })
+      this.setData({ newPageIndex: ++newPageIndex })
+      // 获取数据
+      this.getPostList(active)
     } else {
+      console.log('newReachBottom', newReachBottom)
       // 如果到底部则返回
       if(hotReachBottom) return
       // 分页+1
-      this.setData({ pageIndex: ++hotPageIndex })
+      this.setData({ hotPageIndex: ++hotPageIndex })
+      // 获取数据
+      this.getPostList(active)
     }
 
-    // 获取数据
-    this.getPostList(active)
   }
 })
