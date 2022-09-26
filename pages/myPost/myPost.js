@@ -8,6 +8,8 @@ const Post = db.collection('Post')
 Page({
   data: {
     postList: [], // 帖子列表
+    pageIndex: 1, // 当前分页
+    pageSize: 5 // 每次获取数据数量
   },
 
   /**
@@ -20,12 +22,19 @@ Page({
 
   // 获取帖子列表
   async getPostList() {
+    let data = {
+      id: wx.getStorageSync('currentUser')._openid,
+      type: 0,
+      pageIndex: this.data.pageIndex,
+      pageSize: this.data.pageSize
+    }
     let { result } = await wx.cloud.callFunction({
       name: 'getPostList',
-      data: { id: wx.getStorageSync('currentUser')._openid }
+      data
     })
+    console.log('result', result)
     // 将发布时间改成文字
-    result.data.forEach(item => item.publish_date = getdate(item.publish_date))
+    result.data?.forEach(item => item.publish_date = getdate(item.publish_date))
     this.setData({ postList: result.data })
   },
 

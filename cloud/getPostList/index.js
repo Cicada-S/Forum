@@ -31,13 +31,15 @@ exports.main = async (event, context) => {
   // 筛选 圈子 搜索
   if(event.community) screen.community = event.community
   if(event.search) screen.content = db.RegExp({ regexp: event.search, options: 'i' }) // 模糊查询
+  // 获取我的帖子时的用户id
+  if(event.id) screen._openid = event.id
 
   try {
     // 联表查询
     let postList = await db.collection('Post').aggregate().match(screen)
+    .sort(sort) // 排序 坑(先排序再跳过后查询)
     .skip(skip) // 跳过第n条开始查询
     .limit(event.pageSize) // 每次查询的数量
-    .sort(sort) // 排序
     .lookup({
       from: 'PostMedia',
       let: { post_id: '$_id' },
@@ -51,6 +53,8 @@ exports.main = async (event, context) => {
         .done(),
       as: 'postMedia'
     }).end()
+
+    console.log('postList',postList.list)
 
     return {
       code: 0,
