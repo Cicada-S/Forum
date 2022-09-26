@@ -2,7 +2,7 @@
 <view class="container">
   <!-- 搜索框 search -->
   <van-search
-    value="{{ searchValue }}"
+    model:value="{{ searchValue }}"
     shape="round"
     placeholder="Search..."
     bind:search="onSearch"

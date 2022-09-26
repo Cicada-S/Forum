@@ -43,11 +43,14 @@ Page({
   },
 
   // 获取帖子列表
-  async getPostList(type, search) {
-    let { pageSize, newPageIndex, hotPageIndex, newPostList, hotPostList } = this.data
-    let data = { type, search, pageSize }
+  async getPostList(type) {
     let dataType = !type ? 'newPostList' : 'hotPostList'
+    let { searchValue, pageSize, newPageIndex, hotPageIndex, newPostList, hotPostList } = this.data
+    let data = { type, pageSize }
 
+    // 搜索内容
+    if(searchValue) data.search = searchValue
+    // 当前分页
     data.pageIndex = !type ? newPageIndex : hotPageIndex
 
     // 发起请求获取帖子
@@ -55,10 +58,6 @@ Page({
       name: 'getPostList',
       data
     })
-
-    console.log('result.data', result.data)
-
-    console.log('newPostList', newPostList)
 
     // 如果没有数据了则将 reachBottom 设为 true
     if(!type && !result.data.length) {
@@ -77,12 +76,8 @@ Page({
     } else if(type && hotPageIndex > 1) {
       postList = hotPostList.unshift(result.data)
     }
-
-    console.log('postList', postList)
-
-    this.setData({
-      [dataType]: postList
-    })
+    // 更新data
+    this.setData({[dataType]: postList})
   },
 
   // 判断用户是否登录过
@@ -99,8 +94,8 @@ Page({
   },
 
   // 确认搜索时触发
-  onSearch(event) {
-    this.getPostList(this.data.active, event.detail)
+  onSearch() {
+    this.getPostList(this.data.active)
   },
 
   // 跳转到圈子
@@ -217,6 +212,5 @@ Page({
       // 获取数据
       this.getPostList(active)
     }
-
   }
 })
