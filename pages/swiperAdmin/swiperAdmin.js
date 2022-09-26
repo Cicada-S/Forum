@@ -1,4 +1,6 @@
 // pages/swiperAdmin/swiperAdmin.js
+const app = getApp()
+
 // 引入date
 import { getdate } from '../../utils/date'
 
@@ -7,6 +9,7 @@ const Information = db.collection('Information')
 
 Page({
   data: {
+    bottomLift: app.globalData.bottomLift,
     informationList: []
   },
 

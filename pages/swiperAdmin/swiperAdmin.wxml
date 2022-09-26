@@ -1,6 +1,6 @@
 <!--pages/swiperAdmin/swiperAdmin.wxml-->
 <view class="container">
-  <view class="informationList">
+  <view class="informationList" style="padding-bottom: {{bottomLift*2+80}}rpx">
     <BlockBox wx:for="{{informationList}}" wx:key="_id">
       <view class="information">
         <image mode="widthFix" class="image" src="{{item.path}}" />
