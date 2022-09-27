@@ -137,10 +137,10 @@ Page({
 
   // 判断文案和圈子是否为空
   isEmpty() {
-    const { content, community } = this.data
-    if(!content.trim()) {
+    const { content, community, fileList } = this.data
+    if(!fileList.length && !content.trim()) {
       wx.showToast({
-        title: '文案不能为空!',
+        title: '文案或图片不能为空!',
         icon: 'none',
         duration: 1000
       })
