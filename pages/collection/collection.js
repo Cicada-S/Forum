@@ -23,12 +23,13 @@ Page({
     const _openid = wx.getStorageSync('currentUser')._openid
 
     // 1. 获取收藏表
-    let { data } = await   AgreeCollect.where({_openid, is_collect: true}).get()
+    let { data } = await AgreeCollect.where({_openid, is_collect: true}).get()
     console.log('data', data)
 
-    data.forEach(async item => {
+    let worker = []
+    data.forEach(item => {
       // 2. 用收藏的post_id去查找帖子
-      let result = await Post.aggregate().match({_id: item.post_id, status: 0})
+      let process = Post.aggregate().match({_id: item.post_id, status: 0})
       // 3. 同时查找post_id为该帖子的图片/视频
       .lookup({
         from: 'PostMedia',
@@ -43,9 +44,10 @@ Page({
           .done(),
         as: 'postMedia'
       }).end()
-
-      console.log('result', result)
+      worker.push(process)
     })
+
+    Promise.all(worker)
 
     // this.setData({ postList })
   }

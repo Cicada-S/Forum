@@ -56,6 +56,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/collection/collection",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
