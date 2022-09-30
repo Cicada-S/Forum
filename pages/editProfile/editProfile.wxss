@@ -19,7 +19,7 @@
 .container .content .userInfo .name {
   font-size: 36rpx;
   font-weight: 550;
-  margin-top: 10rpx;
+  margin-top: 20rpx;
 }
 .container .title {
   display: flex;
