@@ -26,29 +26,20 @@ Page({
   // 登录的回调函数
   getUserProfile() {
     // 获取用户信息
-    wx.getUserProfile({
-      desc: "用于个人信息展示",
-      // 允许授权
-      success: res => {
-        wx.setStorageSync('currentUser', res.userInfo)
-        let user = {
-          avatar_url: res.userInfo.avatarUrl,
-          nick_name: res.userInfo.nickName,
-          gender: res.userInfo.gender,
-          autograph: '',
-          create_date: new Date()
-        }
-        // 將用戶添加到数据库
-        User.add({
-          data: user,
-          success: () => {
-            // 跳转到首页
-            wx.reLaunch({
-              url: '/pages/index/index'
-            })
-          }
-        })
+    wx.getUserProfile({desc: "用于个人信息展示"}).then(res => {
+      let user = {
+        avatar_url: res.userInfo.avatarUrl,
+        nick_name: res.userInfo.nickName,
+        gender: res.userInfo.gender,
+        autograph: '青春里的温柔一定与你相关',
+        create_date: new Date()
       }
-    }) 
+      // 将个人信息存储到本地
+      wx.setStorageSync('currentUser', user)
+      // 將用戶添加到数据库
+      User.add({data: user}).then(() => {
+        wx.reLaunch({ url: '/pages/index/index' })
+      })
+    })
   }
 })
