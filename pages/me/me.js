@@ -35,14 +35,9 @@ Page({
 
   // 跳转到收藏
   toCollection() {
-    wx.showToast({
-      title: 'Bug修复中...',
-      icon: 'none',
-      duration: 1000
-    })
-    /* wx.navigateTo({
+    wx.navigateTo({
       url: '/pages/collection/collection'
-    }) */
+    })
   },
 
   // 跳转到修改资料
