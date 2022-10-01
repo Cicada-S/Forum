@@ -1,9 +1,6 @@
 // pages/collection/collection.js
-const db = wx.cloud.database()
-const _ = db.command
-const $ = db.command.aggregate
-const AgreeCollect = db.collection('AgreeCollect')
-const Post = db.collection('Post')
+// 引入date
+import { getdate } from '../../utils/date'
 
 Page({
   data: {
@@ -20,35 +17,11 @@ Page({
 
   // 获取帖子
   async getPostList() {
-    const _openid = wx.getStorageSync('currentUser')._openid
-
-    // 1. 获取收藏表
-    let { data } = await AgreeCollect.where({_openid, is_collect: true}).get()
-    console.log('data', data)
-
-    let worker = []
-    data.forEach(item => {
-      // 2. 用收藏的post_id去查找帖子
-      let process = Post.aggregate().match({_id: item.post_id, status: 0})
-      // 3. 同时查找post_id为该帖子的图片/视频
-      .lookup({
-        from: 'PostMedia',
-        let: { post_id: '$_id' },
-        pipeline: $.pipeline()
-          .match(_.expr($.and([
-            $.eq(['$post_id', '$$post_id'])
-          ])))
-          .sort({
-            order: 1,
-          })
-          .done(),
-        as: 'postMedia'
-      }).end()
-      worker.push(process)
-    })
-
-    Promise.all(worker)
-
-    // this.setData({ postList })
+    // 请求云函数获取收藏数据
+    let { result } = await wx.cloud.callFunction({name: 'getCollection'})
+    // 将发布时间改成文字
+    result.data?.forEach(item => item.publish_date = getdate(item.publish_date))
+    // 更新data
+    this.setData({ postList: result.data })
   }
 })
