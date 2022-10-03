@@ -75,6 +75,10 @@
   font-size: 24rpx;
   white-space: nowrap;
 }
+.container .commentArea .commentList .commentItem .fold {
+  color: var(--Color-MainB);
+  margin: 0 0 30rpx 80rpx;
+}
 .container .publishComment {
   position: fixed;
   bottom: 0;
