@@ -294,6 +294,11 @@ Page({
     })
   },
 
+  // 展开子评论
+  onFold(event) {
+    console.log('event', event)
+  },
+
   /**
    * 用户点击右上角转发
    */
