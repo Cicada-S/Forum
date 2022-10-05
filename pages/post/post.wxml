@@ -46,7 +46,13 @@
               </view>
             </view>
             <!-- 子评论折叠 -->
-            <view class="fold" bindtap="onFold" wx:if="{{item.child_comment.length>1}}">展开 {{3}} 条回复</view>
+            <view class="fold" 
+              wx:if="{{item.child_comment.length>1}}"
+              bindtap="onFold"
+              id="{{item._id}}"
+            >
+              展开 {{item.child_comment.length-1}} 条回复
+            </view>
           </view>
         </view>
       </view>
