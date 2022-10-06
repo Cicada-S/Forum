@@ -15,6 +15,15 @@ Page({
   // 清理缓存
   onClear() {
     console.log('清理缓存')
+    wx.removeStorageSync('currentUser')
+    wx.showToast({
+      title: '清理成功!',
+      icon: 'success',
+      duration: 2000
+    })
+    setTimeout(()=> {
+      wx.switchTab({url: '/pages/index/index'})
+    }, 2000)
   },
 
   // 退出登录
