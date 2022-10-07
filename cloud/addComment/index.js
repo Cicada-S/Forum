@@ -7,7 +7,7 @@ const db = cloud.database()
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  let data = {...event}
+  let { userInfo, ...data } = event
   try {
     let result = {}
     if(data.parent_id) {
