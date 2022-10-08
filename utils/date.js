@@ -12,18 +12,20 @@ function getdate(data) {
   const year = data.getFullYear()
   const month = data.getMonth() + 1
   const day = data.getDate()
-  const hour = data.getHours()
-  const minute = data.getMinutes()
-  const second = data.getSeconds()
+  // const hour = data.getHours()
+  // const minute = data.getMinutes()
+  // const second = data.getSeconds()
 
   let miao = parseInt((now - data) / 1000)
   //一小时以内的
   if (miao < 60) {
     return '1分钟内'
   } else if (miao >= 60 && miao < 3600) {
-    return (nowminute - minute) + '分钟前'
+    // return (nowminute - minute) + '分钟前'
+    return parseInt(miao / 60) + '分钟前'
   } else if (miao >= 3600 && miao <= todaysec) {
-    return (nowhour - hour) + '小时前'
+    // return (nowhour - hour) + '小时前'
+    return parseInt(miao / 3600) + '小时前'
   } else if (miao > todaysec && miao < todaysec + 86400) {
     return '昨天'
   } else {
