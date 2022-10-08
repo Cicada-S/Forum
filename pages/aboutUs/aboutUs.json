@@ -2,5 +2,5 @@
   "usingComponents": {
     "BlockBox": "/components/BlockBox/BlockBox"
   },
-  "navigationBarTitleText": "关于我们"
+  "navigationBarTitleText": "关于作者"
 }

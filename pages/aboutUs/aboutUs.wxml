@@ -18,7 +18,7 @@
   </BlockBox>
   <!-- 联系我们 -->
   <BlockBox padding="20">
-    <view class="title">联系我们</view>
+    <view class="title">联系作者</view>
     <view class="content">{{email}}</view>
   </BlockBox>
 </view>

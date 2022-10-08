@@ -19,7 +19,7 @@
   <BlockBox>
     <van-cell-group>
       <van-cell title="修改资料" is-link border="{{false}}" bindtap="toEditProfile"/>
-      <van-cell title="关于我们" is-link border="{{false}}" bindtap="toAboutUs" />
+      <van-cell title="关于作者" is-link border="{{false}}" bindtap="toAboutUs" />
       <van-cell title="Bug反馈" is-link border="{{false}}" bindtap="undefined" />
       <van-cell title="退出登录" is-link border="{{false}}" bindtap="toSignOut" />
     </van-cell-group>
