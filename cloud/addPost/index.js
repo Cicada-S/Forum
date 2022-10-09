@@ -7,13 +7,13 @@ const db = cloud.database()
 
 // 云函数入口函数
 exports.main = async (event, context) => {
+  // userInfo结构出来是因为在手机上发布帖子会携带该属性到数据表中
+  let { userInfo, upCloudImages, ...data } = event
   try {
-    let { content, community, circle, location, author_name, author_avatar, upCloudImages } = event
-
     // 文本内容安全检测
     const msgSecCheckRes = await cloud.callFunction({
       name: 'msgSecCheck',
-      data: { text: content }
+      data: { text: data.content }
     })
     console.log(msgSecCheckRes)
     if (msgSecCheckRes.result.errcode != 0) {
@@ -26,12 +26,7 @@ exports.main = async (event, context) => {
 
     let post = {
       _openid: cloud.getWXContext().OPENID,
-      author_name,
-      author_avatar,
-      content,
-      community,
-      circle,
-      location,
+      ...data,
       publish_date: new Date(),
       status: 0,
       agree: 0,
