@@ -125,13 +125,18 @@ Page({
     await wx.cloud.callFunction({
       name: 'addPost',
       data
-    }).then(() => {
+    }).then(res => {
+      // 判断文本是否违规
+      if(res.result.code === 1) wx.showToast({
+        title: res.result.error,
+        icon: 'error',
+        duration: 2000
+      })
+
       // 清空内容
       this.setData({content: '', fileList: [], community: [], multiIndex: [], upCloudImages: []})
       wx.hideLoading()
-      wx.switchTab({
-        url: '/pages/index/index'
-      })
+      wx.switchTab({ url: '/pages/index/index' })
     })
   },
 
