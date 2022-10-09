@@ -10,6 +10,20 @@ exports.main = async (event, context) => {
   try {
     let { content, community, circle, location, author_name, author_avatar, upCloudImages } = event
 
+    // 文本内容安全检测
+    const msgSecCheckRes = await cloud.callFunction({
+      name: 'msgSecCheck',
+      data: { text: content }
+    })
+    console.log(msgSecCheckRes)
+    if (msgSecCheckRes.result.errcode != 0) {
+      return {
+        code: 1,
+        error: '文字內容违规',
+        success: false
+      }
+    }
+
     let post = {
       _openid: cloud.getWXContext().OPENID,
       author_name,
