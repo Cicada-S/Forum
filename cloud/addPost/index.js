@@ -15,8 +15,10 @@ exports.main = async (event, context) => {
       name: 'msgSecCheck',
       data: { text: data.content }
     })
+
     console.log(msgSecCheckRes)
-    if (msgSecCheckRes.result.errcode != 0) {
+
+    if(msgSecCheckRes.result.errcode != 0) {
       return {
         code: 1,
         error: '文字內容违规',
