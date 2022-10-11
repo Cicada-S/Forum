@@ -1,23 +1,18 @@
 // 云函数入口文件
 const cloud = require('wx-server-sdk')
-cloud.init({
-  env: cloud.DYNAMIC_CURRENT_ENV
-})
+cloud.init({ env: cloud.DYNAMIC_CURRENT_ENV }) // 使用当前云环境
 const db = cloud.database()
 const _ = db.command
 const $ = db.command.aggregate
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  console.log('event', event)
-
   // 排序规格
   let sort = { publish_date: -1 }
   // 筛选规格
   let screen = { status: 0 }
   // 从第几条数据开始查找 
   const skip = event.pageSize * (event.pageIndex - 1)
-  console.log('skip', skip)
 
   // 排序 最热 
   if(event.type === 1) {
@@ -47,14 +42,10 @@ exports.main = async (event, context) => {
         .match(_.expr($.and([
           $.eq(['$post_id', '$$post_id'])
         ])))
-        .sort({
-          order: 1,
-        })
+        .sort({ order: 1 })
         .done(),
       as: 'postMedia'
     }).end()
-
-    console.log('postList',postList.list)
 
     return {
       code: 0,
@@ -64,7 +55,6 @@ exports.main = async (event, context) => {
   }
   catch(err) {
     console.error('transaction error')
-    console.error(err)
     return {
       code: 1,
       success: false

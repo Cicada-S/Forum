@@ -1,16 +1,12 @@
 // 云函数入口文件
 const cloud = require('wx-server-sdk')
-cloud.init({
-  env: cloud.DYNAMIC_CURRENT_ENV
-})
+cloud.init({ env: cloud.DYNAMIC_CURRENT_ENV }) // 使用当前云环境
 const db = cloud.database()
 const _ = db.command
 const $ = db.command.aggregate
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  console.log(event)
-
   // 联表查询
   let result = await db.collection('FatherComment').aggregate().match({post_id: event.id})
   .sort({comment_date: -1})
@@ -21,13 +17,10 @@ exports.main = async (event, context) => {
       .match(_.expr($.and([
         $.eq(['$parent_id', '$$parent_id'])
       ])))
-      .sort({
-        comment_date: 1
-      })
+      .sort({ comment_date: 1 })
       .done(),
     as: 'child_comment'
   }).end()
-  console.log(result.list)
 
   return {
     code: 0,

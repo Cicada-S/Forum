@@ -1,8 +1,6 @@
 // 云函数入口文件
 const cloud = require('wx-server-sdk')
-cloud.init({
-  env: cloud.DYNAMIC_CURRENT_ENV
-})
+cloud.init({ env: cloud.DYNAMIC_CURRENT_ENV }) // 使用当前云环境
 const db = cloud.database()
 const _ = db.command
 const $ = db.command.aggregate
@@ -27,9 +25,7 @@ exports.main = async (event, context) => {
           .match(_.expr($.and([
             $.eq(['$post_id', '$$post_id'])
           ])))
-          .sort({
-            order: 1,
-          })
+          .sort({ order: 1 })
           .done(),
         as: 'postMedia'
       }).end()
@@ -49,8 +45,7 @@ exports.main = async (event, context) => {
     }
   }
   catch(err) {
-    console.log('err', err)
-
+    console.error('transaction error')
     return {
       code: 1,
       success: false
