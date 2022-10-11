@@ -13,25 +13,19 @@ let checkUrl = 'https://api.weixin.qq.com/wxa/msg_sec_check?access_token='
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  let tokenResponse = await got(tokenUrl) // 通过 got 请求 api
-  let token = JSON.parse(tokenResponse.body).access_token // JSON.parse 将数据转换成对象获取到具体 access_token 值
+  const tokenResponse = await got(tokenUrl) // 通过 got 请求 api
+  const token = JSON.parse(tokenResponse.body).access_token // JSON.parse 将数据转换成对象获取到具体 access_token 值
   // 文本内容检测接口拼接 access_token 值, JSON.stringIfy 将值转换成 JSON 字符串
-  let checkResponse
-  try {
-    checkResponse = await got(checkUrl + token, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'accept': 'json',
-        'accept-encoding': ''
-      },
-      body: JSON.stringify({
-        content: event.text
-      })
+  let checkResponse = await got(checkUrl + token, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'accept': 'json',
+      'accept-encoding': ''
+    },
+    body: JSON.stringify({
+      content: event.text
     })
-  }
-  catch(err) {
-    console.log(err)
-  }
+  })
   return checkResponse.body
 }
