@@ -8,5 +8,6 @@
     "van-grid-item": "@vant/weapp/grid-item/index",
     "van-tab": "@vant/weapp/tab/index",
     "van-tabs": "@vant/weapp/tabs/index"
-  }
+  },
+  "enablePullDownRefresh": true
 }

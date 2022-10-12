@@ -188,10 +188,22 @@ Page({
   },
 
   /**
-   * 页面上拉触底事件的处理函数
+   * 页面下拉刷新的处理函数
+   */
+  onPullDownRefresh() {
+    console.log('onPullDownRefresh')
+    if(this.data.active == 0) {
+      this.setData({ newPostList: [], newPageIndex: 1, newReachBottom: false })
+    } else {
+      this.setData({ hotPostList: [], hotPageIndex: 1, hotReachBottom: false })
+    }
+    this.getPostList(this.data.active)
+  },
+
+  /**
+   * 页面上拉触底的处理函数
    */
   onReachBottom() {
-    console.log('onReachBottom')
     let { newReachBottom, hotReachBottom, newPageIndex, hotPageIndex, active } = this.data
 
     // 判断当前为最新/最热
