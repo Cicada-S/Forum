@@ -297,6 +297,12 @@ Page({
   // 展开子评论
   onFold(event) {
     console.log('event', event.target.id)
+    let { commentList } = this.data
+    commentList.forEach(item => {
+      if(item._id === event.target.id) item.sonIsShow = true
+    })
+
+    this.setData({ commentList })
   },
 
   /**
