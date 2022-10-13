@@ -28,10 +28,8 @@ Component({
     // 预览图片
     preview(event) {
       let { current, urls } = event.currentTarget.dataset
-      this.triggerEvent('preview', {
-        current,
-        urls
-      })
+      urls = urls.map(item => item.path)
+      wx.previewImage({ current, urls })
     },
 
     // 点赞

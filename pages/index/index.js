@@ -111,16 +111,6 @@ Page({
     // this.getPostList(event.detail.name)
   },
 
-  // 点击图片放大预览的处理函数
-  preview(event) {
-    let { current, urls } = event.detail
-    urls = urls.map(item => item.path)
-    wx.previewImage({
-      current,
-      urls
-    })
-  },
-
   // 点赞的处理函数
   async fabulous(event) {
     // 查看点赞收藏表
