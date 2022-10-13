@@ -1,0 +1,53 @@
+<!--components/CommentArea/CommentArea.wxml-->
+<view class="commentArea">
+  <view class="title">共{{postInfo.comment}}条评论</view>
+  <!-- 评论列表 -->
+  <view class="commentList" style="padding-bottom: {{bottomLift+45}}px">
+    <!-- 父评论 -->
+    <view class="commentItem" wx:for="{{commentList}}" wx:key="_id">
+      <view class="fatherComment">
+        <image class="userPic" src="{{item.avatar_url}}" lazy-load />
+        <!-- 评论内容 -->
+        <view class="content" bindtap="replyComment" id="{{item._id}}" data-fid="{{item._openid}}" data-name="{{item.nick_name}}">
+          <view class="userName">
+            <text>{{item.nick_name}}</text>
+            <text wx:if="{{!item.comment_identity}}" class="author">作者</text>
+          </view>
+          <!-- 父评论 内容 -->
+          <view class="commentContent">
+            <text class="comment">{{item.comment_details}}</text>
+            <text class="commentTime">{{item.comment_date}}</text>
+          </view>
+          <!-- 子评论 回复 -->
+          <view class="sonCommentItem" wx:for="{{item.child_comment}}" wx:key="_id" wx:for-item="child" wx:for-index="cIndex">
+            <block wx:if="{{cIndex<1||item.sonIsShow}}">
+              <image class="sonUserPic" src="{{child.avatar_url}}" lazy-load />
+              <view class="content" catchtap="answerComment" id="{{item._id}}" data-fid="{{child._openid}}" data-name="{{child.nick_name}}">
+                <view class="userName">
+                  <text>{{child.nick_name}}</text>
+                  <text wx:if="{{!child.comment_identity}}" class="author">作者</text>
+                </view>
+                <!-- 子评论 内容 -->
+                <view class="commentContent">
+                  <text class="comment">
+                    <text wx:if="{{child.reply_type}}" class="reply">回复<text class="coverReply">{{child.to_nick_name}}</text>:</text>
+                    <text>{{child.comment_details}}</text>
+                  </text>
+                  <text class="commentTime">{{child.comment_date}}</text>
+                </view>
+              </view>
+            </block>
+          </view>
+          <!-- 子评论折叠 -->
+          <view class="fold" 
+            wx:if="{{item.child_comment.length>1&&!item.sonIsShow}}"
+            bindtap="onFold"
+            id="{{item._id}}"
+            >
+            展开 {{item.child_comment.length-1}} 条回复
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -266,7 +266,7 @@ Page({
 
   // 点击父级评论 的回调函数
   replyComment(event) {
-    let { id, dataset } = event.currentTarget
+    let { id, dataset } = event.detail
 
     this.setData({ 
       focus: true,
@@ -281,7 +281,7 @@ Page({
 
   // 点击子级评论 的回调函数
   answerComment(event) {
-    let { id, dataset } = event.currentTarget
+    let { id, dataset } = event.detail
 
     this.setData({
       focus: true,
@@ -292,17 +292,6 @@ Page({
       reply_type: 1,
       parent_id: id
     })
-  },
-
-  // 展开子评论
-  onFold(event) {
-    console.log('event', event.target.id)
-    let { commentList } = this.data
-    commentList.forEach(item => {
-      if(item._id === event.target.id) item.sonIsShow = true
-    })
-
-    this.setData({ commentList })
   },
 
   /**

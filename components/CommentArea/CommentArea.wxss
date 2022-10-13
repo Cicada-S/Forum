@@ -1,0 +1,78 @@
+/* components/CommentArea/CommentArea.wxss */
+.commentArea {
+  margin: 40rpx 30rpx;
+  font-size: 28rpx;
+}
+.commentArea .title {
+  color: var(--Color-FontA);
+  letter-spacing: 2rpx;
+}
+.commentArea .commentList {
+  margin: 30rpx 0;
+}
+.commentArea .commentList .commentItem {
+  margin-bottom: 30rpx;
+  border-bottom: 1rpx solid var(--Color-FontE);
+}
+.commentArea .commentList .commentItem .fatherComment,
+.commentArea .commentList .commentItem .sonCommentItem {
+  display: flex;
+}
+.commentArea .commentList .commentItem .fatherComment .userPic,
+.commentArea .commentList .commentItem .sonCommentItem .userPic {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 50%;
+}
+.commentArea .commentList .commentItem .fatherComment .sonUserPic,
+.commentArea .commentList .commentItem .sonCommentItem .sonUserPic {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+}
+.commentArea .commentList .commentItem .fatherComment .content,
+.commentArea .commentList .commentItem .sonCommentItem .content {
+  flex: 1;
+  margin: 0 20rpx;
+}
+.commentArea .commentList .commentItem .fatherComment .content .userName,
+.commentArea .commentList .commentItem .sonCommentItem .content .userName {
+  color: var(--Color-FontA);
+  margin-bottom: 10rpx;
+}
+.commentArea .commentList .commentItem .fatherComment .content .userName .author,
+.commentArea .commentList .commentItem .sonCommentItem .content .userName .author {
+  color: var(--Color-FontD);
+  font-size: 22rpx;
+  background-color: var(--Color-FontE);
+  border-radius: 20rpx;
+  padding: 5rpx 10rpx;
+  margin-left: 10rpx;
+}
+.commentArea .commentList .commentItem .fatherComment .content .commentContent,
+.commentArea .commentList .commentItem .sonCommentItem .content .commentContent {
+  margin-bottom: 20rpx;
+}
+.commentArea .commentList .commentItem .fatherComment .content .commentContent .comment,
+.commentArea .commentList .commentItem .sonCommentItem .content .commentContent .comment {
+  margin-right: 10rpx;
+}
+.commentArea .commentList .commentItem .fatherComment .content .commentContent .comment .reply,
+.commentArea .commentList .commentItem .sonCommentItem .content .commentContent .comment .reply {
+  margin-right: 8rpx;
+}
+.commentArea .commentList .commentItem .fatherComment .content .commentContent .comment .coverReply,
+.commentArea .commentList .commentItem .sonCommentItem .content .commentContent .comment .coverReply {
+  margin-left: 8rpx;
+  color: var(--Color-FontA);
+}
+.commentArea .commentList .commentItem .fatherComment .content .commentContent .commentTime,
+.commentArea .commentList .commentItem .sonCommentItem .content .commentContent .commentTime {
+  color: var(--Color-FontA);
+  font-size: 24rpx;
+  white-space: nowrap;
+}
+.commentArea .commentList .commentItem .fold {
+  color: var(--Color-MainB);
+  margin: 0 0 30rpx 80rpx;
+}

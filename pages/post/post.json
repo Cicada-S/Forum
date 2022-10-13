@@ -1,6 +1,8 @@
 {
   "usingComponents": {
-    "PostItem": "/components/PostItem/PostItem"
+    "PostItem": "/components/PostItem/PostItem",
+    "CommentArea": "/components/CommentArea/CommentArea"
+
   },
   "navigationBarTitleText": "详情"
 }
