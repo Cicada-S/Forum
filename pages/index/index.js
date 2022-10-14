@@ -181,7 +181,6 @@ Page({
    * 页面下拉刷新的处理函数
    */
   onPullDownRefresh() {
-    console.log('onPullDownRefresh')
     if(this.data.active == 0) {
       this.setData({ newPostList: [], newPageIndex: 1, newReachBottom: false })
     } else {
@@ -199,14 +198,12 @@ Page({
     // 判断当前为最新/最热
     if(!active) {
       // 如果到底部则返回
-      console.log('newReachBottom', newReachBottom)
       if(newReachBottom) return
       // 分页+1
       this.setData({ newPageIndex: ++newPageIndex })
       // 获取数据
       this.getPostList(active)
     } else {
-      console.log('newReachBottom', newReachBottom)
       // 如果到底部则返回
       if(hotReachBottom) return
       // 分页+1
