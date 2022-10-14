@@ -11,6 +11,10 @@ Component({
     isCollect: {
       type: Boolean,
       value: false
+    },
+    operation: {
+      type: Boolean,
+      value: false
     }
   },
 
@@ -30,6 +34,13 @@ Component({
       let { current, urls } = event.currentTarget.dataset
       urls = urls.map(item => item.path)
       wx.previewImage({ current, urls })
+    },
+
+    // 删除帖子
+    onDelete(event) {
+      this.triggerEvent('onDelete', {
+        id: event.target.id
+      })
     },
 
     // 点赞

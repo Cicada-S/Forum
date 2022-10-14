@@ -17,11 +17,18 @@
   margin-left: 20rpx;
   font-size: 28rpx;
 }
-.postItem .content .userName {
+.postItem .content .head {
+  display: flex;
+  justify-content: space-between;
+}
+.postItem .content .head .userName {
   color: var(--Color-MainB);
   font-size: 30rpx;
   font-weight: 550;
   margin-bottom: 20rpx;
+}
+.postItem .content .head .icon {
+  padding: 10rpx;
 }
 .postItem .content .text {
   letter-spacing: 3rpx;

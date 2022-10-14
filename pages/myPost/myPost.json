@@ -1,8 +1,7 @@
 {
   "usingComponents": {
     "PostList": "/components/PostList/PostList",
-    "PostItem": "/components/PostItem/PostItem",
-    "van-swipe-cell": "@vant/weapp/swipe-cell/index"
+    "PostItem": "/components/PostItem/PostItem"
   },
   "navigationBarTitleText": "我的帖子"
 }

@@ -7,7 +7,16 @@
   <!-- 内容区 -->
   <view class="content">
     <!-- 昵称 -->
-    <view class="userName">{{postItem.author_name}}</view>
+    <view class="head">
+      <view class="userName">{{postItem.author_name}}</view>
+      <van-icon
+        wx:if="{{operation}}"
+        custom-class="icon"
+        name="delete-o"
+        catchtap="onDelete"
+        id="{{postItem._id}}"
+      />
+    </view>
     <!-- 文案内容 -->
     <view class="text" wx:if="{{postItem.content}}">{{postItem.content}}</view>
     <!-- 视频图片 -->

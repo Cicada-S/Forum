@@ -54,14 +54,19 @@ Page({
 
   // 删除帖子
   onDelete(event) {
-    // 将被删除帖子的 status 改为 -1
-    Post.doc(event.target.id).update({data: {status: -1}})
-
-    // 过滤被删除的帖子 更新data
-    let newPostList = this.data.postList.filter(item => {
-      if(item._id !== event.target.id) return item 
+    wx.showModal({
+      title: '提示',
+      content: '确实删除该帖子吗？'
+    }).then(res => {
+      if(res.confirm) {
+        // 将被删除帖子的 status 改为 -1
+        Post.doc(event.detail.id).update({data: {status: -1}})
+        // 过滤被删除的帖子 更新data
+        let newPostList = this.data.postList.filter(item => item._id !== event.detail.id)
+        // 更新data
+        this.setData({ postList: newPostList })
+      }
     })
-    this.setData({ postList: newPostList })
   },
 
   /**
