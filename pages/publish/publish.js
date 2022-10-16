@@ -21,6 +21,13 @@ Page({
     this.setData({ content: event.detail.value })
   },
 
+  // 文件上传前校验
+  /* beforeRead(event) {
+    console.log('beforeRead', event)
+    const { file, callback } = event.detail
+    callback(file.type === 'image')
+  }, */
+
   // 文件读取完成
   afterRead(event) {
     let { fileList } = this.data

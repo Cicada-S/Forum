@@ -22,6 +22,9 @@
     max-count="9"
     max-duration="30"
   />
+    <!-- 文件上传前校验 -->
+    <!-- use-before-read
+    bind:before-read="beforeRead" -->
 
   <!-- 操作 -->
   <van-cell-group border="{{false}}">
