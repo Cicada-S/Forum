@@ -2,7 +2,7 @@
 <view class="container">
   <van-tabs active="{{ active }}" color="#407FF5" line-width="70" bind:change="onChange">
     <van-tab title="最新">
-      <PostList>
+      <PostList isBaseline="{{newReachBottom}}">
         <PostItem 
           wx:for="{{newPostList}}" 
           wx:key="_id" 
@@ -14,7 +14,7 @@
       </PostList>
     </van-tab>
     <van-tab title="最热">
-      <PostList>
+      <PostList isBaseline="{{hotReachBottom}}">
         <PostItem 
           wx:for="{{hotPostList}}" 
           wx:key="_id" 

@@ -4,3 +4,9 @@
   flex-direction: column;
   background-color: var(--Color-White);
 }
+.postList .baseline {
+  color: var(--Color-FontB);
+  font-size: 22rpx;
+  text-align: center;
+  padding: 30rpx 0;
+}

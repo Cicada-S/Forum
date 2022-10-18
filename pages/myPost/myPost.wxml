@@ -1,6 +1,6 @@
 <!--pages/myPost/myPost.wxml-->
 <view class="container">
-  <PostList>
+  <PostList isBaseline="{{reachBottom}}">
     <block wx:for="{{postList}}" wx:key="_id">
       <PostItem postItem="{{item}}" operation="{{true}}" bind:onDelete="onDelete" />
     </block>
