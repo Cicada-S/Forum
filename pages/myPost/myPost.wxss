@@ -2,10 +2,9 @@
 .container {
   width: 100vw;
 }
-.container .delete {
-  color: var(--Color-White);
-  width: 130rpx;
-  height: 100%;
+.container .baseline {
+  color: var(--Color-FontB);
+  font-size: 22rpx;
   text-align: center;
-  background-color: var(--Color-ViceA);
+  padding: 30rpx 0;
 }

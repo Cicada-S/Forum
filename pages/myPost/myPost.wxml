@@ -4,5 +4,6 @@
     <block wx:for="{{postList}}" wx:key="_id">
       <PostItem postItem="{{item}}" operation="{{true}}" bind:onDelete="onDelete" />
     </block>
+    <view class="baseline" wx:if="{{reachBottom}}">我也是有底线的</view>
   </PostList>
 </view>
