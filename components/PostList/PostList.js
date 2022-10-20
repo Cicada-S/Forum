@@ -5,10 +5,7 @@ Component({
    */
   properties: {
     posts: {
-      isBaseline: {
-        type: Boolean,
-        value: false
-      }
+    
     }
   },
 

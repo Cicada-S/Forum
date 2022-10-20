@@ -2,7 +2,7 @@
 <view class="container">
   <van-tabs active="{{ active }}" color="#407FF5" line-width="70" bind:change="onChange">
     <van-tab title="最新">
-      <PostList isBaseline="{{newReachBottom}}">
+      <PostList>
         <PostItem 
           wx:for="{{newPostList}}" 
           wx:key="_id" 
@@ -11,10 +11,11 @@
           postItem="{{item}}" 
           bind:preview="preview" 
         />
+        <view class="baseline" wx:if="{{newReachBottom}}">我也是有底线的</view>
       </PostList>
     </van-tab>
     <van-tab title="最热">
-      <PostList isBaseline="{{hotReachBottom}}">
+      <PostList>
         <PostItem 
           wx:for="{{hotPostList}}" 
           wx:key="_id" 
@@ -23,6 +24,7 @@
           postItem="{{item}}" 
           bind:preview="preview" 
         />
+        <view class="baseline" wx:if="{{hotReachBottom}}">我也是有底线的</view>
       </PostList>
     </van-tab>
   </van-tabs>

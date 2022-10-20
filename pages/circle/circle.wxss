@@ -2,3 +2,9 @@
 .container {
   width: 100vw;
 }
+.container .baseline {
+  color: var(--Color-FontB);
+  font-size: 22rpx;
+  text-align: center;
+  padding: 30rpx 0;
+}

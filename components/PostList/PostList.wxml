@@ -1,5 +1,4 @@
 <!--component/PostList/PostList.wxml-->
 <view class="postList"> 
   <slot></slot>
-  <view class="baseline" wx:if="{{isBaseline}}">我也是有底线的</view>
 </view>
