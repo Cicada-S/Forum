@@ -19,6 +19,23 @@
   <!-- 联系我们 -->
   <BlockBox padding="20">
     <view class="title">联系作者</view>
-    <view class="content">{{email}}</view>
+    <view class="content">
+      <view class="email">{{email}}</view>
+      <van-icon custom-class="icon" bindtap="encourage" name="gold-coin-o" />
+    </view>
   </BlockBox>
+
+  <!-- 打赏作者 -->
+  <van-dialog
+    use-slot
+    title="打赏作者"
+    show="{{ show }}"
+    confirmButtonText="支付"
+    show-cancel-button
+    bind:close="onClose"
+    bind:confirm="onConfirm"
+  >
+    <input class="input" value="{{ amount }}" type="number" placeholder="请作者喝杯奶茶！" />
+  </van-dialog>
+
 </view>

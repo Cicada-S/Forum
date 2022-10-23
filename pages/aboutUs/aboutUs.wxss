@@ -22,3 +22,17 @@
   font-weight: 550;
   margin-bottom: 20rpx;
 }
+.container .content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.container .content .icon {
+  color: var(--Color-MainA);
+  font-size: 50rpx;
+  padding-right: 20rpx;
+}
+.container .input {
+  text-align: center;
+  margin: 50rpx 30rpx;
+}

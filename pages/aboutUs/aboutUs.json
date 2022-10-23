@@ -1,6 +1,8 @@
 {
   "usingComponents": {
-    "BlockBox": "/components/BlockBox/BlockBox"
+    "BlockBox": "/components/BlockBox/BlockBox",
+    "van-icon": "@vant/weapp/icon/index",
+    "van-dialog": "@vant/weapp/dialog/index"
   },
   "navigationBarTitleText": "关于作者"
 }
