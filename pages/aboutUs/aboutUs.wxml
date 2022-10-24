@@ -35,7 +35,7 @@
     bind:close="onClose"
     bind:confirm="onConfirm"
   >
-    <input class="input" value="{{ amount }}" type="number" placeholder="请作者喝杯奶茶！" />
+    <input class="input" focus="{{ focus }}" value="{{ amount }}" type="number" placeholder="请作者喝杯奶茶！" />
   </van-dialog>
 
 </view>
