@@ -32,6 +32,20 @@ npm install
 
 ```
 
+### 数据表
+
+| 表名 | 备注   |
+| ---- | ------ |
+| User | 用户表 |
+| Post | 帖子表 |
+| PostMedia | 帖子视频图片表 |
+| FatherComment | 父评论表 |
+| SonComment | 子评论表 |
+| AgreeCollect | 点赞收藏表 |
+| Information | 资讯表 |
+| Reward | 打赏表 |
+
+
 ### 项目地址
 [https://github.com/Cicada-S/Forum](https://github.com/Cicada-S/Forum)
 
