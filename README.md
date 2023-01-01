@@ -1,12 +1,10 @@
 ## 校园论坛
 
-
 ### 前言
 
 校园论坛小程序 主要分区:
 
-娱乐八卦  二手市场  表白墙  失物招领  学习交流
-
+娱乐八卦 二手市场 表白墙 失物招领 学习交流
 
 ### 项目功能
 
@@ -24,7 +22,6 @@
 - [x] 评论(父评/子评/回复)
 - [x] 转发
 
-
 ### 项目构建
 
 ```sh
@@ -32,23 +29,41 @@ npm install
 
 ```
 
+### 拉取项目后需要修改的东西
+
+```js
+// app.js
+12 - 云函数环境
+  env: 'cloud1-6gevmdvpd7d00aa4'
+
+// pages/aboutUs/aboutUs.js
+11 - 作者介绍
+  authorInt: '小苏同学',
+
+// cloud/msgSecCheck/index.js
+[6, 7] - AppId、appSecret
+  const appid = 'wx188726951a6b10b2' // AppId
+  const appsecret = '2b8f007972abdsad1a520a532cas9b62' // 小程序唯一凭证密钥
+```
+
+`appsecret` 不知道怎么拿可以 [点击这里](https://jingyan.baidu.com/article/9f7e7ec0a038d32e2915540a.html)
+
 ### 数据表
 
-| 表名 | 备注   |
-| ---- | ------ |
-| User | 用户表 |
-| Post | 帖子表 |
-| PostMedia | 帖子视频图片表 |
-| FatherComment | 父评论表 |
-| SonComment | 子评论表 |
-| AgreeCollect | 点赞收藏表 |
-| Information | 资讯表 |
-| Reward | 打赏表 |
-
+| 表名          | 备注           |
+| ------------- | -------------- |
+| User          | 用户表         |
+| Post          | 帖子表         |
+| PostMedia     | 帖子视频图片表 |
+| FatherComment | 父评论表       |
+| SonComment    | 子评论表       |
+| AgreeCollect  | 点赞收藏表     |
+| Information   | 资讯表         |
+| Reward        | 打赏表         |
 
 ### 项目地址
-[https://github.com/Cicada-S/Forum](https://github.com/Cicada-S/Forum)
 
+[https://github.com/Cicada-S/Forum](https://github.com/Cicada-S/Forum)
 
 ### 说明
 
